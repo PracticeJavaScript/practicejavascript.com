@@ -10,6 +10,7 @@
   "license": "UNLICENSED",
   "dependencies": {
     "ava": "^0.18.2",
+    "notevil": "^1.1.0",
     "xo": "^0.18.1"
   }
 }
