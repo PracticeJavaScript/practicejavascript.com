@@ -1,0 +1,15 @@
+body, input, select, textarea {
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Arial,sans-serif;
+  font-size: 16pt;
+}
+#code {
+  color: #f8f8f2;
+  display: block;
+  overflow-x: auto;
+  padding: .5em;
+  background: #23241f;
+  font-family: Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+  border-radius: 3px;
+  margin: 0 .25em;
+  padding: .25em .65em;
+}
