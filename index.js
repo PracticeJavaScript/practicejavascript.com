@@ -3,12 +3,16 @@ console.log('index.js!');
 // DEPENDENCIES
 // ============================================================
 
-// const safeEval = require('notevil');
+const safeEval = require('notevil');
 // const babylon = require('babylon');
 // const babel = require('babel-core');
 const esprima = require('esprima');
-const evaluate = require('static-eval');
+// const evaluate = require('static-eval');
 const assert = require('chai').assert;
+
+// PROBLEMS
+// ============================================================
+const problems = require('./problems/arrays.js');
 
 // CONFIG
 // ============================================================
@@ -20,15 +24,18 @@ const assert = require('chai').assert;
 // elements
 const code = document.getElementById('code');
 const test = document.getElementById('test');
-const correctAnswer = ['Apple', 'Banana'];
 // const fruits = ['Apple', 'Banana'];
 
 function updateTest(pass) {
   // console.log('pass:', pass);
-  if (pass === undefined) {
+  if (pass === true) {
     test.innerText = 'PASS';
+    test.classList.remove('fail');
+    test.classList.add('pass');
   } else {
     test.innerText = 'FAIL';
+    test.classList.remove('pass');
+    test.classList.add('fail');
   }
 }
 
@@ -37,13 +44,10 @@ function updateTest(pass) {
 // VERIFICATION LOGIC
 // ============================================================
 
-function getOutput(ast) {
+function getOutput(code) {
   let evald = false;
   try {
-    evald = evaluate(ast, {
-      output: function(fruits) {return fruits}
-    });
-    console.log('evaled.output()', evaled.output());
+    evald = safeEval(`(function(){${code}})()`);
   } catch (error) {
     console.log('safeEval error:', error);
   }
@@ -65,37 +69,35 @@ function getParsed(input) {
 }
 
 function getTested(parsed, output) {
+  const correctAnswer = ['apple', 'banana'];
   let tested = false;
   try {
-    const importants = parsed.tokens.filter(token => {
-      return (token.type === 'Identifier' || token.type === 'String');
-    });
-    console.log('importants:', importants);
     // output is correct
     let test0 = false;
     try {
-      test0 = (assert.deepEqual(parsed, correctAnswer) === undefined);
+      test0 = (assert.deepEqual(output, correctAnswer) === undefined);
     } catch (error) {
       // console.log('error:', error);
     }
-    // has a var-thing
-    const test1 = importants[0].type === 'Identifier';
-    // var-thing is called 'fruits'
-    const test2 = importants[0].type.value === 'fruits';
-    // fruits is an array
-    const test3 = parsed.body[0].declarations[0].init.type === 'ArrayExpression';
-    // array has only 2 values
-    const test4 = parsed.body[0].declarations[0].init.elements.length === 2;
-    // array has values 'Apple' and 'Banana'
-    const test5 = parsed.body[0].declarations[0].init.elements[0].value === 'Apple';
-    const test6 = parsed.body[0].declarations[0].init.elements[1].value === 'Banana';
+    // // has a var-thing
+    // const test1 = parsed.body[0].declarations[0].type === 'Identifier';
+    // // var-thing is called 'fruits'
+    // const test2 = parsed.body[0].declarations[0].name === 'fruits';
+    // // fruits is an array
+    // const test3 = parsed.body[0].declarations[0].init.type === 'ArrayExpression';
+    // // array has only 2 values
+    // const test4 = parsed.body[0].declarations[0].init.elements.length === 2;
+    // // array has values 'Apple' and 'Banana'
+    // const test5 = parsed.body[0].declarations[0].init.elements[0].value === 'Apple';
+    // const test6 = parsed.body[0].declarations[0].init.elements[1].value === 'Banana';
     tested = !!(test0 === true
-              && test1 === true 
-              && test2 === true
-              && test3 === true
-              && test4 === true
-              && test5 === true
-              && test6 === true)
+              // && test1 === true 
+              // && test2 === true
+              // && test3 === true
+              // && test4 === true
+              // && test5 === true
+              // && test6 === true
+              )
   } catch (error) {
     console.log('error:', error);
   }
@@ -110,7 +112,7 @@ function testSuite(e) {
   // generate an AST
   const parsed = getParsed(code.value);
   // evaluate JS to an output
-  const output = getOutput(parsed.body[0].expression);
+  const output = getOutput(code.value);
   // run tests on code
   const tested = getTested(parsed, output);
 
@@ -118,4 +120,4 @@ function testSuite(e) {
   updateTest(tested);
 }
 
-code.addEventListener('keyup', testCode);
+code.addEventListener('keyup', testSuite);

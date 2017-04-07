@@ -13,3 +13,13 @@ body, input, select, textarea {
   margin: 0 .25em;
   padding: .25em .65em;
 }
+#test{
+  background-color: gray;
+  color: white;
+}
+#test.pass {
+  background-color: green;
+}
+#test.fail {
+  background-color: red;
+}

@@ -1,36 +1,50 @@
+const assert = require('chai').assert;
+
 module.exports = {
   
   problems: [
 
     {
       name: 'create-array',
-      prompt: 'Create an array named \'fruits\' that contains \'Apple\' and \'Banana\'',
+      prompt: 'Create an array named \'fruits\' that contains \'apple\' and \'banana\'',
       answer: `const fruits = ['Apple', 'Banana'];`,
       correctOutput: `['Apple', 'Banana']`,
       tests: [
         {
           name: 'Output must be correct',
-          test: `assert.deepEqual(output, correctOutput) === undefined`
+          test: function() {
+            return assert.deepEqual(output, correctOutput) === undefined;
+          }
         },
         {
           name: 'Must use var, let, or const',
-          test: `importants[0].type === 'Identifier'`,
+          test: function() {
+            return parsed.body[0].declarations[0].init.type === 'Identifier';
+          }
         },
         {
           name: 'Must use an Array',
-          test: `parsed.body[0].declarations[0].init.type === 'ArrayExpression'`,
+          test: function() {
+            return parsed.body[0].declarations[0].init.type === 'ArrayExpression';
+          }
         },
         {
-          name: '',
-          test: `parsed.body[0].declarations[0].init.elements.length === 2`,
+          name: 'Array must have 2 items in it',
+          test: function() {
+            return parsed.body[0].declarations[0].init.elements.length === 2;
+          }
         },
         {
-          name: '',
-          test: `parsed.body[0].declarations[0].init.elements[0].value === 'Apple'`,
+          name: 'First item in Array must be \'apple\'',
+          test: function() {
+            return parsed.body[0].declarations[0].init.elements[0].value === 'apple';
+          }
         },
         {
-          name: '',
-          test: `parsed.body[0].declarations[0].init.elements[1].value === 'Banana'`
+          name: 'Second item in Array must be \'banana\'',
+          test: function() {
+            return parsed.body[0].declarations[0].init.elements[1].value === 'banana';
+          }
         }
       ]
     }
