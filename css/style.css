@@ -37,6 +37,20 @@ body, input, select, textarea {
 
 .test-suite {
   /*background-color: yellow;*/
+  font-size: 60%;
+}
+
+.test {
+  display: block;
+  margin: 0.7em 0;
+}
+
+.test-state {
+  display: inline-block;
+}
+
+.test-name {
+  display: inline-block;
 }
 
 .test-total{
@@ -56,21 +70,21 @@ body, input, select, textarea {
 @media (min-width: 760px) {
   .problem-name {
     grid-column-start: 1;
-    grid-column-end: 3;
+    /*grid-column-end: 2;*/
     /*background-color: red;*/
   }
   .problem {
     grid-column-start: 1;
-    grid-column-end: 3;
+    /*grid-column-end: 2;*/
     /*background-color: pink;*/
   }
   .code {
     grid-column-start: 1;
-    grid-column-end: 1;
+    grid-column-end: 2;
   }
   .test-area {
     grid-column-start: 2;
-    grid-column-end: 2;
+    grid-column-end: 3;
     /*background-color: blue;*/
   }
 }

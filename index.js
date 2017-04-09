@@ -46,8 +46,14 @@ function loadProblem(problemObj) {
   updateTests(problemObj.tests);
 }
 
+// TODO: show tests and current pass state of them
+// test array and test dom array will be matched in order,
+// so we don't need to rebuild dom each time the tests change
 function updateTests(tests, testStatus) {
-  // console.log('pass:', pass);
+  console.log('tests:', tests);
+  console.log('testStatus:', testStatus);
+  buildTests(tests);
+  updateTestStatus();
   // if (pass === true) {
   //   test.innerText = 'PASS';
   //   test.classList.remove('fail');
@@ -59,7 +65,24 @@ function updateTests(tests, testStatus) {
   // }
 }
 
-// TODO: show tests and current pass state of them
+function buildTests(tests) {
+  if (tests) {
+    const testsDom = tests.map(test => {
+      // console.log('test.name',test.name);
+      return `<div class="test monospace">
+                <div class="test-state">[x]</div>
+                <div class="test-name">${test.name}</div>
+              </div>`;
+    }).join('');
+    console.log('testsDom', testsDom);
+    testSuiteEl.innerHTML = testsDom;
+  }
+}
+
+function updateTestStatus(tests, testStatus) {
+
+}
+
 
 
 

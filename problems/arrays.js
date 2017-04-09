@@ -3,10 +3,10 @@ const assert = require('chai').assert;
 module.exports = [
 
   {
-    name: 'create-array',
-    prompt: 'Create an array named \'fruits\' that contains \'apple\' and \'banana\'',
-    answer: `const fruits = ['Apple', 'Banana'];`,
-    correctOutput: `['Apple', 'Banana']`,
+    name: 'Create Array',
+    prompt: 'Create and return an array that contains \'apple\' and \'banana\'',
+    answer: `const fruits = ['Apple', 'Banana'];\rreturn fruits;`,
+    correctOutput: `['apple', 'banana']`,
     tests: [
       {
         name: 'Output must be correct',
