@@ -2,24 +2,75 @@ body, input, select, textarea {
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Arial,sans-serif;
   font-size: 16pt;
 }
-#code {
+.monospace {
+  font-family: Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+}
+
+/* grid elements */
+
+.container {
+  display: grid;
+  /*background-color: cyan;*/
+}
+
+.problem-name {
+  /*background-color: red;*/
+}
+
+.problem {
+  /*background-color: pink;*/
+}
+
+.code {
   color: #f8f8f2;
-  display: block;
   overflow-x: auto;
   padding: .5em;
   background: #23241f;
-  font-family: Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
   border-radius: 3px;
   margin: 0 .25em;
   padding: .25em .65em;
 }
-#test{
+
+.test-area {
+  /*background-color: blue;*/
+}
+
+.test-suite {
+  /*background-color: yellow;*/
+}
+
+.test-total{
   background-color: gray;
   color: white;
 }
-#test.pass {
+
+.test-total.pass {
   background-color: green;
 }
-#test.fail {
+
+.test-total.fail {
   background-color: red;
+}
+
+/* Because we are mobile-first, here is css for bigger than mobile */
+@media (min-width: 760px) {
+  .problem-name {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    /*background-color: red;*/
+  }
+  .problem {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    /*background-color: pink;*/
+  }
+  .code {
+    grid-column-start: 1;
+    grid-column-end: 1;
+  }
+  .test-area {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    /*background-color: blue;*/
+  }
 }

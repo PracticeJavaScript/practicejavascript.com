@@ -7,12 +7,16 @@
     <link href="css/style.css" rel="stylesheet">
   </head>
   <body>
-    <h1>Problem</h1>
-    <form>
-      <p>Return an array that contains 'apple' and 'banana'.</p>
-      <textarea id="code" rows="10" cols="80"></textarea>
-    </form>
-    <div id="test">UNSTARTED</div>
+    <div class="container">
+      <h1 id="problem-name" class="problem-name">Problem name</h1>
+      <div id="problem" class="problem">Problem text: Something something something darkside</div>
+      <textarea id="code" class="code monospace" rows="10" cols="50"></textarea>
+      <div id="test-area" class="test-area">
+        Tests:
+        <div id="test-suite" class="test-suite">Test Suite</div>
+        <div id="test-total" class="test-total">Test total</div>
+      </div>
+    </div>
     <script src="./bundle.js"></script>
   </body>
 </html>

@@ -4,15 +4,15 @@ console.log('index.js!');
 // ============================================================
 
 const safeEval = require('notevil');
-// const babylon = require('babylon');
-// const babel = require('babel-core');
 const esprima = require('esprima');
-// const evaluate = require('static-eval');
 const assert = require('chai').assert;
+
 
 // PROBLEMS
 // ============================================================
 const problems = require('./problems/arrays.js');
+// console.log('problems:', problems);
+
 
 // CONFIG
 // ============================================================
@@ -22,22 +22,44 @@ const problems = require('./problems/arrays.js');
 // ============================================================
 
 // elements
-const code = document.getElementById('code');
-const test = document.getElementById('test');
-// const fruits = ['Apple', 'Banana'];
+const problemNameEl = document.getElementById('problem-name');
+const problemEl = document.getElementById('problem');
+const codeEl = document.getElementById('code');
+const testAreaEl = document.getElementById('test-area');
+const testSuiteEl = document.getElementById('test-suite');
 
-function updateTest(pass) {
-  // console.log('pass:', pass);
-  if (pass === true) {
-    test.innerText = 'PASS';
-    test.classList.remove('fail');
-    test.classList.add('pass');
-  } else {
-    test.innerText = 'FAIL';
-    test.classList.remove('pass');
-    test.classList.add('fail');
-  }
+function getRandomProblem(problemsArr) {
+  return problemsArr[Math.floor(Math.random()*problemsArr.length)]
 }
+
+function loadProblem(problemObj) {
+  console.table(problemObj);
+  // prob name
+  problemNameEl.innerText = problemObj.name;
+  // prob question
+  problemEl.innerText = problemObj.prompt;
+  // prob given
+  if (problemObj.given) {
+    codeEl.value = problemObj.given;
+  }
+  // seed / update tests
+  updateTests(problemObj.tests);
+}
+
+function updateTests(tests, testStatus) {
+  // console.log('pass:', pass);
+  // if (pass === true) {
+  //   test.innerText = 'PASS';
+  //   test.classList.remove('fail');
+  //   test.classList.add('pass');
+  // } else {
+  //   test.innerText = 'FAIL';
+  //   test.classList.remove('pass');
+  //   test.classList.add('fail');
+  // }
+}
+
+// TODO: show tests and current pass state of them
 
 
 
@@ -68,7 +90,7 @@ function getParsed(input) {
   return parsed;
 }
 
-function getTested(parsed, output) {
+function getTested(output) {
   const correctAnswer = ['apple', 'banana'];
   let tested = false;
   try {
@@ -79,19 +101,8 @@ function getTested(parsed, output) {
     } catch (error) {
       // console.log('error:', error);
     }
-    // // has a var-thing
-    // const test1 = parsed.body[0].declarations[0].type === 'Identifier';
-    // // var-thing is called 'fruits'
-    // const test2 = parsed.body[0].declarations[0].name === 'fruits';
-    // // fruits is an array
-    // const test3 = parsed.body[0].declarations[0].init.type === 'ArrayExpression';
-    // // array has only 2 values
-    // const test4 = parsed.body[0].declarations[0].init.elements.length === 2;
-    // // array has values 'Apple' and 'Banana'
-    // const test5 = parsed.body[0].declarations[0].init.elements[0].value === 'Apple';
-    // const test6 = parsed.body[0].declarations[0].init.elements[1].value === 'Banana';
     tested = !!(test0 === true
-              // && test1 === true 
+              // && test1 === true
               // && test2 === true
               // && test3 === true
               // && test4 === true
@@ -105,19 +116,20 @@ function getTested(parsed, output) {
 }
 
 function testSuite(e) {
-  // console.log('code.value:', code.value);
-  console.log(typeof code.value);
+  // console.log('codeEl.value:', codeEl.value);
+  console.log(typeof codeEl.value);
 
   // run stuff
-  // generate an AST
-  const parsed = getParsed(code.value);
-  // evaluate JS to an output
-  const output = getOutput(code.value);
-  // run tests on code
-  const tested = getTested(parsed, output);
+  const output = getOutput(codeEl.value);
+  // run tests on code, return object/array of test results
+  const tested = getTested(output);
 
   // update UI with results
-  updateTest(tested);
+  updateTests(tested);
 }
 
-code.addEventListener('keyup', testSuite);
+codeEl.addEventListener('keyup', testSuite);
+
+
+
+loadProblem(getRandomProblem(problems))
