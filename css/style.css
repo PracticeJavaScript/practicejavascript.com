@@ -3,6 +3,7 @@
 body, input, select, textarea {
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Arial,sans-serif;
   font-size: 16pt;
+  box-sizing: border-box;
 }
 
 .monospace {
@@ -13,8 +14,8 @@ body, input, select, textarea {
 /* grid elements */
 
 .container {
-  display: grid;
-  grid-column-gap: 0.5em;
+  display: block;
+  /*grid-column-gap: 0.5em;*/
   /*background-color: cyan;*/
 }
 
@@ -27,6 +28,10 @@ body, input, select, textarea {
   /*background-color: pink;*/
 }
 
+.code-and-tests {
+  vertical-align: top;
+}
+
 .code {
   color: #f8f8f2;
   overflow-x: auto;
@@ -35,10 +40,15 @@ body, input, select, textarea {
   border-radius: 3px;
   /*margin: 0 .25em;*/
   padding: .25em .65em;
+  display: inline-block;
+  width: 100%;
 }
 
 .test-area {
+  vertical-align: top;
+  display: inline-block;
   /*background-color: blue;*/
+  width: 100%;
 }
 
 .test-suite {
@@ -53,6 +63,15 @@ body, input, select, textarea {
 
 .test-state {
   display: inline-block;
+  transition: all 200ms ease-in-out;
+}
+
+.test-state.pass {
+  color: green;
+}
+
+.test-state.fail {
+  color: red;
 }
 
 .test-name {
@@ -62,6 +81,9 @@ body, input, select, textarea {
 .test-total{
   background-color: gray;
   color: white;
+  text-align: center;
+  padding: 0.5em;
+  transition: all 200ms ease-in-out;
 }
 
 .test-total.pass {
@@ -75,22 +97,18 @@ body, input, select, textarea {
 /* Because we are mobile-first, here is css for bigger than mobile */
 @media (min-width: 760px) {
   .problem-name {
-    grid-column-start: 1;
-    /*grid-column-end: 2;*/
+    display: block;
     /*background-color: red;*/
   }
   .problem {
-    grid-column-start: 1;
-    /*grid-column-end: 2;*/
+    display: block;
     /*background-color: pink;*/
   }
   .code {
-    grid-column-start: 1;
-    grid-column-end: 2;
+    width: 70%;
   }
   .test-area {
-    grid-column-start: 2;
-    grid-column-end: 3;
+    width: 25%;
     /*background-color: blue;*/
   }
 }
