@@ -13,7 +13,7 @@
 
   // PROBLEMS
   // ============================================================
-  const problems = require('./problems/arrays.js');
+  const problems = require('../problems/arrays.js');
 
 
   // CONFIG
