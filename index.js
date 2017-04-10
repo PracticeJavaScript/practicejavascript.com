@@ -21,7 +21,6 @@
   // Hoist current problem
   let currentProblem;
 
-
   // UI
   // ============================================================
 
