@@ -33,6 +33,7 @@ body, input, select, textarea {
 }
 
 .code {
+  font-size: 80%;
   color: #f8f8f2;
   overflow-x: auto;
   padding: .5em;
@@ -94,8 +95,17 @@ body, input, select, textarea {
   background-color: red;
 }
 
+.console {
+  font-size: 70%;
+  margin: 0.5em 0;
+}
+
 /* Because we are mobile-first, here is css for bigger than mobile */
 @media (min-width: 760px) {
+  .container {
+    width: 75%;
+    margin: 0 auto;
+  }
   .problem-name {
     display: block;
     /*background-color: red;*/
