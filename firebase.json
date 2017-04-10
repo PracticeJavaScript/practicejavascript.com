@@ -3,6 +3,12 @@
     "rules": "database.rules.json"
   },
   "hosting": {
-    "public": "public"
+    "public": "public",
+    "headers": [
+      {
+        "source": "/",
+        "headers": [{"key": "Link", "value": "</dist/js/bundle.min.js>;rel=preload;as=script,</dist/css/style.css>;rel=preload;as=style"}]
+      }
+    ]
   }
 }
