@@ -535,14 +535,20 @@ body, input, select, textarea {
 }
 
 .console {
-  font-size: 70%;
+  font-size: 60%;
   margin: 0.5em 0;
+  width: 45%;
+  display: inline-block;
+  vertical-align: top;
+}
+.console > h4 {
+  text-align: center;
 }
 
 /* Because we are mobile-first, here is css for bigger than mobile */
 @media (min-width: 760px) {
   .container {
-    width: 75%;
+    width: 85%;
     margin: 0 auto;
   }
   .problem-name {

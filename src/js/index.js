@@ -4,10 +4,11 @@
   // ============================================================
 
   // notevil doesn't support ES6 arrows, probably other parts of syntax :(
-  const safeEval = require('notevil');
+  // const safeEval = require('notevil');
   // const safeEval = require('static-eval');              // required AST to work?
   // const safeEval = require('ecmascript-evaluator').run; // 6MB, limited on inputs
   // const safeEval = require('@nx-js/compiler-util').compileCode; // no idea?
+  // const safeEval = require('babel-core').transform;
   const assert = require('chai').assert;
 
 
@@ -31,7 +32,8 @@
   const testAreaEl = document.getElementById('test-area');
   const testSuiteEl = document.getElementById('test-suite');
   const testTotalEl = document.getElementById('test-total');
-  const consoleEl = document.getElementById('console');
+  const evalConsoleEl = document.getElementById('eval-output');
+  const assertConsoleEl = document.getElementById('assert-output');
 
   function getRandomProblem(problemsArr) {
     return problemsArr[Math.floor(Math.random()*problemsArr.length)]
@@ -39,8 +41,6 @@
 
   function loadProblem(problemObj) {
     currentProblem = problemObj;
-    // prob name
-    problemNameEl.innerText = problemObj.name;
     // prob question
     problemEl.innerText = problemObj.prompt;
     // prob given
@@ -109,28 +109,31 @@
   }
 
   function printAssertError(errObj) {
-    // make element
-    const el = document.createElement('div');
-    el.classList.add('assert-error');
-    const inner = `
-      Expected: ${JSON.stringify(errObj.expected)}
-      Actual: ${JSON.stringify(errObj.actual)}
-    `;
-    el.innerHTML = inner;
+    // make element string
+    let inner = ''
+    if (errObj !== null) {
+      inner = `
+      <div class="assert-error">
+        Expected: ${JSON.stringify(errObj.expected)}
+        Actual: ${JSON.stringify(errObj.actual)}
+      </div>`;
+    }
+    
     // prepend element
-    consoleEl.insertBefore(el, consoleEl.firstChild)
+    assertConsoleEl.innerHTML = inner;
   }
 
   function printEvalError(errObj) {
-    // // make element
-    const el = document.createElement('div');
-    el.classList.add('assert-error');
-    const inner = `
-      Syntax Error: ${JSON.stringify(errObj.message)}
-    `;
-    el.innerHTML = inner;
+    // make element string
+    let inner = '';
+    if (errObj !== null && errObj.message !== undefined) {
+      inner = `
+      <div class="assert-error">
+        Syntax Error: ${JSON.stringify(errObj.message)}
+      </div>`;
+    }
     // prepend element
-    consoleEl.insertBefore(el, consoleEl.firstChild)
+    evalConsoleEl.innerHTML = inner;
   }
 
 
@@ -154,9 +157,10 @@
   function getOutput(code) {
     let evald = false;
     try {
-      evald = safeEval(`(function(){${code}})()`);
+      evald = eval(`(function(){${code}})()`);
+      printEvalError(''); // empty error console out
     } catch (error) {
-      // console.log('safeEval error:', error);
+      // console.log('eval error:', error);
       printEvalError(error);
     }
     return evald;
@@ -176,6 +180,7 @@
           // other tests that don't need args passed
           testOutcome = test.test();
         }
+         printAssertError(null);
         return testOutcome;
       } catch (error) {
         // console.log('error:', error);
