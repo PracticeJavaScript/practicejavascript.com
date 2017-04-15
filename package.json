@@ -6,10 +6,17 @@
   "scripts": {
     "test": "xo && ava",
     "build": "./node_modules/.bin/gulp build",
-    "watch": "./node_modules/.bin/gulp watch"
+    "watch": "./node_modules/.bin/gulp watch",
+    "precommit": "lint-staged"
   },
   "author": "Jakob Anderson",
   "license": "UNLICENSED",
+  "lint-staged": {
+    "src/js/**/*.js": [
+      "prettier --single-quote --trailing-comma --write",
+      "git add"
+    ]
+  },
   "dependencies": {
     "@nx-js/compiler-util": "^1.0.0",
     "autoprefixer": "^6.7.7",
@@ -41,6 +48,9 @@
     "babel-preset-latest": "^6.24.1",
     "browserify": "^14.1.0",
     "chai": "^3.5.0",
+    "husky": "^0.13.3",
+    "lint-staged": "^3.4.0",
+    "prettier": "^1.1.0",
     "watchify": "^3.9.0"
   }
 }

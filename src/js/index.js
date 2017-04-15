@@ -1,5 +1,4 @@
-(function(){
-
+(function() {
   // DEPENDENCIES
   // ============================================================
 
@@ -11,11 +10,9 @@
   // const safeEval = require('babel-core').transform;
   const assert = require('chai').assert;
 
-
   // PROBLEMS
   // ============================================================
   const problems = require('../problems/arrays.js');
-
 
   // CONFIG
   // ============================================================
@@ -23,12 +20,12 @@
   let currentProblem;
   // keys to ignore while user is navigating around the textarea but not changing any code
   const ignoreKeyCodes = [
-    9,   // tab
-    37,  // left arrow
-    39,  // right arrow
-    38,  // up arrow
-    40  // down arrow
-  ]
+    9, // tab
+    37, // left arrow
+    39, // right arrow
+    38, // up arrow
+    40, // down arrow
+  ];
 
   // UI
   // ============================================================
@@ -44,7 +41,18 @@
   const assertConsoleEl = document.getElementById('assert-output');
 
   function getRandomProblem(problemsArr) {
-    return problemsArr[Math.floor(Math.random()*problemsArr.length)]
+    return problemsArr[Math.floor(Math.random() * problemsArr.length)];
+  }
+
+  function getNextProblem(problemsArr) {
+    let prob;
+    // if at end or invalid, restart series
+    if (currentIndex >= problemsArr.length - 1 || currentIndex < 0) {
+      prob = problemsArr[0];
+    } else {
+      prob = problemsArr[currentIndex + 1];
+    }
+    return prob;
   }
 
   function loadProblem(problemObj) {
@@ -63,7 +71,7 @@
   // test array and test dom array will be matched in order,
   // so we don't need to rebuild dom each time the tests change
   function updateTests(testStatus, init) {
-    if(init === true) {
+    if (init === true) {
       buildTests(currentProblem.tests);
     }
     updateTestStatus(testStatus);
@@ -71,12 +79,14 @@
 
   function buildTests(tests) {
     if (tests) {
-      const testsDom = tests.map(test => {
-        return `<div class="test monospace">
+      const testsDom = tests
+        .map(test => {
+          return `<div class="test monospace">
                   <div class="test-state">[&#x2718;]</div>
                   <div class="test-name">${test.name}</div>
                 </div>`;
-      }).join('');
+        })
+        .join('');
       testSuiteEl.innerHTML = testsDom;
     }
   }
@@ -118,7 +128,7 @@
 
   function printAssertError(errObj) {
     // make element string
-    let inner = ''
+    let inner = '';
     if (errObj !== null) {
       inner = `
       <div class="assert-error">
@@ -148,9 +158,6 @@
     // prepend element
     evalConsoleEl.innerHTML = inner;
   }
-
-
-
 
   // VERIFICATION LOGIC
   // ============================================================
@@ -199,8 +206,6 @@
     return tested;
   }
 
-
-
   // bind it up
   codeEl.addEventListener('keyup', function(e) {
     // if not arrow keys or other non-character keys
@@ -217,5 +222,4 @@
     // initalized test suite with starting failures
     testSuite(true);
   });
-
 })();
