@@ -1,15 +1,15 @@
-var gulp = require('gulp');
-var sourcemaps = require('gulp-sourcemaps');
-var browserify = require('browserify');
-var source = require('vinyl-source-stream');
-var buffer = require('vinyl-buffer');
-var uglify = require('gulp-uglify');
-var watchify = require('watchify');
-var babel = require('babelify');
-var es2015 = require('babel-preset-es2015');
-var postcss = require('gulp-postcss');
-var autoprefixer = require('autoprefixer');
-var cssnano = require('cssnano');
+const gulp = require('gulp');
+const sourcemaps = require('gulp-sourcemaps');
+const browserify = require('browserify');
+const source = require('vinyl-source-stream');
+const buffer = require('vinyl-buffer');
+const uglify = require('gulp-uglify');
+const watchify = require('watchify');
+const babel = require('babelify');
+const es2015 = require('babel-preset-es2015');
+const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
 
 function conf() {
   var opts = {};

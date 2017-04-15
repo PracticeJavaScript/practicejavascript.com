@@ -37,6 +37,8 @@
     "xo": "^0.18.1"
   },
   "devDependencies": {
+    "babel-preset-es2017": "^6.24.1",
+    "babel-preset-latest": "^6.24.1",
     "browserify": "^14.1.0",
     "chai": "^3.5.0",
     "watchify": "^3.9.0"

@@ -118,18 +118,23 @@
         Actual: ${JSON.stringify(errObj.actual)}
       </div>`;
     }
-    
+
     // prepend element
     assertConsoleEl.innerHTML = inner;
   }
 
-  function printEvalError(errObj) {
+  function printEvalOutput(errObj, output) {
     // make element string
     let inner = '';
-    if (errObj !== null && errObj.message !== undefined) {
+    if (errObj && errObj.message !== undefined) {
       inner = `
       <div class="assert-error">
         Syntax Error: ${JSON.stringify(errObj.message)}
+      </div>`;
+    } else if (output) {
+      inner = `
+      <div class="assert-error">
+        Output: ${JSON.stringify(output)}
       </div>`;
     }
     // prepend element
@@ -158,10 +163,10 @@
     let evald = false;
     try {
       evald = eval(`(function(){${code}})()`);
-      printEvalError(''); // empty error console out
+      printEvalOutput(null, evald); // print current output
     } catch (error) {
       // console.log('eval error:', error);
-      printEvalError(error);
+      printEvalOutput(error);
     }
     return evald;
   }
@@ -173,14 +178,10 @@
       try {
         if (!output) {
           testOutcome = false;
-        } else if (test.type === 'assertCorrectOutput') {
-          // output is correct
-          testOutcome = test.test(output, test.correctOutput);
         } else {
-          // other tests that don't need args passed
-          testOutcome = test.test();
+          testOutcome = test.test(output);
         }
-         printAssertError(null);
+        printAssertError(null);
         return testOutcome;
       } catch (error) {
         // console.log('error:', error);

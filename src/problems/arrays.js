@@ -9,9 +9,20 @@ module.exports = [
     tests: [
       {
         name: 'Output must be correct',
-        type: 'assertCorrectOutput',
         test: function(output) {
           return (assert.deepEqual(output, ['apple', 'banana']) === undefined);
+        }
+      },
+      {
+        name: 'Must return an Array',
+        test: function(output) {
+          return (assert.isArray(output) === undefined);
+        }
+      },
+      {
+        name: 'Array must have 2 items',
+        test: function(output) {
+          return (assert.lengthOf(output, 2) === undefined);
         }
       }
     ]
@@ -24,9 +35,14 @@ module.exports = [
     tests: [
       {
         name: 'Output must be correct',
-        type: 'assertCorrectOutput',
         test: function(output) {
           return (assert.deepEqual(output, 'apple') === undefined);
+        }
+      },
+      {
+        name: 'Must return a String',
+        test: function(output) {
+          return (assert.isString(output) === undefined);
         }
       }
     ]
@@ -39,24 +55,40 @@ module.exports = [
     tests: [
       {
         name: 'Output must be correct',
-        type: 'assertCorrectOutput',
         test: function(output) {
           return (assert.deepEqual(output, 'banana') === undefined);
+        }
+      },
+      {
+        name: 'Must return a String',
+        test: function(output) {
+          return (assert.isString(output) === undefined);
         }
       }
     ]
   },
   {
     name: 'Loop over array',
-    prompt: 'Loop over the array, and push each fruit into a new array, then return the new array',
+    prompt: 'Loop over the array, add an \'x\' to the end of each name, and push each fruit into a new array, then return the new array',
     given: `const fruits = ['apple', 'banana'];\r`,
-    answer: `const fruits = ['apple', 'banana'];\rconst newFruits = [];\rfruits.forEach(function(item) {\r  newFruits.push(item);\r});\rreturn newFruits;`,
+    answer: `const fruits = ['apple', 'banana'];\rconst newFruits = [];\rfruits.forEach(function(item) {\r  newFruits.push(item+'x');\r});\rreturn newFruits;`,
     tests: [
       {
         name: 'Output must be correct',
-        type: 'assertCorrectOutput',
         test: function(output) {
-          return (assert.deepEqual(output, ['apple', 'banana']) === undefined);
+          return (assert.deepEqual(output, ['applex', 'bananax']) === undefined);
+        }
+      },
+      {
+        name: 'Must return an Array',
+        test: function(output) {
+          return (assert.isArray(output) === undefined);
+        }
+      },
+      {
+        name: 'Array must have 2 items',
+        test: function(output) {
+          return (assert.lengthOf(output, 2) === undefined);
         }
       }
     ]
