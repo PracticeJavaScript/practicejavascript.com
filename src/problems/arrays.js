@@ -9,19 +9,19 @@ module.exports = [
              return fruits;`,
     tests: [
       {
-        name: 'Output must be correct',
+        name: 'Correct output',
         test: function(output) {
           return (assert.deepEqual(output, ['apple', 'banana']) === undefined);
         }
       },
       {
-        name: 'Must return an Array',
+        name: 'Returns an Array',
         test: function(output) {
           return (assert.isArray(output) === undefined);
         }
       },
       {
-        name: 'Array must have 2 items',
+        name: 'Array has 2 items',
         test: function(output) {
           return (assert.lengthOf(output, 2) === undefined);
         }
@@ -36,13 +36,13 @@ module.exports = [
              return fruits[0];`,
     tests: [
       {
-        name: 'Output must be correct',
+        name: 'Correct output',
         test: function(output) {
           return (assert.deepEqual(output, 'apple') === undefined);
         }
       },
       {
-        name: 'Must return a String',
+        name: 'Returns a String',
         test: function(output) {
           return (assert.isString(output) === undefined);
         }
@@ -57,13 +57,13 @@ module.exports = [
              return fruits[fruits.length - 1];`,
     tests: [
       {
-        name: 'Output must be correct',
+        name: 'Correct output',
         test: function(output) {
           return (assert.deepEqual(output, 'orange') === undefined);
         }
       },
       {
-        name: 'Must return a String',
+        name: 'Returns a String',
         test: function(output) {
           return (assert.isString(output) === undefined);
         }
@@ -78,13 +78,13 @@ module.exports = [
              return fruits[1];`,
     tests: [
       {
-        name: 'Output must be correct',
+        name: 'Correct output',
         test: function(output) {
           return (assert.deepEqual(output, 'banana') === undefined);
         }
       },
       {
-        name: 'Must return a String',
+        name: 'Returns a String',
         test: function(output) {
           return (assert.isString(output) === undefined);
         }
@@ -103,19 +103,19 @@ module.exports = [
              return newFruits;`,
     tests: [
       {
-        name: 'Output must be correct',
+        name: 'Correct output',
         test: function(output) {
           return (assert.deepEqual(output, ['applex', 'bananax']) === undefined);
         }
       },
       {
-        name: 'Must return an Array',
+        name: 'Returns an Array',
         test: function(output) {
           return (assert.isArray(output) === undefined);
         }
       },
       {
-        name: 'Array must have 2 items',
+        name: 'Array has 2 items',
         test: function(output) {
           return (assert.lengthOf(output, 2) === undefined);
         }
@@ -131,19 +131,19 @@ module.exports = [
              return fruits;`,
     tests: [
       {
-        name: 'Output must be correct',
+        name: 'Correct output',
         test: function(output) {
           return (assert.deepEqual(output, ['apple', 'banana', 'orange']) === undefined);
         }
       },
       {
-        name: 'Must return an Array',
+        name: 'Returns an Array',
         test: function(output) {
           return (assert.isArray(output) === undefined);
         }
       },
       {
-        name: 'Array must have 3 items',
+        name: 'Array has 3 items',
         test: function(output) {
           return (assert.lengthOf(output, 3) === undefined);
         }
@@ -159,19 +159,19 @@ module.exports = [
              return fruits;`,
     tests: [
       {
-        name: 'Output must be correct',
+        name: 'Correct output',
         test: function(output) {
           return (assert.deepEqual(output, ['apple', 'banana']) === undefined);
         }
       },
       {
-        name: 'Must return an Array',
+        name: 'Returns an Array',
         test: function(output) {
           return (assert.isArray(output) === undefined);
         }
       },
       {
-        name: 'Array must have 2 items',
+        name: 'Array has 2 items',
         test: function(output) {
           return (assert.lengthOf(output, 2) === undefined);
         }
@@ -193,13 +193,13 @@ module.exports = [
         }
       },
       {
-        name: 'Must return an Array',
+        name: 'Returns an Array',
         test: function(output) {
           return (assert.isArray(output) === undefined);
         }
       },
       {
-        name: 'Array must have 2 items',
+        name: 'Array has 2 items',
         test: function(output) {
           return (assert.lengthOf(output, 2) === undefined);
         }
@@ -227,7 +227,7 @@ module.exports = [
         }
       },
       {
-        name: 'Array must have 4 items',
+        name: 'Array has 4 items',
         test: function(output) {
           return (assert.lengthOf(output, 4) === undefined);
         }
@@ -243,13 +243,13 @@ module.exports = [
              return ind;`,
     tests: [
       {
-        name: 'Output must be correct',
+        name: 'Correct output',
         test: function(output) {
           return (assert.deepEqual(output, 1) === undefined);
         }
       },
       {
-        name: 'Must return a Number',
+        name: 'Returns a Number',
         test: function(output) {
           return (assert.isNumber(output) === undefined);
         }

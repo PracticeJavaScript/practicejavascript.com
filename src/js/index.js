@@ -21,6 +21,14 @@
   // ============================================================
   // Hoist current problem
   let currentProblem;
+  // keys to ignore while user is navigating around the textarea but not changing any code
+  const ignoreKeyCodes = [
+    9,   // tab
+    37,  // left arrow
+    39,  // right arrow
+    38,  // up arrow
+    40  // down arrow
+  ]
 
   // UI
   // ============================================================
@@ -147,7 +155,7 @@
   // VERIFICATION LOGIC
   // ============================================================
 
-  function testSuite(e, init) {
+  function testSuite(init) {
     // console.log('codeEl.value:', codeEl.value);
     // console.log(typeof codeEl.value);
     // run stuff
@@ -194,14 +202,20 @@
 
 
   // bind it up
-  codeEl.addEventListener('keyup', testSuite);
+  codeEl.addEventListener('keyup', function(e) {
+    // if not arrow keys or other non-character keys
+    if (ignoreKeyCodes.indexOf(e.keyCode) === -1) {
+      // run test suite
+      testSuite();
+    }
+  });
 
   // start it up
   window.addEventListener('load', () => {
     // load random problem
     loadProblem(getRandomProblem(problems));
     // initalized test suite with starting failures
-    testSuite(null, true);
+    testSuite(true);
   });
 
 })();
