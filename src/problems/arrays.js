@@ -4,6 +4,7 @@ module.exports = [
 
   {
     name: 'Create Array',
+    points: 1,
     prompt: 'Create and return an array that contains \'apple\' and \'banana\'',
     answer: `const fruits = ['apple', 'banana'];
              return fruits;`,
@@ -30,6 +31,7 @@ module.exports = [
   },
   {
     name: 'Access Array item by index (first)',
+    points: 1,
     prompt: 'Return the first value of the Array',
     given: `const fruits = ['apple', 'banana'];\r`,
     answer: `const fruits = ['apple', 'banana'];
@@ -51,6 +53,7 @@ module.exports = [
   },
   {
     name: 'Access Array item by index (last)',
+    points: 1,
     prompt: 'Return the last value of the Array',
     given: `const fruits = ['apple', 'banana', 'orange'];\r`,
     answer: `const fruits = ['apple', 'banana', 'orange'];
@@ -72,6 +75,7 @@ module.exports = [
   },
   {
     name: 'Access Array item by index (second)',
+    points: 1,
     prompt: 'Return the second value of the Array',
     given: `const fruits = ['apple', 'banana'];\r`,
     answer: `const fruits = ['apple', 'banana'];
@@ -93,6 +97,7 @@ module.exports = [
   },
   {
     name: 'Loop over array',
+    points: 3,
     prompt: 'Loop over the array, add an \'x\' to the end of each name, push each fruit into a new array, then return the new array',
     given: `const fruits = ['apple', 'banana'];\r`,
     answer: `const fruits = ['apple', 'banana'];
@@ -124,6 +129,7 @@ module.exports = [
   },
   {
     name: 'Add to the end of an Array',
+    points: 2,
     prompt: `Add 'orange' to the end of the 'fruits' array and return 'fruits'.`,
     given: `const fruits = ['apple', 'banana'];\r`,
     answer: `const fruits = ['apple', 'banana'];
@@ -152,6 +158,7 @@ module.exports = [
   },
   {
     name: 'Remove from the end of an Array',
+    points: 2,
     prompt: `Remove 'orange' from the end of the 'fruits' array and return 'fruits'.`,
     given: `const fruits = ['apple', 'banana', 'orange'];\r`,
     answer: `const fruits = ['apple', 'banana', 'orange'];
@@ -180,6 +187,7 @@ module.exports = [
   },
   {
     name: 'Remove from the front of an Array',
+    points: 2,
     prompt: `Remove 'apple' from the front of the 'fruits' array and return 'fruits'.`,
     given: `const fruits = ['apple', 'banana', 'orange'];\r`,
     answer: `const fruits = ['apple', 'banana', 'orange'];
@@ -208,6 +216,7 @@ module.exports = [
   },
   {
     name: 'Add to the front of an Array',
+    points: 2,
     prompt: `Add 'strawberry' to the front of the 'fruits' array and return 'fruits'.`,
     given: `const fruits = ['apple', 'banana', 'orange'];\r`,
     answer: `const fruits = ['apple', 'banana', 'orange'];
@@ -236,6 +245,7 @@ module.exports = [
   },
   {
     name: 'Find the index of an item in the Array',
+    points: 2,
     prompt: `Return the index of 'banana' in the Array.`,
     given: `const fruits = ['strawberry', 'banana', 'mango'];\r`,
     answer: `const fruits = ['strawberry', 'banana', 'mango'];
