@@ -29,16 +29,27 @@ body, input, select, textarea {
 .container {
   display: block;
 }
-
-.problem-name {
+.problem-group {
+  display: block;
+  margin: 0.5em 0;
+  align-items: center;
 }
-
 .problem {
-  margin: 1em 0;
+  display: block;
+  margin: 0.5em;
+}
+.next-problem {
+  display: block;
+  padding: 0.6em 1em;
+  background-color: deepskyblue;
+  border-radius: 6px;
+  color: white;
+  text-decoration: none;
 }
 
 .code-and-tests {
   vertical-align: top;
+  display: block;
 }
 
 .code {
@@ -104,30 +115,67 @@ body, input, select, textarea {
 .console {
   font-size: 60%;
   margin: 0.5em 0;
-  width: 45%;
-  display: inline-block;
   vertical-align: top;
 }
 .console > h4 {
   text-align: center;
 }
+.support {
+  font-size: 50%;
+}
+.support > .items {
+  display: flex;
+  justify-content: center;
+}
+.support > .items > iframe {
+  margin: 0.5em 0;
+}
 
 /* Because we are mobile-first, here is css for bigger than mobile */
 @media (min-width: 760px) {
   .container {
+    width: 92%;
+    margin: 0 auto;
+    display: flex;
+  }
+  .left-spacer {
+    flex: 0.5;
+  }
+  main {
+    flex: 30;
+  }
+  .support {
+    flex: 0.5;
+    margin: 6em -3em 5em 1em;
+  }
+  .support > .items {
+    display: block;
+    justify-content: center;
+  }
+  footer {
     width: 85%;
     margin: 0 auto;
+    text-align: center;
   }
   .problem-name {
     display: block;
   }
+  .problem-group {
+    display: flex;
+    justify-content: space-between;
+  }
+
   .problem {
     display: block;
+    margin-right: 0.6em;
   }
-  .code {
-    width: 70%;
+  .code-and-tests {
+    display: flex;
   }
   .test-area {
-    width: 25%;
+    width: 30%;
+  }
+  .code-and-eval-console {
+    width: 70%;
   }
 }
