@@ -150,7 +150,7 @@ body, input, select, textarea {
   }
   .support {
     flex: 0.5;
-    margin: 6em -3em 5em 1em;
+    margin: 0.5em -3em 5em 1em;
   }
   .support > .items {
     display: block;
