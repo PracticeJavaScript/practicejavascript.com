@@ -215,8 +215,17 @@
     }
   });
 
+  function showHiddenContent() {
+    const els = Array.from(document.querySelectorAll('.hide-until-load'));
+    els.forEach(el => {
+      el.classList.toggle('hide-until-load');
+    });
+  }
+
   // start it up
   window.addEventListener('load', () => {
+    // show hidden content
+    showHiddenContent();
     // load random problem
     loadProblem(getRandomProblem(problems));
     // initalized test suite with starting failures

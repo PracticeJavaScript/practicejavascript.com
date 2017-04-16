@@ -17,6 +17,10 @@ body, input, select, textarea {
   font-family: Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
 }
 
+.hide-until-load {
+  visibility: hidden;
+}
+
 
 /* grid elements */
 .site-heading {
