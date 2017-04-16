@@ -155,6 +155,7 @@ body, input, select, textarea {
   .support > .items {
     display: block;
     justify-content: center;
+    width: 120px;
   }
   footer {
     width: 85%;
