@@ -12,7 +12,7 @@
   "author": "Jakob Anderson",
   "license": "UNLICENSED",
   "lint-staged": {
-    "src/js/**/*.js": [
+    "src/**/*.js": [
       "prettier --single-quote true --trailing-comma es5 --useTabs false --parser babylon --tabWidth 2 --bracketSpacing true --write",
       "git add"
     ]

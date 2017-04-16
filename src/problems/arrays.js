@@ -1,33 +1,32 @@
 const assert = require('chai').assert;
 
 module.exports = [
-
   {
     name: 'Create Array',
     points: 1,
-    prompt: 'Create and return an array that contains \'apple\' and \'banana\'',
+    prompt: "Create and return an array that contains 'apple' and 'banana'",
     answer: `const fruits = ['apple', 'banana'];
              return fruits;`,
     tests: [
       {
         name: 'Correct output',
         test: function(output) {
-          return (assert.deepEqual(output, ['apple', 'banana']) === undefined);
-        }
+          return assert.deepEqual(output, ['apple', 'banana']) === undefined;
+        },
       },
       {
         name: 'Returns an Array',
         test: function(output) {
-          return (assert.isArray(output) === undefined);
-        }
+          return assert.isArray(output) === undefined;
+        },
       },
       {
         name: 'Array has 2 items',
         test: function(output) {
-          return (assert.lengthOf(output, 2) === undefined);
-        }
-      }
-    ]
+          return assert.lengthOf(output, 2) === undefined;
+        },
+      },
+    ],
   },
   {
     name: 'Access Array item by index (first)',
@@ -40,16 +39,16 @@ module.exports = [
       {
         name: 'Correct output',
         test: function(output) {
-          return (assert.deepEqual(output, 'apple') === undefined);
-        }
+          return assert.deepEqual(output, 'apple') === undefined;
+        },
       },
       {
         name: 'Returns a String',
         test: function(output) {
-          return (assert.isString(output) === undefined);
-        }
-      }
-    ]
+          return assert.isString(output) === undefined;
+        },
+      },
+    ],
   },
   {
     name: 'Access Array item by index (last)',
@@ -62,16 +61,16 @@ module.exports = [
       {
         name: 'Correct output',
         test: function(output) {
-          return (assert.deepEqual(output, 'orange') === undefined);
-        }
+          return assert.deepEqual(output, 'orange') === undefined;
+        },
       },
       {
         name: 'Returns a String',
         test: function(output) {
-          return (assert.isString(output) === undefined);
-        }
-      }
-    ]
+          return assert.isString(output) === undefined;
+        },
+      },
+    ],
   },
   {
     name: 'Access Array item by index (second)',
@@ -84,21 +83,21 @@ module.exports = [
       {
         name: 'Correct output',
         test: function(output) {
-          return (assert.deepEqual(output, 'banana') === undefined);
-        }
+          return assert.deepEqual(output, 'banana') === undefined;
+        },
       },
       {
         name: 'Returns a String',
         test: function(output) {
-          return (assert.isString(output) === undefined);
-        }
-      }
-    ]
+          return assert.isString(output) === undefined;
+        },
+      },
+    ],
   },
   {
     name: 'Loop over array',
     points: 3,
-    prompt: 'Loop over the array, add an \'x\' to the end of each name, push each fruit into a new array, then return the new array',
+    prompt: "Loop over the array, add an 'x' to the end of each name, push each fruit into a new array, then return the new array.",
     given: `const fruits = ['apple', 'banana'];\r`,
     answer: `const fruits = ['apple', 'banana'];
              const newFruits = [];
@@ -110,22 +109,22 @@ module.exports = [
       {
         name: 'Correct output',
         test: function(output) {
-          return (assert.deepEqual(output, ['applex', 'bananax']) === undefined);
-        }
+          return assert.deepEqual(output, ['applex', 'bananax']) === undefined;
+        },
       },
       {
         name: 'Returns an Array',
         test: function(output) {
-          return (assert.isArray(output) === undefined);
-        }
+          return assert.isArray(output) === undefined;
+        },
       },
       {
         name: 'Array has 2 items',
         test: function(output) {
-          return (assert.lengthOf(output, 2) === undefined);
-        }
-      }
-    ]
+          return assert.lengthOf(output, 2) === undefined;
+        },
+      },
+    ],
   },
   {
     name: 'Add to the end of an Array',
@@ -139,22 +138,25 @@ module.exports = [
       {
         name: 'Correct output',
         test: function(output) {
-          return (assert.deepEqual(output, ['apple', 'banana', 'orange']) === undefined);
-        }
+          return (
+            assert.deepEqual(output, ['apple', 'banana', 'orange']) ===
+            undefined
+          );
+        },
       },
       {
         name: 'Returns an Array',
         test: function(output) {
-          return (assert.isArray(output) === undefined);
-        }
+          return assert.isArray(output) === undefined;
+        },
       },
       {
         name: 'Array has 3 items',
         test: function(output) {
-          return (assert.lengthOf(output, 3) === undefined);
-        }
-      }
-    ]
+          return assert.lengthOf(output, 3) === undefined;
+        },
+      },
+    ],
   },
   {
     name: 'Remove from the end of an Array',
@@ -168,22 +170,22 @@ module.exports = [
       {
         name: 'Correct output',
         test: function(output) {
-          return (assert.deepEqual(output, ['apple', 'banana']) === undefined);
-        }
+          return assert.deepEqual(output, ['apple', 'banana']) === undefined;
+        },
       },
       {
         name: 'Returns an Array',
         test: function(output) {
-          return (assert.isArray(output) === undefined);
-        }
+          return assert.isArray(output) === undefined;
+        },
       },
       {
         name: 'Array has 2 items',
         test: function(output) {
-          return (assert.lengthOf(output, 2) === undefined);
-        }
-      }
-    ]
+          return assert.lengthOf(output, 2) === undefined;
+        },
+      },
+    ],
   },
   {
     name: 'Remove from the front of an Array',
@@ -197,22 +199,22 @@ module.exports = [
       {
         name: 'Output must be correct',
         test: function(output) {
-          return (assert.deepEqual(output, ['banana', 'orange']) === undefined);
-        }
+          return assert.deepEqual(output, ['banana', 'orange']) === undefined;
+        },
       },
       {
         name: 'Returns an Array',
         test: function(output) {
-          return (assert.isArray(output) === undefined);
-        }
+          return assert.isArray(output) === undefined;
+        },
       },
       {
         name: 'Array has 2 items',
         test: function(output) {
-          return (assert.lengthOf(output, 2) === undefined);
-        }
-      }
-    ]
+          return assert.lengthOf(output, 2) === undefined;
+        },
+      },
+    ],
   },
   {
     name: 'Add to the front of an Array',
@@ -226,22 +228,29 @@ module.exports = [
       {
         name: 'Output must be correct',
         test: function(output) {
-          return (assert.deepEqual(output, ['strawberry', 'apple', 'banana', 'orange']) === undefined);
-        }
+          return (
+            assert.deepEqual(output, [
+              'strawberry',
+              'apple',
+              'banana',
+              'orange',
+            ]) === undefined
+          );
+        },
       },
       {
         name: 'Must return an Array',
         test: function(output) {
-          return (assert.isArray(output) === undefined);
-        }
+          return assert.isArray(output) === undefined;
+        },
       },
       {
         name: 'Array has 4 items',
         test: function(output) {
-          return (assert.lengthOf(output, 4) === undefined);
-        }
-      }
-    ]
+          return assert.lengthOf(output, 4) === undefined;
+        },
+      },
+    ],
   },
   {
     name: 'Find the index of an item in the Array',
@@ -255,17 +264,15 @@ module.exports = [
       {
         name: 'Correct output',
         test: function(output) {
-          return (assert.deepEqual(output, 1) === undefined);
-        }
+          return assert.deepEqual(output, 1) === undefined;
+        },
       },
       {
         name: 'Returns a Number',
         test: function(output) {
-          return (assert.isNumber(output) === undefined);
-        }
-      }
-    ]
-  }
-
-
+          return assert.isNumber(output) === undefined;
+        },
+      },
+    ],
+  },
 ];
