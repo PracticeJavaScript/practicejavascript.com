@@ -240,13 +240,13 @@
 
   // start it up
   window.addEventListener('load', () => {
-    // inject ads hidden
-    injectAsyncAds();
-    // show hidden content
-    showHiddenContent();
     // load random problem
     loadProblem(getRandomProblem(problems));
     // initalized test suite with starting failures
     testSuite(true);
+    // inject ads hidden
+    injectAsyncAds();
+    // show hidden content
+    showHiddenContent();
   });
 })();
