@@ -77,6 +77,21 @@ cssWatcher.on('change', function(event) {
 });
 
 
+// OTHER JS
+// ============================================================
+
+gulp.task('js', function () {
+  return gulp.src('./src/js/loadJS.js')
+    .pipe(gulp.dest('./public/dist/js'));
+});
+
+const jsWatcher = gulp.watch('./src/js/loadJS.js', ['js']);
+
+jsWatcher.on('change', function(event) {
+  console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+});
+
+
 // IMG
 // ============================================================
 
