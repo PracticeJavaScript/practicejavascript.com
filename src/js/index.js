@@ -43,7 +43,7 @@
   const testTotalEl = document.getElementById('test-total');
   const evalConsoleEl = document.getElementById('eval-output');
   const assertConsoleEl = document.getElementById('assert-output');
-  const supportItemsEl = document.getElementById('support-items');
+  const nextProblemButtonEl = document.getElementById('next-problem');
 
   function getRandomProblem(problemsArr) {
     return problemsArr[Math.floor(Math.random() * problemsArr.length)];
@@ -227,8 +227,15 @@
     });
   }
 
+  function nextProblem(e) {
+    console.log('nextProblem!');
+  }
+
+  nextProblemButtonEl.addEventListener('click', nextProblem);
+
   // start it up
-  window.addEventListener('load', () => {
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log('fired!');
     // load random problem
     loadProblem(getRandomProblem(problems));
     // initalized test suite with starting failures
