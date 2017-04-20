@@ -134,6 +134,17 @@ body, input, select, textarea {
 .support > .items > iframe {
   margin: 0.5em 0;
 }
+.ads-bottom {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row; /* works with row or column */
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  margin-top: 1em;
+}
 
 /* Because we are mobile-first, here is css for bigger than mobile */
 @media (min-width: 760px) {

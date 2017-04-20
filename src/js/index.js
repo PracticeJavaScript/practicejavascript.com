@@ -227,30 +227,11 @@
     });
   }
 
-  function injectAsyncAds() {
-    const ads = `
-      <!-- You Don't Know JS -->
-      <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=jakobanderson-20&marketplace=amazon&region=US&placement=1491924462&asins=1491924462&linkId=5cc78212b0f9ab14f10b24914a7c3027&show_border=false&link_opens_in_new_window=false&price_color=333333&title_color=0066C0&bg_color=FFFFFF">
-      </iframe>
-      <!-- JavaScript, The Good Parts -->
-      <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=jakobanderson-20&marketplace=amazon&region=US&placement=0596517742&asins=0596517742&linkId=43d0f9ca697713194db556435a70f833&show_border=false&link_opens_in_new_window=false&price_color=333333&title_color=0066c0&bg_color=ffffff">
-      </iframe>
-      <!-- Secrets of the JavaScript Ninja -->
-      <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=jakobanderson-20&marketplace=amazon&region=US&placement=1617292850&asins=1617292850&linkId=da0b19c34992a64696af6436e8c9e959&show_border=false&link_opens_in_new_window=false&price_color=333333&title_color=0066c0&bg_color=ffffff">
-      </iframe>
-    `;
-    supportItemsEl.innerHTML = ads;
-  }
-
   // start it up
   window.addEventListener('load', () => {
     // load random problem
     loadProblem(getRandomProblem(problems));
     // initalized test suite with starting failures
     testSuite(true);
-    // inject ads hidden
-    injectAsyncAds();
-    // show hidden content
-    showHiddenContent();
   });
 })();
