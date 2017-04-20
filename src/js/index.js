@@ -2,21 +2,17 @@
   // DEPENDENCIES
   // ============================================================
 
-  // notevil doesn't support ES6 arrows, probably other parts of syntax :(
-  // const safeEval = require('notevil');
-  // const safeEval = require('static-eval');              // required AST to work?
-  // const safeEval = require('ecmascript-evaluator').run; // 6MB, limited on inputs
-  // const safeEval = require('@nx-js/compiler-util').compileCode; // no idea?
-  // const safeEval = require('babel-core').transform;
   const assert = require('chai').assert;
   const localforage = require('localforage');
 
   // PROBLEMS
   // ============================================================
-  const problems = require('../problems/arrays.js');
+
+  let problems = require('../problems/arrays.js');
 
   // CONFIG
   // ============================================================
+
   // Hoist current problem
   let currentProblem;
   // keys to ignore while user is navigating around the textarea but not changing any code
