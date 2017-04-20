@@ -9,14 +9,11 @@
   // const safeEval = require('@nx-js/compiler-util').compileCode; // no idea?
   // const safeEval = require('babel-core').transform;
   const assert = require('chai').assert;
+  const localforage = require('localforage');
 
   // PROBLEMS
   // ============================================================
   const problems = require('../problems/arrays.js');
-
-  // ADS
-  // ============================================================
-  const ads = require('./ads');
 
   // CONFIG
   // ============================================================
@@ -31,6 +28,38 @@
     40, // down arrow
   ];
 
+  let config = {
+    shuffle: true,
+    timer: false,
+    currentIndex: 0,
+  };
+
+  // pull config from localforage
+  localforage
+    .getItem('js_practice_config')
+    .then(val => {
+      console.log('localforage val:', val);
+      if (val) {
+        config = val;
+      }
+      loadApp(config);
+    })
+    .catch(err => {
+      console.log('localforage err:', err);
+      loadApp(config);
+    });
+
+  function updateLocalstore(config) {
+    return localforage
+      .setItem('js_practice_config', config)
+      .then(val => {
+        console.log('Settings updated:', val);
+      })
+      .catch(err => {
+        console.log('Settings update error:', err);
+      });
+  }
+
   // UI
   // ============================================================
 
@@ -43,21 +72,52 @@
   const testTotalEl = document.getElementById('test-total');
   const evalConsoleEl = document.getElementById('eval-output');
   const assertConsoleEl = document.getElementById('assert-output');
+  const shuffleProblemsButtonEl = document.getElementById('shuffle-problems');
   const nextProblemButtonEl = document.getElementById('next-problem');
 
-  function getRandomProblem(problemsArr) {
-    return problemsArr[Math.floor(Math.random() * problemsArr.length)];
+  // get indexes
+  function getRandomIndex(problemsArr) {
+    const ind = Math.floor(Math.random() * problemsArr.length);
+    config.currentIndex = ind;
+    updateLocalstore(config);
+    return ind;
   }
 
-  function getNextProblem(problemsArr) {
-    let prob;
+  function getNextIndex(problemsArr) {
+    let probInd;
+    const currentIndex = config.currentIndex;
     // if at end or invalid, restart series
     if (currentIndex >= problemsArr.length - 1 || currentIndex < 0) {
-      prob = problemsArr[0];
+      probInd = 0;
     } else {
-      prob = problemsArr[currentIndex + 1];
+      probInd = currentIndex + 1;
     }
-    return prob;
+    return probInd;
+  }
+
+  // get problems
+  function getCurrentProblem(problemsArr) {
+    return problemsArr[config.currentIndex];
+  }
+
+  function nextProblem(e) {
+    console.log('nextProblem!');
+    config.currentIndex = config.shuffle
+      ? getRandomIndex(problems)
+      : getNextIndex(problems);
+    console.log('config.currentIndex:', config.currentIndex);
+    updateLocalstore(config).then(_ => {
+      console.log('then reload!');
+      // loadProblem(currentProblem, true);
+      window.location.reload();
+    });
+  }
+
+  function toggleShuffle(e) {
+    console.log('toggle shuffle!');
+    config.shuffle = config.shuffle === true ? false : true;
+    shuffleProblemsButtonEl.classList.toggle('active');
+    updateLocalstore(config);
   }
 
   function loadProblem(problemObj) {
@@ -72,9 +132,6 @@
     testSuite(null, true);
   }
 
-  // TODO: show tests and current pass state of them
-  // test array and test dom array will be matched in order,
-  // so we don't need to rebuild dom each time the tests change
   function updateTests(testStatus, init) {
     if (init === true) {
       buildTests(currentProblem.tests);
@@ -211,34 +268,33 @@
     return tested;
   }
 
-  // bind it up
-  codeEl.addEventListener('keyup', function(e) {
-    // if not arrow keys or other non-character keys
-    if (ignoreKeyCodes.indexOf(e.keyCode) === -1) {
-      // run test suite
-      testSuite();
+  // wrapped to prevent race with local config retrieval
+  function loadApp(config) {
+    console.log('loading app!');
+
+    // show current toggle state
+    if (config.shuffle === true) {
+      shuffleProblemsButtonEl.classList.add('active');
     }
-  });
 
-  function showHiddenContent() {
-    const els = Array.from(document.querySelectorAll('.hide-until-load'));
-    els.forEach(el => {
-      el.classList.toggle('hide-until-load');
+    // bind it up
+    codeEl.addEventListener('keyup', function(e) {
+      // if not arrow keys or other non-character keys
+      if (ignoreKeyCodes.indexOf(e.keyCode) === -1) {
+        // run test suite
+        testSuite();
+      }
     });
-  }
+    shuffleProblemsButtonEl.addEventListener('click', toggleShuffle);
+    nextProblemButtonEl.addEventListener('click', nextProblem);
 
-  function nextProblem(e) {
-    console.log('nextProblem!');
-  }
+    // start it up
+    // load current problem
+    const currProb = getCurrentProblem(problems);
+    console.log('currProb:', currProb);
 
-  nextProblemButtonEl.addEventListener('click', nextProblem);
-
-  // start it up
-  document.addEventListener('DOMContentLoaded', () => {
-    console.log('fired!');
-    // load random problem
-    loadProblem(getRandomProblem(problems));
+    loadProblem(currProb);
     // initalized test suite with starting failures
     testSuite(true);
-  });
+  } // loadApp()
 })();

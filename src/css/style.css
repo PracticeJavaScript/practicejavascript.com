@@ -42,13 +42,28 @@ body, input, select, textarea {
   display: block;
   margin: 0.5em;
 }
+.controls {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+.controls > * {
+  padding: 0.3em;
+  border-radius: 0.3em;
+  background-color: #fff;
+}
+.controls > .active,
+.controls > :active {
+  background-color: #333;
+  transition: all 200ms ease-in-out;
+}
 .next-problem {
-  display: block;
+  /*display: block;
   padding: 0.6em 1em;
   background-color: deepskyblue;
   border-radius: 6px;
   color: white;
-  text-decoration: none;
+  text-decoration: none;*/
 }
 
 .code-and-tests {
@@ -124,7 +139,7 @@ body, input, select, textarea {
 .console > h4 {
   text-align: center;
 }
-.support {
+/*.support {
   font-size: 50%;
 }
 .support > .items {
@@ -133,7 +148,7 @@ body, input, select, textarea {
 }
 .support > .items > iframe {
   margin: 0.5em 0;
-}
+}*/
 .ads-bottom {
   display: -webkit-flex;
   display: flex;
@@ -159,7 +174,7 @@ body, input, select, textarea {
   main {
     flex: 30;
   }
-  .support {
+  /*.support {
     flex: 0.5;
     margin: 0.5em -3em 5em 1em;
   }
@@ -167,7 +182,7 @@ body, input, select, textarea {
     display: block;
     justify-content: center;
     width: 120px;
-  }
+  }*/
   footer {
     width: 85%;
     margin: 0 auto;
