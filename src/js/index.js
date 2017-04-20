@@ -288,11 +288,9 @@
     shuffleProblemsButtonEl.addEventListener('click', toggleShuffle);
     nextProblemButtonEl.addEventListener('click', nextProblem);
 
-    // start it up
+    // start it up!
     // load current problem
     const currProb = getCurrentProblem(problems);
-    console.log('currProb:', currProb);
-
     loadProblem(currProb);
     // initalized test suite with starting failures
     testSuite(true);
