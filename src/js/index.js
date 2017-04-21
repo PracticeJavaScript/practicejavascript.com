@@ -69,6 +69,7 @@
   const evalConsoleEl = document.getElementById('eval-output');
   const assertConsoleEl = document.getElementById('assert-output');
   const shuffleProblemsButtonEl = document.getElementById('shuffle-problems');
+  const previousProblemButtonEl = document.getElementById('prev-problem');
   const nextProblemButtonEl = document.getElementById('next-problem');
 
   // get indexes
@@ -77,6 +78,18 @@
     config.currentIndex = ind;
     updateLocalstore(config);
     return ind;
+  }
+
+  function getPreviousIndex(problemsArr) {
+    let probInd;
+    const currentIndex = config.currentIndex;
+    // if at beginning, go to end
+    if (currentIndex === 0) {
+      probInd = problemsArr.length - 1;
+    } else {
+      probInd = currentIndex - 1;
+    }
+    return probInd;
   }
 
   function getNextIndex(problemsArr) {
@@ -96,15 +109,22 @@
     return problemsArr[config.currentIndex];
   }
 
+  function previousProblem(e) {
+    console.log('previousProblem!');
+    config.currentIndex = config.shuffle
+      ? getRandomIndex(problems)
+      : getPreviousIndex(problems);
+    updateLocalstore(config).then(_ => {
+      window.location.reload();
+    });
+  }
+
   function nextProblem(e) {
     console.log('nextProblem!');
     config.currentIndex = config.shuffle
       ? getRandomIndex(problems)
       : getNextIndex(problems);
-    console.log('config.currentIndex:', config.currentIndex);
     updateLocalstore(config).then(_ => {
-      console.log('then reload!');
-      // loadProblem(currentProblem, true);
       window.location.reload();
     });
   }
@@ -282,6 +302,7 @@
       }
     });
     shuffleProblemsButtonEl.addEventListener('click', toggleShuffle);
+    previousProblemButtonEl.addEventListener('click', previousProblem);
     nextProblemButtonEl.addEventListener('click', nextProblem);
 
     // start it up!
