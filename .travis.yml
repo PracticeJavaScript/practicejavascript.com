@@ -21,7 +21,7 @@ before_script:
   - npm install -g firebase-tools
 
 script:
-  - cd functions && npm install && cd ../
+  - cd functions && npm install && cd ../ && yarn run build
 
 after_success:
   - firebase deploy --token $FIREBASE_TOKEN
