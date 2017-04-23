@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "practice javascript",
   "main": "index.js",
+  "engines": {
+    "node": "7"
+  },
   "scripts": {
     "test": "",
     "build": "./node_modules/.bin/gulp build",
@@ -10,7 +13,7 @@
     "precommit": "lint-staged"
   },
   "author": "Jakob Anderson",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "lint-staged": {
     "src/*": [
       "prettier --single-quote true --trailing-comma es5 --useTabs false --parser babylon --tabWidth 2 --bracketSpacing true --write",
