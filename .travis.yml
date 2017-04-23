@@ -13,9 +13,10 @@ addons:
     packages:
       - g++-4.8
 
+# safelist
 branches:
   only:
-    - master
+  - master
 
 before_script:
   - npm install -g firebase-tools
