@@ -15,6 +15,9 @@
   "xo": {
     "env": ["node","browser","es6"],
     "space": 2,
+    "rules": {
+      "operator-linebreak": [2, "before"]
+    },
     "ignore": ["src/js/loadJS.js","public/**/*"]
   },
   "author": "Jakob Anderson",

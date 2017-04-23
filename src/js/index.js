@@ -109,9 +109,9 @@
 
   function previousProblem() {
     console.log('previousProblem!');
-    config.currentIndex = config.shuffle ?
-      getRandomIndex(problems) :
-      getPreviousIndex(problems);
+    config.currentIndex = config.shuffle
+      ? getRandomIndex(problems)
+      : getPreviousIndex(problems);
     updateLocalstore(config).then(() => {
       window.location.reload();
     });
@@ -119,9 +119,9 @@
 
   function nextProblem() {
     console.log('nextProblem!');
-    config.currentIndex = config.shuffle ?
-      getRandomIndex(problems) :
-      getNextIndex(problems);
+    config.currentIndex = config.shuffle
+      ? getRandomIndex(problems)
+      : getNextIndex(problems);
     updateLocalstore(config).then(() => {
       window.location.reload();
     });

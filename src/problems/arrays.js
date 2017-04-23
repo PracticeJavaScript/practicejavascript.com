@@ -139,10 +139,7 @@ module.exports = [
       {
         name: 'Correct output',
         test(output) {
-          return (
-            assert.deepEqual(output, ['apple', 'banana', 'orange']) ===
-            undefined
-          );
+          return (assert.deepEqual(output, ['apple', 'banana', 'orange']) === undefined);
         }
       },
       {
