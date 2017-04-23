@@ -23,10 +23,7 @@
   "author": "Jakob Anderson",
   "license": "MIT",
   "lint-staged": {
-    "src/*": [
-      "prettier --single-quote true --trailing-comma es5 --useTabs false --parser babylon --tabWidth 2 --bracketSpacing true --write",
-      "git add"
-    ]
+    "src/*": []
   },
   "dependencies": {
     "autoprefixer": "^6.7.7",
@@ -56,7 +53,6 @@
     "chai": "^3.5.0",
     "husky": "^0.13.3",
     "lint-staged": "^3.4.0",
-    "prettier": "^1.1.0",
     "watchify": "^3.9.0"
   }
 }
