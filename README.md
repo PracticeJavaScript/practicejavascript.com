@@ -5,3 +5,15 @@
 
 - Should be rote, easy problems, to exercise mastery, rather than solving brain puzzles like other sites
 - Should be solvable in under 30 seconds each
+
+
+## How To Install Locally
+```bash
+npm i -g yarn # if you don't have yarn yet
+git clone https://github.com/PracticeJavaScript/practicejavascript.com.git
+cd practicejavascript.com
+yarn install
+yarn run watch
+```
+
+That will build it all and watch the css, img, and js assets, then you can load up `/public/index.html` in a browser. narf!

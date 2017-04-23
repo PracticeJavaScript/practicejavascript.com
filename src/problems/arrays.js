@@ -5,6 +5,7 @@ module.exports = [
     name: 'Create Array',
     time: 10,
     prompt: "Create and return an array that contains 'apple' and 'banana'",
+    given: `const fruits = [];\rreturn fruits;`,
     answer: `const fruits = ['apple', 'banana'];
              return fruits;`,
     tests: [
