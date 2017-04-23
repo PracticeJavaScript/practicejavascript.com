@@ -28,7 +28,7 @@ function compile(watch) {
   var opts = conf();
   var bundler = watchify(browserify(opts).transform([babel,es2015]));
   function rebundle() {
-    bundler.bundle()
+    return bundler.bundle()
       .on('error', function(err) {
         console.error(err);
         this.emit('end');
@@ -49,7 +49,7 @@ function compile(watch) {
       console.log('done bundling.');
     });
   }
-  rebundle();
+  return rebundle();
 }
 
 function watch() {
