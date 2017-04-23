@@ -2,7 +2,6 @@
   // DEPENDENCIES
   // ============================================================
 
-  // const assert = require('chai').assert;
   const localforage = require('localforage');
 
   // PROBLEMS
