@@ -7,10 +7,15 @@
     "node": "7"
   },
   "scripts": {
-    "test": "",
+    "test": "xo",
     "build": "./node_modules/.bin/gulp build",
     "watch": "./node_modules/.bin/gulp watch",
     "precommit": "lint-staged"
+  },
+  "xo": {
+    "env": ["node","browser","es6"],
+    "space": 2,
+    "ignore": ["src/js/loadJS.js","public/**/*"]
   },
   "author": "Jakob Anderson",
   "license": "MIT",

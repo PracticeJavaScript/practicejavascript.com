@@ -12,7 +12,7 @@ const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 
 function conf() {
-  var opts = {};
+  const opts = {};
   opts.builtins = false;
   opts.entries = ['src/js/index.js'];
   opts.debug = true;
@@ -25,11 +25,11 @@ function conf() {
 const uglifyConf = {};
 
 function compile(watch) {
-  var opts = conf();
-  var bundler = watchify(browserify(opts).transform([babel,es2015]));
+  const opts = conf();
+  const bundler = watchify(browserify(opts).transform([babel, es2015]));
   function rebundle() {
     return bundler.bundle()
-      .on('error', function(err) {
+      .on('error', err => {
         console.error(err);
         this.emit('end');
       })
@@ -43,7 +43,7 @@ function compile(watch) {
       .pipe(gulp.dest('./public/dist/js'));
   }
   if (watch) {
-    bundler.on('update', function() {
+    bundler.on('update', () => {
       console.log('-> bundling...');
       rebundle();
       console.log('done bundling.');
@@ -54,14 +54,13 @@ function compile(watch) {
 
 function watch() {
   return compile(true);
-};
-
+}
 
 // CSS
 // ============================================================
 
-gulp.task('css', function () {
-  var plugins = [
+gulp.task('css', () => {
+  const plugins = [
     autoprefixer({browsers: ['last 1 version']}),
     cssnano()
   ];
@@ -72,53 +71,50 @@ gulp.task('css', function () {
 
 const cssWatcher = gulp.watch('src/css/*.css', ['css']);
 
-cssWatcher.on('change', function(event) {
+cssWatcher.on('change', event => {
   console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 });
-
 
 // OTHER JS
 // ============================================================
 
-gulp.task('js', function () {
+gulp.task('js', () => {
   return gulp.src('./src/js/loadJS.js')
     .pipe(gulp.dest('./public/dist/js'));
 });
 
 const jsWatcher = gulp.watch('./src/js/loadJS.js', ['js']);
 
-jsWatcher.on('change', function(event) {
+jsWatcher.on('change', event => {
   console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 });
-
 
 // IMG
 // ============================================================
 
-gulp.task('img', function () {
+gulp.task('img', () => {
   return gulp.src('./src/img/*.svg')
     .pipe(gulp.dest('./public/dist/img'));
 });
 
 const imgWatcher = gulp.watch('src/img/*.svg', ['img']);
 
-cssWatcher.on('change', function(event) {
+imgWatcher.on('change', event => {
   console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 });
-
 
 // BUILD
 // ============================================================
 
-gulp.task('build', function() {
+gulp.task('build', () => {
   return compile();
 });
-gulp.task('watch', function() {
+gulp.task('watch', () => {
   return watch();
 });
 
 function glob() {
-  return 'typeof self !== "undefined" ? self : ' + 'typeof window !== "undefined" ? window : {}';
+  return 'typeof self !== "undefined" ? self : ' + 'typeof window !== "undefined" ? window : {}'; // eslint-disable-line no-useless-concat
 }
 
 gulp.task('default', ['watch']);
