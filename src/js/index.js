@@ -134,6 +134,7 @@
     config.shuffle = config.shuffle === true ? false : true;
     shuffleProblemsButtonEl.classList.toggle('active');
     updateLocalstore(config);
+
   }
 
   function loadProblem(problemObj) {
