@@ -472,7 +472,7 @@ module.exports = [
   {
     name: 'Array.filter()',
     time: 10,
-    prompt: `return an array of the numbers greater than 5 in 'fruits' using 'Array.filter()'`,
+    prompt: `Return an array of the numbers greater than 5 in 'fruits' using 'Array.filter()'`,
     given: `const numbers = [1, 1, 2, 3, 5, 8, 13, 21];\r`,
     answer: `const numbers = [1, 1, 2, 3, 5, 8, 13, 21];
              const overFive = numbers.filter(num => num > 5);
