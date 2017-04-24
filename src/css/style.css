@@ -23,47 +23,57 @@ body, input, select, textarea {
 
 
 /* grid elements */
+.container {
+  display: block;
+}
 .site-heading {
   background-color: skyblue;
   color: black;
   padding: .5em;
   text-align: center;
   margin: 0;
+  display: flex;
+  flex-direction: column;
 }
-.container {
-  display: block;
-}
-.problem-group {
-  display: block;
-  margin: 0.5em 0;
+.site-heading span {
+  display: flex;
   align-items: center;
+  justify-content: center;
 }
-.problem {
-  display: block;
-  margin: 0.5em;
+.site-heading h1 {
+  font-size: 200%;
+  margin: 0.3em 0 0.5em 0.5em;
+  letter-spacing: 0px;
+  font-weight: 200;
+}
+.site-heading img.logo {
+  display: none
 }
 .controls {
   cursor: pointer;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  font-size: 70%;
 }
-.controls > * {
+.controls img {
   padding: 0.3em;
   border-radius: 0.3em;
-  background-color: #fff;
+  background-color: transparent;
+  height: 60px;
 }
-.controls > .active,
-.controls > :active {
+.controls > div > :active,
+.controls > div > .active {
   background-color: #333;
   transition: all 200ms ease-in-out;
 }
-.next-problem {
-  /*display: block;
-  padding: 0.6em 1em;
-  background-color: deepskyblue;
-  border-radius: 6px;
-  color: white;
-  text-decoration: none;*/
+.problem-group {
+  display: block;
+  margin: 0.7em 0;
+  align-items: center;
+}
+.problem {
+  display: block;
+  margin: 1em;
 }
 
 .code-and-tests {
@@ -139,16 +149,6 @@ body, input, select, textarea {
 .console > h4 {
   text-align: center;
 }
-/*.support {
-  font-size: 50%;
-}
-.support > .items {
-  display: flex;
-  justify-content: center;
-}
-.support > .items > iframe {
-  margin: 0.5em 0;
-}*/
 .ads-bottom {
   display: -webkit-flex;
   display: flex;
@@ -159,6 +159,17 @@ body, input, select, textarea {
   -webkit-justify-content: center;
   justify-content: center;
   margin: 5em 0 1em;
+}
+footer {
+  width: 85%;
+  margin: 0 auto;
+  text-align: center;
+}
+footer > div {
+  margin: 10px auto;
+}
+.icon-license {
+  font-size: 50%;
 }
 
 /* Because we are mobile-first, here is css for bigger than mobile */
@@ -174,20 +185,22 @@ body, input, select, textarea {
   main {
     flex: 30;
   }
-  /*.support {
-    flex: 0.5;
-    margin: 0.5em -3em 5em 1em;
+  .site-heading .container {
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
   }
-  .support > .items {
-    display: block;
-    justify-content: center;
-    width: 120px;
-  }*/
-  footer {
-    width: 85%;
-    margin: 0 auto;
-    text-align: center;
+  .site-heading > .container > h1 {
+    font-size: 200%;
   }
+  .site-heading img.logo {
+    height: 70px;
+    display: flex;
+  }
+  .controls img {
+    height: 60px;
+  }
+
   .problem-name {
     display: block;
   }

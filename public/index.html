@@ -9,16 +9,32 @@
     <link href="./dist/css/style.css" rel="stylesheet">
   </head>
   <body>
-    <h1 class="site-heading">Practice JavaScript!</h1>
+    <heading class="site-heading">
+      <div class="container">
+      <span>
+        <img class="logo" src="./dist/img/programming.svg" alt="Logo" height="80px">
+        <h1>Practice JavaScript!</h1>
+      </span>
+      <nav class="controls">
+        <div>
+          <img id="prev-problem" class="prev-problem" src="./dist/img/previous.svg" alt="Previous problem" height="80">
+          <div class="title">Previous</div>
+        </div>
+        <div>
+          <img id="shuffle-problems" class="shuffle-problems" src="./dist/img/shuffle.svg" alt="Shuffle problems" title="Shuffle problems" height="80">
+          <div class="title">Shuffle</div>
+        </div>
+        <div>
+          <img id="next-problem" class="next-problem" src="./dist/img/next.svg" alt="Next problem" title="Next problem"height="80">
+          <div class="title">Next</div>
+        </div>
+      </nav>
+      </div>
+    </heading>
     <div class="container">
       <main>
         <div class="problem-group">
           <div id="problem" class="problem">&zwnj;</div>
-          <div class="controls">
-            <img id="prev-problem" class="prev-problem" src="./dist/img/previous.svg" alt="Previous problem" height="80">
-            <img id="shuffle-problems" class="shuffle-problems" src="./dist/img/shuffle.svg" alt="Shuffle problems" title="Shuffle problems" height="80">
-            <img id="next-problem" class="next-problem" src="./dist/img/next.svg" alt="Next problem" title="Next problem"height="80">
-          </div>
         </div>
         <div id="answer" class="answer">
           <!--TODO: add ability to peek answer, while giving up any points for the question.-->
@@ -49,7 +65,11 @@
       data-ad-client="ca-pub-4039212144643368"
       data-ad-slot="9721927778"></ins>
     </div>
-    <footer>© 2017 <a href="https://twitter.com/jakob_anderson">Jakob Anderson</a>, Icons designed by <a href="http://www.flaticon.com/authors/cursor-creative">Cursor Creative from Flaticon</a></footer>
+    <footer>
+      <div class="copyright">© 2017 <a href="https://twitter.com/jakob_anderson">Jakob Anderson</a></div>
+      <div class="icon-license">Icons designed by <a href="http://www.flaticon.com/authors/cursor-creative">Cursor Creative</a>, <a href="http://www.flaticon.com/authors/nikita-golubev">Nikita Golubev</a> from Flaticon
+      </div>
+    </footer>
     <script src="./dist/js/bundle.min.js"></script>
     <script src="./dist/js/loadJS.js"></script>
 

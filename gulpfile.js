@@ -10,6 +10,7 @@ const es2015 = require('babel-preset-es2015');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
+const svgo = require('gulp-svgo');
 
 function conf() {
   const opts = {};
@@ -94,6 +95,7 @@ jsWatcher.on('change', event => {
 
 gulp.task('img', () => {
   return gulp.src('./src/img/*.svg')
+    .pipe(svgo())
     .pipe(gulp.dest('./public/dist/img'));
 });
 
