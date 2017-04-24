@@ -55,15 +55,18 @@
 
     <!-- DEFER AND ASYNC ALL THE OTHER GARBAGE THAT ISN'T MY APP -->
     <script>
-      window.addEventListener('load', function() {
-        loadJS('//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', function() {
-          (adsbygoogle = window.adsbygoogle || []).push({});
+      // Only do ads and analytics when in prod
+      if (window.location.host === 'practicejavascript.com') {
+        window.addEventListener('load', function() {
+          loadJS('//www.google-analytics.com/analytics.js', function() {
+            ga('create', 'UA-97392792-1', 'auto');
+            ga('send', 'pageview');
+          });
+          loadJS('//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', function() {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          });
         });
-        loadJS('//www.google-analytics.com/analytics.js', function() {
-          ga('create', 'UA-97392792-1', 'auto');
-          ga('send', 'pageview');
-        });
-      });
+      }
     </script>
   </body>
 </html>
