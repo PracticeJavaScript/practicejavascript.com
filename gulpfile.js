@@ -11,6 +11,8 @@ const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const svgo = require('gulp-svgo');
+const sass = require('gulp-sass');
+const livereload = require('gulp-livereload');
 
 function conf() {
   const opts = {};
@@ -65,12 +67,14 @@ gulp.task('css', () => {
     autoprefixer({browsers: ['last 1 version']}),
     cssnano()
   ];
-  return gulp.src('./src/css/*.css')
+  return gulp.src('./src/css/style.scss')
+    .pipe(sass.sync().on('error', sass.logError))
     .pipe(postcss(plugins))
-    .pipe(gulp.dest('./public/dist/css'));
+    .pipe(gulp.dest('./public/dist/css'))
+    .pipe(livereload());
 });
 
-const cssWatcher = gulp.watch('src/css/*.css', ['css']);
+const cssWatcher = gulp.watch('src/css/**/*.scss', ['css']);
 
 cssWatcher.on('change', event => {
   console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
@@ -112,6 +116,7 @@ gulp.task('build', () => {
   return compile();
 });
 gulp.task('watch', () => {
+  livereload.listen();
   return watch();
 });
 

@@ -30,6 +30,7 @@ firebase serve
 - That will build it all and watch the css, img, and js assets.
 - Then you can load up `http://localhost:5000` in a browser. narf!
 `/src/index.js` is the main file you'll want to edit for functionality.
+- If you have the [LiveReload Chrome extension](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) installed, it should do live css updates in your browser while gulp watch is running
 
 ## How To Add New Problems
 - Problems are at `/src/problems/*.js`
