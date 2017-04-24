@@ -1,36 +1,35 @@
-(function() {
+(function (document, window) {
   // DEPENDENCIES
   // ============================================================
 
-  const assert = require('chai').assert;
   const localforage = require('localforage');
 
   // PROBLEMS
   // ============================================================
 
-  let problems = require('../problems/arrays.js');
+  const problems = require('../problems/arrays.js');
 
   // CONFIG
   // ============================================================
 
   // Hoist current problem
   let currentProblem;
-  // keys to ignore while user is navigating around the textarea but not changing any code
+  // Keys to ignore while user is navigating around the textarea but not changing any code
   const ignoreKeyCodes = [
-    9, // tab
-    37, // left arrow
-    39, // right arrow
-    38, // up arrow
-    40, // down arrow
+    9, // Tab
+    37, // Left arrow
+    39, // Right arrow
+    38, // Up arrow
+    40 // Down arrow
   ];
 
   let config = {
     shuffle: true,
     timer: false,
-    currentIndex: 0,
+    currentIndex: 0
   };
 
-  // pull config from localforage
+  // Pull config from localforage
   localforage
     .getItem('js_practice_config')
     .then(val => {
@@ -60,10 +59,8 @@
   // ============================================================
 
   // elements
-  const problemNameEl = document.getElementById('problem-name');
   const problemEl = document.getElementById('problem');
   const codeEl = document.getElementById('code');
-  const testAreaEl = document.getElementById('test-area');
   const testSuiteEl = document.getElementById('test-suite');
   const testTotalEl = document.getElementById('test-total');
   const evalConsoleEl = document.getElementById('eval-output');
@@ -72,7 +69,7 @@
   const previousProblemButtonEl = document.getElementById('prev-problem');
   const nextProblemButtonEl = document.getElementById('next-problem');
 
-  // get indexes
+  // Get indexes
   function getRandomIndex(problemsArr) {
     const ind = Math.floor(Math.random() * problemsArr.length);
     config.currentIndex = ind;
@@ -83,7 +80,7 @@
   function getPreviousIndex(problemsArr) {
     let probInd;
     const currentIndex = config.currentIndex;
-    // if at beginning, go to end
+    // If at beginning, go to end
     if (currentIndex === 0) {
       probInd = problemsArr.length - 1;
     } else {
@@ -95,7 +92,7 @@
   function getNextIndex(problemsArr) {
     let probInd;
     const currentIndex = config.currentIndex;
-    // if at end or invalid, restart series
+    // If at end or invalid, restart series
     if (currentIndex >= problemsArr.length - 1 || currentIndex < 0) {
       probInd = 0;
     } else {
@@ -104,48 +101,47 @@
     return probInd;
   }
 
-  // get problems
+  // Get problems
   function getCurrentProblem(problemsArr) {
     return problemsArr[config.currentIndex];
   }
 
-  function previousProblem(e) {
+  function previousProblem() {
     console.log('previousProblem!');
     config.currentIndex = config.shuffle
       ? getRandomIndex(problems)
       : getPreviousIndex(problems);
-    updateLocalstore(config).then(_ => {
+    updateLocalstore(config).then(() => {
       window.location.reload();
     });
   }
 
-  function nextProblem(e) {
+  function nextProblem() {
     console.log('nextProblem!');
     config.currentIndex = config.shuffle
       ? getRandomIndex(problems)
       : getNextIndex(problems);
-    updateLocalstore(config).then(_ => {
+    updateLocalstore(config).then(() => {
       window.location.reload();
     });
   }
 
-  function toggleShuffle(e) {
+  function toggleShuffle() {
     console.log('toggle shuffle!');
-    config.shuffle = config.shuffle === true ? false : true;
+    config.shuffle = !config.shuffle; // Flip it
     shuffleProblemsButtonEl.classList.toggle('active');
     updateLocalstore(config);
-
   }
 
   function loadProblem(problemObj) {
     currentProblem = problemObj;
-    // prob question
+    // Prob question
     problemEl.innerText = problemObj.prompt;
-    // prob given
+    // Prob given code
     if (problemObj.given) {
       codeEl.value = problemObj.given;
     }
-    // seed tests, pass (init = true) as second param
+    // Seed the tests, pass (init = true) as second param
     testSuite(null, true);
   }
 
@@ -206,7 +202,7 @@
   }
 
   function printAssertError(errObj) {
-    // make element string
+    // Make element string
     let inner = '';
     if (errObj !== null) {
       inner = `
@@ -216,12 +212,12 @@
       </div>`;
     }
 
-    // prepend element
+    // Prepend element
     assertConsoleEl.innerHTML = inner;
   }
 
   function printEvalOutput(errObj, output) {
-    // make element string
+    // Make element string
     let inner = '';
     if (errObj && errObj.message !== undefined) {
       inner = `
@@ -234,7 +230,7 @@
         Output: ${JSON.stringify(output)}
       </div>`;
     }
-    // prepend element
+    // Prepend element
     evalConsoleEl.innerHTML = inner;
   }
 
@@ -242,25 +238,21 @@
   // ============================================================
 
   function testSuite(init) {
-    // console.log('codeEl.value:', codeEl.value);
-    // console.log(typeof codeEl.value);
-    // run stuff
+    // Run stuff
     const output = getOutput(codeEl.value);
-    // console.log('output:', output);
-    // run tests on code, return object/array of test results
+    // Run tests on code, return object/array of test results
     const tested = runTests(output);
-    // update UI with results
+    // Update UI with results
     updateTests(tested, init);
   }
 
   function getOutput(code) {
     let evald = false;
     try {
-      evald = eval(`(function(){${code}})()`);
-      printEvalOutput(null, evald); // print current output
-    } catch (error) {
-      // console.log('eval error:', error);
-      printEvalOutput(error);
+      evald = eval(`(function(){${code}})()`); // eslint-disable-line no-eval
+      printEvalOutput(null, evald); // Print current output
+    } catch (err) {
+      printEvalOutput(err);
     }
     return evald;
   }
@@ -270,35 +262,32 @@
     tested = currentProblem.tests.map(test => {
       let testOutcome = false;
       try {
-        if (!output) {
-          testOutcome = false;
-        } else {
+        if (output) {
           testOutcome = test.test(output);
         }
         printAssertError(null);
-        return testOutcome;
-      } catch (error) {
-        // console.log('error:', error);
-        printAssertError(error);
+      } catch (err) {
+        printAssertError(err);
       }
+      return testOutcome;
     });
     return tested;
   }
 
-  // wrapped to prevent race with local config retrieval
+  // Wrapped to prevent race with local config retrieval
   function loadApp(config) {
     console.log('loading app!');
 
-    // show current toggle state
+    // Show current toggle state
     if (config.shuffle === true) {
       shuffleProblemsButtonEl.classList.add('active');
     }
 
-    // bind it up
-    codeEl.addEventListener('keyup', function(e) {
-      // if not arrow keys or other non-character keys
+    // Bind it up
+    codeEl.addEventListener('keyup', e => {
+      // If not arrow keys or other non-character keys
       if (ignoreKeyCodes.indexOf(e.keyCode) === -1) {
-        // run test suite
+        // Run test suite
         testSuite();
       }
     });
@@ -306,11 +295,11 @@
     previousProblemButtonEl.addEventListener('click', previousProblem);
     nextProblemButtonEl.addEventListener('click', nextProblem);
 
-    // start it up!
-    // load current problem
+    // Start it up!
+    // Load current problem
     const currProb = getCurrentProblem(problems);
     loadProblem(currProb);
-    // initalized test suite with starting failures
+    // Initalized test suite with starting failures
     testSuite(true);
-  } // loadApp()
-})();
+  }
+})(document, window);
