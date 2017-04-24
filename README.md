@@ -3,7 +3,7 @@
 [ ![Codeship Status for PracticeJavaScript/practicejavascript.com](https://app.codeship.com/projects/091c0e50-0a7c-0135-8b3c-6ed4d7e33e57/status?branch=master)](https://app.codeship.com/projects/214753)
 [![Build Status](https://travis-ci.org/PracticeJavaScript/practicejavascript.com.svg?branch=master)](https://travis-ci.org/PracticeJavaScript/practicejavascript.com)
 
-![ScreenShot of practicejavascript.com](https://cldup.com/I24bQvI37L.png)
+![ScreenShot of practicejavascript.com](https://cldup.com/29J7us8soi.png)
 
 ## Principles
 - Fast, easy to start. No delays.
