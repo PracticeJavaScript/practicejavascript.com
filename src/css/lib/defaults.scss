@@ -3,11 +3,11 @@
 
 /* default stuff */
 html {
-  background-color: $persian-indigo;
+  background-color: $primary-color;
   // background: #31B7D7;
   // background-repeat: no-repeat;
   // background: -webkit-linear-gradient(90deg, #31B7D7, #EDAC7D);
-  background: linear-gradient(165deg, $persian-indigo, $light-blue-gem);
+  background: linear-gradient(165deg, $primary-color-dark, $primary-color);
   min-height: 100%;
 }
 body {
@@ -17,11 +17,11 @@ body, input, select, textarea {
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Arial,sans-serif;
   font-size: 16pt;
   box-sizing: border-box;
-  color: $light-purple;
+  color: $primary-color-text;
   -webkit-font-smoothing: antialiased;
 }
 a {
-  color: $light-amethyst;
+  color: $accent-color;
 }
 
 .monospace {
