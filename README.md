@@ -19,6 +19,7 @@
 ## How To Install Locally
 ```bash
 npm i -g yarn # if you don't have yarn yet
+yarn global add firebase-tools # if you don't have firebase-tools yet
 git clone https://github.com/PracticeJavaScript/practicejavascript.com.git
 cd practicejavascript.com
 yarn install
