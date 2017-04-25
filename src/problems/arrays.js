@@ -503,11 +503,170 @@ module.exports = [
         }
       }
     ]
+  },
+  {
+    name: 'Array.map()',
+    time: 10,
+    prompt: `Return an array of 'numbers' array's square roots.`,
+    given: `const numbers = [4, 9, 16];\r`,
+    answer: `const numbers = [4, 9, 16];
+             const roots = numbers.map(Math.sqrt);
+             return roots;`,
+    tests: [
+      {
+        name: 'Correct output',
+        test(output) {
+          return assert.deepEqual(output, [2, 3, 4]) === undefined;
+        }
+      },
+      {
+        name: 'Returns an Array',
+        test(output) {
+          return assert.isArray(output) === undefined;
+        }
+      },
+      {
+        name: 'Array has 3 items',
+        test(output) {
+          return assert.lengthOf(output, 3) === undefined;
+        }
+      },
+      {
+        name: `First item is 2`,
+        test(output) {
+          return assert.deepEqual(output[0], 2) === undefined;
+        }
+      },
+      {
+        name: `Last item is 4`,
+        test(output) {
+          return assert.deepEqual(output[output.length - 1], 4) === undefined;
+        }
+      }
+    ]
+  },
+  {
+    name: 'Array.every()',
+    time: 10,
+    prompt: `Return object that returns whether each array contains all even numbers using Array.every().`,
+    given: `
+const evenNumbers = [2, 4, 6, 8];
+const someOddNumbers = [2, 5, 6, 8];
+function isEven(element) {
+  
+}
+return {
+  evenNumbers: evenNumbers.,
+  someOddNumbers: someOddNumbers.  
+};`,
+    answer: `
+const evenNumbers = [2, 4, 6, 8];
+const someOddNumbers = [2, 5, 6, 8];
+function isEven(element) {
+  return element % 2 === 0
+}
+return {
+  evenNumbers: evenNumbers.every(isEven),
+  someOddNumbers: someOddNumbers.every(isEven)  
+};`,
+    tests: [
+      {
+        name: 'Correct output',
+        test(output) {
+          return assert.deepEqual(output, {
+            evenNumbers: true,
+            someOddNumbers: false
+          }) === undefined;
+        }
+      },
+      {
+        name: 'Returns an Object',
+        test(output) {
+          return assert.isObject(output) === undefined;
+        }
+      },
+      {
+        name: 'Object has 2 items',
+        test(output) {
+          return assert.lengthOf(Object.keys(output), 2) === undefined;
+        }
+      },
+      {
+        name: `First value is true`,
+        test(output) {
+          return assert.isTrue(output.evenNumbers) === undefined;
+        }
+      },
+      {
+        name: `Second value is false`,
+        test(output) {
+          return assert.isFalse(output.someOddNumbers) === undefined;
+        }
+      }
+    ]
+  },
+  {
+    name: 'Array.some()',
+    time: 10,
+    prompt: `Return object that returns whether each array contains some odd numbers using Array.some().`,
+    given: `
+const evenNumbers = [2, 4, 6, 8];
+const someOddNumbers = [2, 4, 7, 8];
+function isOdd(element) {
+  
+}
+return {
+  evenNumbers: evenNumbers.,
+  someOddNumbers: someOddNumbers.  
+};`,
+    answer: `
+const evenNumbers = [1, 3, 5, 7];
+const someOddNumbers = [1, 3, 6, 7];
+function isOdd(element) {
+  return element % 2 !== 0;
+}
+return {
+  evenNumbers: evenNumbers.some(isOdd),
+  someOddNumbers: someOddNumbers.some(isOdd)  
+};`,
+    tests: [
+      {
+        name: 'Correct output',
+        test(output) {
+          return assert.deepEqual(output, {
+            evenNumbers: false,
+            someOddNumbers: true
+          }) === undefined;
+        }
+      },
+      {
+        name: 'Returns an Object',
+        test(output) {
+          return assert.isObject(output) === undefined;
+        }
+      },
+      {
+        name: 'Object has 2 items',
+        test(output) {
+          return assert.lengthOf(Object.keys(output), 2) === undefined;
+        }
+      },
+      {
+        name: `First value is false`,
+        test(output) {
+          return assert.isFalse(output.evenNumbers) === undefined;
+        }
+      },
+      {
+        name: `Second value is true`,
+        test(output) {
+          return assert.isTrue(output.someOddNumbers) === undefined;
+        }
+      }
+    ]
   }
   // Next problems to create:
   // forEach? fix one above that tried, but can't verify forEach was used
-  // .map
-  // every
   // some
   // reduce
   // reduceRight
