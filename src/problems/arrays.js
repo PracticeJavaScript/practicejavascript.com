@@ -540,7 +540,7 @@ module.exports = [
       {
         name: `Last item is 4`,
         test(output) {
-          return assert.deepEqual(output[output.length-1], 4) === undefined;
+          return assert.deepEqual(output[output.length - 1], 4) === undefined;
         }
       }
     ]
@@ -574,9 +574,9 @@ return {
         name: 'Correct output',
         test(output) {
           return assert.deepEqual(output, {
-               evenNumbers: true,
-               someOddNumbers: false  
-             }) === undefined;
+            evenNumbers: true,
+            someOddNumbers: false
+          }) === undefined;
         }
       },
       {
@@ -594,13 +594,13 @@ return {
       {
         name: `First value is true`,
         test(output) {
-          return assert.isTrue(output['evenNumbers']) === undefined;
+          return assert.isTrue(output.evenNumbers) === undefined;
         }
       },
       {
         name: `Second value is false`,
         test(output) {
-          return assert.isFalse(output['someOddNumbers']) === undefined;
+          return assert.isFalse(output.someOddNumbers) === undefined;
         }
       }
     ]
@@ -635,7 +635,7 @@ return {
         test(output) {
           return assert.deepEqual(output, {
             evenNumbers: false,
-            someOddNumbers: true  
+            someOddNumbers: true
           }) === undefined;
         }
       },
@@ -654,13 +654,13 @@ return {
       {
         name: `First value is false`,
         test(output) {
-          return assert.isFalse(output['evenNumbers']) === undefined;
+          return assert.isFalse(output.evenNumbers) === undefined;
         }
       },
       {
         name: `Second value is true`,
         test(output) {
-          return assert.isTrue(output['someOddNumbers']) === undefined;
+          return assert.isTrue(output.someOddNumbers) === undefined;
         }
       }
     ]
