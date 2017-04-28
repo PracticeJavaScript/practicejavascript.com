@@ -1,7 +1,8 @@
 
 /* My custom styles
    ========================================================================== */
-
+@import 'lib/vars';
+@import 'lib/mixins';
 @import 'lib/defaults';
 
 
@@ -10,8 +11,8 @@
   display: block;
 }
 .site-heading {
-  background-color: skyblue;
-  color: black;
+  // background-color: skyblue;
+  // color: black;
   padding: .5em;
   text-align: center;
   margin: 0;
@@ -36,17 +37,18 @@
   cursor: pointer;
   display: flex;
   justify-content: space-around;
-  font-size: 70%;
+  font-size: 60%;
+  text-transform: uppercase;
 }
 .controls img {
-  padding: 0.3em;
-  border-radius: 0.3em;
+  padding: 1em;
+  border-radius: 1em;
   background-color: transparent;
   height: 60px;
 }
 .controls > div > :active,
 .controls > div > .active {
-  background-color: #333;
+  background-color: $primary-color;
   transition: all 200ms ease-in-out;
 }
 .problem-group {
@@ -69,7 +71,8 @@
   color: #f8f8f2;
   overflow-x: auto;
   padding: .5em;
-  background: #23241f;
+  // background: #23241f;
+  background-color: $primary-text-color;
   border-radius: 3px;
   padding: .25em .65em;
   display: inline-block;
@@ -97,11 +100,11 @@
 }
 
 .test-state.pass {
-  color: green;
+  color: $primary-color;
 }
 
 .test-state.fail {
-  color: red;
+  color: $accent-color;
 }
 
 .test-name {
@@ -115,17 +118,20 @@
   padding: 0.5em;
   transition: all 200ms ease-in-out;
 }
+.test-total.working {
+  background: url('/dist/img/reload.svg');
+}
 
 .test-total.pass {
-  background-color: green;
+  background-color: $primary-color;
 }
 
 .test-total.fail {
-  background-color: red;
+  background-color: $accent-color;
 }
 
 .console {
-  font-size: 60%;
+  font-size: 70%;
   margin: 0.5em 0;
   vertical-align: top;
 }
@@ -144,9 +150,14 @@
   margin: 5em 0 1em;
 }
 footer {
-  width: 85%;
+  // width: 85%;
   margin: 0 auto;
   text-align: center;
+  position:fixed;
+  left:0px;
+  bottom:0px;
+  height:70px;
+  width:100%;
 }
 footer > div {
   margin: 10px auto;

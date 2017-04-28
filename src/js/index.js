@@ -55,6 +55,29 @@
       });
   }
 
+  // HELPERS
+  // ============================================================
+
+  function debounce(func, wait, immediate) {
+    let timeout;
+    return function () {
+      const context = this;
+      const args = arguments;
+      const later = function () {
+        timeout = null;
+        if (!immediate) {
+          func.apply(context, args);
+        }
+      };
+      const callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) {
+        func.apply(context, args);
+      }
+    };
+  }
+
   // UI
   // ============================================================
 
@@ -130,6 +153,7 @@
     console.log('toggle shuffle!');
     config.shuffle = !config.shuffle; // Flip it
     shuffleProblemsButtonEl.classList.toggle('active');
+    previousProblemButtonEl.parentNode.classList.toggle('hidden');
     updateLocalstore(config);
   }
 
@@ -238,10 +262,14 @@
   // ============================================================
 
   function testSuite(init) {
+    // Show 'working' indicator
+    testTotalEl.classList.toggle('working');
     // Run stuff
     const output = getOutput(codeEl.value);
     // Run tests on code, return object/array of test results
     const tested = runTests(output);
+    // Hide 'working' indicator
+    testTotalEl.classList.toggle('working');
     // Update UI with results
     updateTests(tested, init);
   }
@@ -281,16 +309,19 @@
     // Show current toggle state
     if (config.shuffle === true) {
       shuffleProblemsButtonEl.classList.add('active');
+      previousProblemButtonEl.parentNode.classList.add('hidden');
     }
 
-    // Bind it up
-    codeEl.addEventListener('keyup', e => {
+    const debouncedInputValidation = debounce(e => {
       // If not arrow keys or other non-character keys
       if (ignoreKeyCodes.indexOf(e.keyCode) === -1) {
         // Run test suite
         testSuite();
       }
-    });
+    }, 200);
+
+    // Bind it up
+    codeEl.addEventListener('keyup', debouncedInputValidation);
     shuffleProblemsButtonEl.addEventListener('click', toggleShuffle);
     previousProblemButtonEl.addEventListener('click', previousProblem);
     nextProblemButtonEl.addEventListener('click', nextProblem);

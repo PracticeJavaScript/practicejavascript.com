@@ -1,4 +1,15 @@
+@import 'vars';
+@import 'mixins';
+
 /* default stuff */
+html {
+  background-color: $primary-text-color;
+  // background: #31B7D7;
+  // background-repeat: no-repeat;
+  // background: -webkit-linear-gradient(90deg, #31B7D7, #EDAC7D);
+  // background: linear-gradient(165deg, $primary-text-color, darken($primary-color-dark, 30%));
+  min-height: 100%;
+}
 body {
   margin: 0;
 }
@@ -6,7 +17,11 @@ body, input, select, textarea {
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Arial,sans-serif;
   font-size: 16pt;
   box-sizing: border-box;
-  color: #222
+  color: $primary-color-text;
+  -webkit-font-smoothing: antialiased;
+}
+a {
+  color: $primary-color;
 }
 
 .monospace {
@@ -14,5 +29,8 @@ body, input, select, textarea {
 }
 
 .hide-until-load {
+  visibility: hidden;
+}
+.hidden {
   visibility: hidden;
 }
