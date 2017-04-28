@@ -60,12 +60,26 @@ $divider-color:        #BDBDBD;
 // $secondary-text-color: #757575;
 // $divider-color:        #BDBDBD;
 
-$primary-color-dark:   #000;
-$primary-color:        #673AB7;
-$primary-color-light:  #D1C4E9;
-$primary-color-text:   #FFFFFF;
-$accent-color:         #FF4081;
-$primary-text-color:   #212121;
+// urple scheme
+// $primary-color-dark:   #000;
+// $primary-color:        #673AB7;
+// $primary-color-light:  #D1C4E9;
+// $primary-color-text:   #FFFFFF;
+// $accent-color:         #FF4081;
+// $primary-text-color:   #212121;
+// $secondary-text-color: #757575;
+// $divider-color:        #BDBDBD;
+
+// $green: #4caf50;
+// $green-dark: #388e3c;
+
+// tron legacy scheme?
+$primary-color:        #6FC3DF;
+$primary-color-dark:   darken($primary-color, 10%);
+$primary-color-light:  #E6FFFF;
+$primary-color-text:   #E6FFFF;
+$accent-color:         #DF740C;
+$primary-text-color:   #0C141F;
 $secondary-text-color: #757575;
 $divider-color:        #BDBDBD;
 

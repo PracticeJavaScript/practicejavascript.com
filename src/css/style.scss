@@ -41,14 +41,14 @@
   text-transform: uppercase;
 }
 .controls img {
-  padding: 0.3em;
-  border-radius: 0.3em;
+  padding: 1em;
+  border-radius: 1em;
   background-color: transparent;
   height: 60px;
 }
 .controls > div > :active,
 .controls > div > .active {
-  background-color: $primary-color-light;
+  background-color: $primary-color;
   transition: all 200ms ease-in-out;
 }
 .problem-group {
@@ -100,7 +100,7 @@
 }
 
 .test-state.pass {
-  color: $green;
+  color: $primary-color;
 }
 
 .test-state.fail {
@@ -118,9 +118,12 @@
   padding: 0.5em;
   transition: all 200ms ease-in-out;
 }
+.test-total.working {
+  background: url('/dist/img/reload.svg');
+}
 
 .test-total.pass {
-  background-color: $green;
+  background-color: $primary-color;
 }
 
 .test-total.fail {
@@ -128,7 +131,7 @@
 }
 
 .console {
-  font-size: 60%;
+  font-size: 70%;
   margin: 0.5em 0;
   vertical-align: top;
 }

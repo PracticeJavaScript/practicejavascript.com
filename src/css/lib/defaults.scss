@@ -3,11 +3,11 @@
 
 /* default stuff */
 html {
-  background-color: $primary-color;
+  background-color: $primary-text-color;
   // background: #31B7D7;
   // background-repeat: no-repeat;
   // background: -webkit-linear-gradient(90deg, #31B7D7, #EDAC7D);
-  background: linear-gradient(165deg, $primary-color-dark, $primary-color);
+  // background: linear-gradient(165deg, $primary-text-color, darken($primary-color-dark, 30%));
   min-height: 100%;
 }
 body {
@@ -21,7 +21,7 @@ body, input, select, textarea {
   -webkit-font-smoothing: antialiased;
 }
 a {
-  color: $accent-color;
+  color: $primary-color;
 }
 
 .monospace {
@@ -29,5 +29,8 @@ a {
 }
 
 .hide-until-load {
+  visibility: hidden;
+}
+.hidden {
   visibility: hidden;
 }
