@@ -204,7 +204,7 @@
         allPassed = false;
       }
     });
-    const testEls = Array.from(testSuiteEl.querySelectorAll('.test-state'));
+    const testEls = Array.prototype.slice.call(testSuiteEl.querySelectorAll('.test-state'));
     testEls.forEach((testStatusEl, iter) => {
       if (testStatuses[iter] === true) {
         testStatusEl.innerHTML = '[&#x2713;]';
@@ -330,10 +330,10 @@
     function problemNav(e) {
       // Go to previous problem keybinding
       // If CMD/CTRL + SHIFT + RETURN/ENTER
-      if (config.shuffle === false && e.keyCode === 13 && e.shiftKey && e.metaKey) {
+      if (config.shuffle === false && e.keyCode === 13 && e.shiftKey && (e.metaKey || e.ctrlKey)) {
         // Go to next problem
         previousProblem();
-      } else if (e.keyCode === 13 && !e.shiftKey && e.metaKey) {
+      } else if (e.keyCode === 13 && !e.shiftKey && (e.metaKey || e.ctrlKey)) {
       // Go to next problem keybinding
       // If CMD/CTRL + RETURN/ENTER
         // Go to next problem
