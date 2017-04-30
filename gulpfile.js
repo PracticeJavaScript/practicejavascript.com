@@ -1,12 +1,11 @@
 const gulp = require('gulp');
-// const sourcemaps = require('gulp-sourcemaps');
+const sourcemaps = require('gulp-sourcemaps');
 const browserify = require('browserify');
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
 const uglify = require('gulp-uglify');
 const watchify = require('watchify');
 const babel = require('babelify');
-// const env = require('babel-preset-env');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
@@ -14,16 +13,6 @@ const svgo = require('gulp-svgo');
 const sass = require('gulp-sass');
 const livereload = require('gulp-livereload');
 
-// function conf() {
-//   const opts = {};
-//   opts.builtins = false;
-//   opts.entries = ['src/js/index.js'];
-//   opts.debug = true;
-//   opts.insertGlobalVars = {
-//     global: glob
-//   };
-//   return opts;
-// }
 const opts = {
   builtins: false,
   entries: ['src/js/index.js'],
@@ -36,7 +25,6 @@ const opts = {
 const uglifyConf = {};
 
 function compile(watch) {
-  // const opts = conf();
   const bundler = watchify(browserify(opts).transform(babel.configure({
     presets: ['env']
   })));
@@ -48,11 +36,11 @@ function compile(watch) {
       })
       .pipe(source('bundle.min.js'))
       .pipe(buffer())
-      // .pipe(sourcemaps.init({
-      //   loadMaps: true
-      // }))
+      .pipe(sourcemaps.init({
+        loadMaps: true
+      }))
       .pipe(uglify(uglifyConf))
-      // .pipe(sourcemaps.write('./'))
+      .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest('./public/dist/js'));
   }
   if (watch) {
