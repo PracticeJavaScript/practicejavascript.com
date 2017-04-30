@@ -10,7 +10,8 @@
     "test": "xo",
     "build": "./node_modules/.bin/gulp build",
     "watch": "./node_modules/.bin/gulp watch",
-    "precommit": "lint-staged"
+    "precommit": "yarn test",
+    "prepush": "yarn test"
   },
   "xo": {
     "env": [
