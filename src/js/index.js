@@ -320,7 +320,6 @@
 
     // Debounced code validation
     const debouncedInputValidation = debounce(e => {
-      console.log('e', e);
       // If not arrow keys or other non-character keys
       if (ignoreKeyCodes.indexOf(e.keyCode) === -1) {
         // Run test suite
