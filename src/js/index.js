@@ -204,7 +204,7 @@
         allPassed = false;
       }
     });
-    const testEls = Array.prototype.slice.call(testSuiteEl.querySelectorAll('.test-state'));
+    const testEls = [].slice.call(testSuiteEl.querySelectorAll('.test-state'));
     testEls.forEach((testStatusEl, iter) => {
       if (testStatuses[iter] === true) {
         testStatusEl.innerHTML = '[&#x2713;]';
