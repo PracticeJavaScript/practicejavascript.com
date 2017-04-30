@@ -13,6 +13,10 @@
     "precommit": "yarn test",
     "prepush": "yarn test"
   },
+  "browserslist": [
+    "> 1%",
+    "last 1 versions"
+  ],
   "xo": {
     "env": [
       "node",

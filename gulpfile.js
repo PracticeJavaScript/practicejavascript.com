@@ -1,3 +1,6 @@
+// DEPS
+// ============================================================
+
 const gulp = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
 const browserify = require('browserify');
@@ -13,6 +16,10 @@ const svgo = require('gulp-svgo');
 const sass = require('gulp-sass');
 const livereload = require('gulp-livereload');
 
+// CONFIG
+// ============================================================
+const browserslist = require('./package.json').browserslist;
+
 const opts = {
   builtins: false,
   entries: ['src/js/index.js'],
@@ -24,9 +31,18 @@ const opts = {
 
 const uglifyConf = {};
 
+// TASKS
+// ============================================================
+
 function compile(watch) {
   const bundler = watchify(browserify(opts).transform(babel.configure({
-    presets: ['env']
+    presets: [
+      ['env', {
+        targets: {
+          browsers: browserslist
+        }
+      }]
+    ]
   })));
   function rebundle() {
     return bundler.bundle()
@@ -62,7 +78,7 @@ function watch() {
 
 gulp.task('css', () => {
   const plugins = [
-    autoprefixer({browsers: ['last 1 version']}),
+    autoprefixer({browsers: browserslist}),
     cssnano()
   ];
   return gulp.src('./src/css/style.scss')
