@@ -472,7 +472,7 @@ module.exports = [
   {
     name: 'Array.filter()',
     time: 10,
-    prompt: `Return an array of the numbers greater than 5 in 'fruits' using 'Array.filter()'`,
+    prompt: `Return an array of the numbers greater than 5 in 'numbers' using 'Array.filter()'`,
     given: `const numbers = [1, 1, 2, 3, 5, 8, 13, 21];\r`,
     answer: `const numbers = [1, 1, 2, 3, 5, 8, 13, 21];
              const overFive = numbers.filter(num => num > 5);
@@ -507,16 +507,16 @@ module.exports = [
   {
     name: 'Array.map()',
     time: 10,
-    prompt: `Return an array of 'numbers' array's square roots.`,
-    given: `const numbers = [4, 9, 16];\r`,
-    answer: `const numbers = [4, 9, 16];
-             const roots = numbers.map(Math.sqrt);
+    prompt: `Return an array of 'numbers' array's square roots, using 'Array.map()' and 'Math.sqrt()'`,
+    given: `const numbers = [25, 121, 169];\r`,
+    answer: `const numbers = [25, 121, 169];
+             const roots = numbers.map(num => Math.sqrt(num));
              return roots;`,
     tests: [
       {
         name: 'Correct output',
         test(output) {
-          return assert.deepEqual(output, [2, 3, 4]) === undefined;
+          return assert.deepEqual(output, [5, 11, 13]) === undefined;
         }
       },
       {
@@ -532,15 +532,15 @@ module.exports = [
         }
       },
       {
-        name: `First item is 2`,
+        name: `First item is 5`,
         test(output) {
-          return assert.deepEqual(output[0], 2) === undefined;
+          return assert.deepEqual(output[0], 5) === undefined;
         }
       },
       {
-        name: `Last item is 4`,
+        name: `Last item is 13`,
         test(output) {
-          return assert.deepEqual(output[output.length - 1], 4) === undefined;
+          return assert.deepEqual(output[output.length - 1], 13) === undefined;
         }
       }
     ]
@@ -553,11 +553,11 @@ module.exports = [
 const evenNumbers = [2, 4, 6, 8];
 const someOddNumbers = [2, 5, 6, 8];
 function isEven(element) {
-  
+
 }
 return {
   evenNumbers: evenNumbers.,
-  someOddNumbers: someOddNumbers.  
+  someOddNumbers: someOddNumbers.
 };`,
     answer: `
 const evenNumbers = [2, 4, 6, 8];
@@ -567,7 +567,7 @@ function isEven(element) {
 }
 return {
   evenNumbers: evenNumbers.every(isEven),
-  someOddNumbers: someOddNumbers.every(isEven)  
+  someOddNumbers: someOddNumbers.every(isEven)
 };`,
     tests: [
       {
@@ -613,11 +613,11 @@ return {
 const evenNumbers = [2, 4, 6, 8];
 const someOddNumbers = [2, 4, 7, 8];
 function isOdd(element) {
-  
+
 }
 return {
   evenNumbers: evenNumbers.,
-  someOddNumbers: someOddNumbers.  
+  someOddNumbers: someOddNumbers.
 };`,
     answer: `
 const evenNumbers = [1, 3, 5, 7];
@@ -627,7 +627,7 @@ function isOdd(element) {
 }
 return {
   evenNumbers: evenNumbers.some(isOdd),
-  someOddNumbers: someOddNumbers.some(isOdd)  
+  someOddNumbers: someOddNumbers.some(isOdd)
 };`,
     tests: [
       {
