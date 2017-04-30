@@ -172,6 +172,7 @@
     testSuite(null, true);
   }
 
+  // TODO: Build the assert errors into the test dom on each update.
   function updateTests(testStatus, init) {
     if (init === true) {
       buildTests(currentProblem.tests);
