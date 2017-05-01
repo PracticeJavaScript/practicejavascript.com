@@ -23,6 +23,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-shadow: 0 0 10px rgba(255,255,255,1),
+              //  0 0 20px rgba(255,255,255,1),
+              //  0 0 30px rgba(255,255,255,1),
+               0 0 40px $primary-color;
+              //  0 0 70px $primary-color;
+              //  0 0 80px $primary-color,
+              //  0 0 100px $primary-color;
 }
 .site-heading h1 {
   font-size: 200%;
@@ -49,7 +56,7 @@
 .controls > div > :active,
 .controls > div > .active {
   background-color: $primary-color;
-  transition: all 200ms ease-in-out;
+  transition: color 100ms ease-in-out;
 }
 .problem-group {
   display: block;

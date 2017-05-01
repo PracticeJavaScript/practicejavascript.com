@@ -10,8 +10,13 @@
     "test": "xo",
     "build": "./node_modules/.bin/gulp build",
     "watch": "./node_modules/.bin/gulp watch",
-    "precommit": "lint-staged"
+    "precommit": "yarn test",
+    "prepush": "yarn test"
   },
+  "browserslist": [
+    "> 1%",
+    "last 1 versions"
+  ],
   "xo": {
     "env": [
       "node",
@@ -43,7 +48,6 @@
     "babelify": "^7.3.0",
     "cssnano": "^3.10.0",
     "gulp": "^3.9.1",
-    "gulp-bro": "^1.0.2",
     "gulp-postcss": "^6.4.0",
     "gulp-sourcemaps": "^2.5.1",
     "gulp-uglify": "^2.1.2",
@@ -57,6 +61,7 @@
     "xo": "^0.18.1"
   },
   "devDependencies": {
+    "babel-preset-env": "^1.4.0",
     "babel-preset-es2017": "^6.24.1",
     "babel-preset-latest": "^6.24.1",
     "browserify": "^14.1.0",

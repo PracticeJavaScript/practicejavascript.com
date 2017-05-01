@@ -1,3 +1,6 @@
+// DEPS
+// ============================================================
+
 const gulp = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
 const browserify = require('browserify');
@@ -6,7 +9,6 @@ const buffer = require('vinyl-buffer');
 const uglify = require('gulp-uglify');
 const watchify = require('watchify');
 const babel = require('babelify');
-const es2015 = require('babel-preset-es2015');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
@@ -14,22 +16,34 @@ const svgo = require('gulp-svgo');
 const sass = require('gulp-sass');
 const livereload = require('gulp-livereload');
 
-function conf() {
-  const opts = {};
-  opts.builtins = false;
-  opts.entries = ['src/js/index.js'];
-  opts.debug = true;
-  opts.insertGlobalVars = {
+// CONFIG
+// ============================================================
+const browserslist = require('./package.json').browserslist;
+
+const opts = {
+  builtins: false,
+  entries: ['src/js/index.js'],
+  debug: true,
+  insertGlobalVars: {
     global: glob
-  };
-  return opts;
-}
+  }
+};
 
 const uglifyConf = {};
 
+// TASKS
+// ============================================================
+
 function compile(watch) {
-  const opts = conf();
-  const bundler = watchify(browserify(opts).transform([babel, es2015]));
+  const bundler = watchify(browserify(opts).transform(babel.configure({
+    presets: [
+      ['env', {
+        targets: {
+          browsers: browserslist
+        }
+      }]
+    ]
+  })));
   function rebundle() {
     return bundler.bundle()
       .on('error', err => {
@@ -64,7 +78,7 @@ function watch() {
 
 gulp.task('css', () => {
   const plugins = [
-    autoprefixer({browsers: ['last 1 version']}),
+    autoprefixer({browsers: browserslist}),
     cssnano()
   ];
   return gulp.src('./src/css/style.scss')

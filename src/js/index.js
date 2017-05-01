@@ -1,12 +1,10 @@
 (function (document, window) {
   // DEPENDENCIES
   // ============================================================
-
   const localforage = require('localforage');
 
   // PROBLEMS
   // ============================================================
-
   const problems = require('../problems/arrays.js');
 
   // CONFIG
@@ -14,6 +12,7 @@
 
   // Hoist current problem
   let currentProblem;
+
   // Keys to ignore while user is navigating around the textarea but not changing any code
   const ignoreKeyCodes = [
     9, // Tab
@@ -131,6 +130,8 @@
 
   function previousProblem() {
     console.log('previousProblem!');
+    // Activate back button, for visual queue of nav feedback
+    previousProblemButtonEl.classList.add('active');
     config.currentIndex = config.shuffle
       ? getRandomIndex(problems)
       : getPreviousIndex(problems);
@@ -141,6 +142,8 @@
 
   function nextProblem() {
     console.log('nextProblem!');
+    // Activate next button, for visual queue of nav feedback
+    nextProblemButtonEl.classList.add('active');
     config.currentIndex = config.shuffle
       ? getRandomIndex(problems)
       : getNextIndex(problems);
@@ -169,6 +172,7 @@
     testSuite(null, true);
   }
 
+  // TODO: Build the assert errors into the test dom on each update.
   function updateTests(testStatus, init) {
     if (init === true) {
       buildTests(currentProblem.tests);
@@ -201,7 +205,7 @@
         allPassed = false;
       }
     });
-    const testEls = Array.from(testSuiteEl.querySelectorAll('.test-state'));
+    const testEls = [].slice.call(testSuiteEl.querySelectorAll('.test-state'));
     testEls.forEach((testStatusEl, iter) => {
       if (testStatuses[iter] === true) {
         testStatusEl.innerHTML = '[&#x2713;]';
@@ -312,6 +316,10 @@
       previousProblemButtonEl.parentNode.classList.add('hidden');
     }
 
+    // Keybinding stuff
+    // ============================================================
+
+    // Debounced code validation
     const debouncedInputValidation = debounce(e => {
       // If not arrow keys or other non-character keys
       if (ignoreKeyCodes.indexOf(e.keyCode) === -1) {
@@ -320,8 +328,26 @@
       }
     }, 200);
 
+    function problemNav(e) {
+      // Go to previous problem keybinding
+      // If CMD/CTRL + SHIFT + RETURN/ENTER
+      if (config.shuffle === false && e.keyCode === 13 && e.shiftKey && (e.metaKey || e.ctrlKey)) {
+        // Go to next problem
+        previousProblem();
+      } else if (e.keyCode === 13 && !e.shiftKey && (e.metaKey || e.ctrlKey)) {
+      // Go to next problem keybinding
+      // If CMD/CTRL + RETURN/ENTER
+        // Go to next problem
+        nextProblem();
+      }
+    }
+
+    // Event Bindings
+    // ============================================================
+
     // Bind it up
-    codeEl.addEventListener('keyup', debouncedInputValidation);
+    codeEl.addEventListener('keydown', debouncedInputValidation);
+    document.addEventListener('keydown', problemNav);
     shuffleProblemsButtonEl.addEventListener('click', toggleShuffle);
     previousProblemButtonEl.addEventListener('click', previousProblem);
     nextProblemButtonEl.addEventListener('click', nextProblem);

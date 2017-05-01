@@ -3,7 +3,7 @@
 [ ![Codeship Status for PracticeJavaScript/practicejavascript.com](https://app.codeship.com/projects/091c0e50-0a7c-0135-8b3c-6ed4d7e33e57/status?branch=master)](https://app.codeship.com/projects/214753)
 [![Build Status](https://travis-ci.org/PracticeJavaScript/practicejavascript.com.svg?branch=master)](https://travis-ci.org/PracticeJavaScript/practicejavascript.com)
 
-![ScreenShot of practicejavascript.com](https://cldup.com/9rdvK8A98t.png)
+![ScreenShot of practicejavascript.com](https://cldup.com/cFITECDXpD.png)
 
 ## Principles
 - Fast, easy to start. No delays.
@@ -29,9 +29,11 @@ firebase serve
 ```
 
 - That will build it all and watch the css, img, and js assets.
-- Then you can load up `http://localhost:5000` in a browser. narf!
+- Then you can load up `http://localhost:5000` or `public/index.html` in a browser. narf!
 `/src/index.js` is the main file you'll want to edit for functionality.
 - If you have the [LiveReload Chrome extension](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) installed, it should do live css updates in your browser while gulp watch is running
+- CSS is auto-prefixed for the supported browserslist, so don't manually add any browser prefixes to CSS src.
+- NOTE: If you change the UI, please update the screenshot at top of this README
 
 ## How To Add New Problems
 - Problems are at `/src/problems/*.js`
@@ -54,3 +56,6 @@ Each test must have:
 This test function will be run on code submission, and MUST return boolean. `output` param is available.
 `output` is the output of the JavaScript evaluation of the user's code submission.
 This test function may make chai.js assertions or any other comparison against the `output` value.
+
+## Browser support
+- See `browserslist` settings in package.json
