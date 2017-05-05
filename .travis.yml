@@ -28,6 +28,5 @@ after_success:
   # - firebase deploy --token $FIREBASE_TOKEN
 
 notifications:
-  email:
-    on_failure: change
-    on_success: change
+  rooms:
+    slack: practicejavascript:ctLDDjmYn6VCGc2kcbkoWGy8#bots
