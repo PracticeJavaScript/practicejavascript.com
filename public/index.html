@@ -4,9 +4,14 @@
     <title>Practice JavaScript</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="./dist/css/style.css" rel="stylesheet">
   </head>
   <body>
+    <style>
+      body {
+        opacity: 0;
+        transition: opacity 200ms ease-in-out;
+      }
+    </style>
     <heading class="site-heading">
       <div class="container">
       <span>
@@ -29,6 +34,7 @@
       </nav>
       </div>
     </heading>
+
     <div class="container">
       <main>
         <div class="problem-group">
@@ -47,7 +53,7 @@
             </div>
           </div>
           <div class="code-and-eval-console">
-            <textarea id="code" class="code monospace" rows="15" autofocus autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+            <textarea id="code" class="code monospace" rows="10" autofocus autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
             <div id="eval-console" class="eval-console console monospace">
               <h4>CODE OUTPUT</h4>
               <div id="eval-output"></div>
@@ -56,6 +62,7 @@
         </div>
       </main>
     </div>
+
     <!-- practice-javascript-bottom-banner -->
     <div class="ads-bottom">
       <ins class="adsbygoogle"
@@ -63,10 +70,14 @@
       data-ad-client="ca-pub-4039212144643368"
       data-ad-slot="9721927778"></ins>
     </div>
+
     <footer>
       <div class="copyright">© 2017 <a href="https://twitter.com/jakob_anderson">Jakob Anderson</a></div>
+      <div class="issues"><a href="https://github.com/PracticeJavaScript/practicejavascript.com/issues">Problems? Leave an issue on github</a></div>
       <div class="icon-license">Icons designed by <a href="http://www.flaticon.com/authors/gregor-cresnar">Gregor Cresnar</a> from Flaticon</div>
     </footer>
+
+    <link href="./dist/css/style.css" rel="stylesheet">
     <script src="./dist/js/bundle.min.js"></script>
     <script src="./dist/js/loadJS.js"></script>
 
