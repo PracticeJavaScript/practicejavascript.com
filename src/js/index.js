@@ -32,7 +32,7 @@
   localforage
     .getItem('js_practice_config')
     .then(val => {
-      console.log('localforage val:', val);
+      // console.log('localforage val:', val);
       if (val) {
         config = val;
       }
@@ -47,7 +47,7 @@
     return localforage
       .setItem('js_practice_config', config)
       .then(val => {
-        console.log('Settings updated:', val);
+        // console.log('Settings updated:', val);
       })
       .catch(err => {
         console.log('Settings update error:', err);
