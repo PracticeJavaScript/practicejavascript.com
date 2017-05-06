@@ -15,6 +15,7 @@ const cssnano = require('cssnano');
 const svgo = require('gulp-svgo');
 const sass = require('gulp-sass');
 const livereload = require('gulp-livereload');
+const htmlmin = require('gulp-htmlmin');
 
 // CONFIG
 // ============================================================
@@ -30,6 +31,12 @@ const opts = {
 };
 
 const uglifyConf = {};
+
+const htmlminConfig = {
+  collapseWhitespace: true,
+  minifyCSS: true,
+  minifyJS: true
+};
 
 // TASKS
 // ============================================================
@@ -120,6 +127,21 @@ gulp.task('img', () => {
 const imgWatcher = gulp.watch('src/img/*.svg', ['img']);
 
 imgWatcher.on('change', event => {
+  console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+});
+
+// HTML
+// ============================================================
+
+gulp.task('html', () => {
+  return gulp.src('./src/html/*.html')
+    .pipe(htmlmin(htmlminConfig))
+    .pipe(gulp.dest('./public/')); // Output goes to root of /public, as per firebase hosting
+});
+
+const htmlWatcher = gulp.watch('src/html/*.html', ['html']);
+
+htmlWatcher.on('change', event => {
   console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 });
 
