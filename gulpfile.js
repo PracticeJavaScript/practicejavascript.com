@@ -148,25 +148,25 @@ gulp.task('html', () => {
 const htmlWatcher = gulp.watch('src/html/*.html', ['html']);
 
 htmlWatcher.on('change', event => {
+  console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+});
+
 // SERVICE WORKER
 // ============================================================
 
 const rootDir = './public';
 gulp.task('generate-service-worker', callback => {
-  swPrecache.write(`./src/service-worker/service-worker.js`, {
-    staticFileGlobs: [rootDir + '/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff}'],
+  swPrecache.write(`./src/service-worker.js`, {
+    staticFileGlobs: [
+      `${rootDir}/dist/**/*.{js,css,png,jpg,gif,svg,eot,ttf,woff}`,
+      `${rootDir}/index.html`
+    ],
     stripPrefix: rootDir
   }, callback);
 });
 
-const swWatcher = gulp.watch([rootDir + '/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff}'], ['generate-service-worker']);
-
-swWatcher.on('change', event => {
-  console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
-});
-
-gulp.task('optimize-service-worker', () => {
-  gulp.src(`./src/service-worker/service-worker.js`)
+gulp.task('optimize-service-worker', ['generate-service-worker'], () => {
+  gulp.src(`./src/service-worker.js`)
     .pipe(sourcemaps.init({
       loadMaps: true
     }))
@@ -175,9 +175,12 @@ gulp.task('optimize-service-worker', () => {
     .pipe(gulp.dest('./public'));
 });
 
-const swOptoWatcher = gulp.watch(`./src/service-worker/service-worker.js`, ['optimize-service-worker']);
+// Do all service-worker things
+gulp.task('service-worker', ['generate-service-worker', 'optimize-service-worker']);
 
-swOptoWatcher.on('change', event => {
+const swWatcher = gulp.watch([rootDir + '/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff}'], ['service-worker']);
+
+swWatcher.on('change', event => {
   console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 });
 
@@ -196,4 +199,4 @@ function glob() {
   return 'typeof self !== "undefined" ? self : ' + 'typeof window !== "undefined" ? window : {}'; // eslint-disable-line no-useless-concat
 }
 
-gulp.task('default', ['build', 'generate-service-worker', 'optimize-service-worker', 'watch']);
+gulp.task('default', ['build', 'service-worker', 'watch']);

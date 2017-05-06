@@ -4,7 +4,7 @@
   "description": "practice javascript",
   "main": "index.js",
   "engines": {
-    "node": "7.8"
+    "node": "7"
   },
   "scripts": {
     "test": "xo",
@@ -33,7 +33,7 @@
     "ignore": [
       "src/js/loadJS.js",
       "src/js/sw-registration.js",
-      "src/service-worker/service-worker.js",
+      "src/service-worker.js",
       "public/**/*"
     ]
   },

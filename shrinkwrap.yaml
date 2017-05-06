@@ -7,16 +7,10 @@ dependencies:
   babel-preset-es2017@^6.24.1: 6.24.1
   babel-preset-latest@^6.24.1: 6.24.1
   babelify@^7.3.0: 7.3.0
-<<<<<<< HEAD
-  browserify@^14.1.0: 14.3.0
-  chai@^3.5.0: 3.5.0
-  cssnano@^3.10.0: 3.10.0
-  gulp-htmlmin@^3.0.0: 3.0.0
-=======
   browserify@^14.3.0: 14.3.0
   chai@^3.5.0: 3.5.0
   cssnano@^3.10.0: 3.10.0
->>>>>>> most of first sw done
+  gulp-htmlmin@^3.0.0: 3.0.0
   gulp-livereload@^3.8.1: 3.8.1
   gulp-postcss@^6.4.0: 6.4.0
   gulp-sass@^3.1.0: 3.1.0
@@ -30,10 +24,7 @@ dependencies:
   localforage@^1.5.0: 1.5.0
   rollup-stream@^1.19.0: 1.19.0
   static-eval@^1.1.1: 1.1.1
-<<<<<<< HEAD
-=======
   sw-precache@^5.1.1: 5.1.1
->>>>>>> most of first sw done
   uglifyify@^3.0.4: 3.0.4
   vinyl-buffer@^1.0.0: 1.0.0
   vinyl-source-stream@^1.1.0: 1.1.0
@@ -868,13 +859,10 @@ packages:
       base64-js: 1.2.0
       ieee754: 1.1.8
     resolution: 2ea669f7eec0b6eda05b08f8b5ff661b28573588
-<<<<<<< HEAD
   /bufferstreams/1.1.1:
     dependencies:
       readable-stream: 2.2.9
     resolution: 0161373060ac5988eff99058731114f6e195d51e
-=======
->>>>>>> most of first sw done
   /builtin-modules/1.1.1: 270f076c5a72c02f5b65a47df94c5fe3a278892f
   /builtin-status-codes/3.0.0: 85982878e21b98e1c66425e03d0174788f569ee8
   /bytes/2.2.0: fd35464a403f6f9117c2de3609ecff9cae000588
@@ -899,14 +887,11 @@ packages:
       callsites: 0.2.0
     resolution: 94085ef63581ecd3daa92444a8fe94e82577751f
   /callsites/0.2.0: afab96262910a7f33c19a5775825c69f34e350ca
-<<<<<<< HEAD
   /camel-case/3.0.0:
     dependencies:
       no-case: 2.3.1
       upper-case: 1.1.3
     resolution: ca3c3688a4e9cf3a4cda777dc4dcbc713249cf73
-=======
->>>>>>> most of first sw done
   /camelcase-keys/2.1.0:
     dependencies:
       camelcase: 2.1.1
@@ -981,13 +966,10 @@ packages:
     dependencies:
       chalk: 1.1.3
     resolution: b3bd36e93dd4cbfb395a3c26896352445265c05b
-<<<<<<< HEAD
   /clean-css/4.0.12:
     dependencies:
       source-map: 0.5.6
     resolution: a02e61707f1840bd3338f54dbc9acbda4e772fa3
-=======
->>>>>>> most of first sw done
   /clean-stack/1.1.1: a1b3711122df162df7c7cb9b3c0470f28cb58adb
   /clean-yaml-object/0.1.0: 63fb110dc2ce1a84dc21f6d9334876d010ae8b68
   /cli-boxes/1.0.0: 4fa917c3e59c94a004cd61f8ee509da651687143
@@ -1368,13 +1350,10 @@ packages:
       esutils: 2.0.2
       isarray: 1.0.0
     resolution: c73d8d2909d22291e1a007a395804da8b665fe63
-<<<<<<< HEAD
-=======
   /dom-urls/1.1.0:
     dependencies:
       urijs: 1.18.10
     resolution: 001ddf81628cd1e706125c7176f53ccec55d918e
->>>>>>> most of first sw done
   /domain-browser/1.1.7: 867aa4b093faa05f1de08c06f4d7b21fdf8698bc
   /dot-prop/3.0.0:
     dependencies:
@@ -1455,10 +1434,7 @@ packages:
       es6-symbol: 3.1.1
       event-emitter: 0.3.5
     resolution: 9136e0503dcc06a301690f0bb14ff4e364e949f0
-<<<<<<< HEAD
-=======
   /es6-promise/4.1.0: dda03ca8f9f89bc597e689842929de7ba8cebdf0
->>>>>>> most of first sw done
   /es6-set/0.1.5:
     dependencies:
       d: 1.0.0
@@ -1985,7 +1961,6 @@ packages:
     resolution: 7613c778a1afea62f25c630a086d7f3acbbdd818
   /graceful-fs/4.1.11: 0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658
   /graceful-readlink/1.0.1: 4cafad76bc62f02fa039b2f94e9a3dd3a391a725
-<<<<<<< HEAD
   /gulp-htmlmin/3.0.0:
     dependencies:
       bufferstreams: 1.1.1
@@ -1995,8 +1970,6 @@ packages:
       readable-stream: 2.2.9
       tryit: 1.0.3
     resolution: 19ea8002d1231d6b1f18a12d20f2a66a77770fb3
-=======
->>>>>>> most of first sw done
   /gulp-livereload/3.8.1:
     dependencies:
       chalk: 0.5.1
@@ -2130,10 +2103,7 @@ packages:
       hoek: 2.16.3
       sntp: 1.0.9
     resolution: 078444bd7c1640b0fe540d2c9b73d59678e8e1c4
-<<<<<<< HEAD
   /he/1.1.1: 93410fd21b009735151f8868c2f271f3427e23fd
-=======
->>>>>>> most of first sw done
   /hmac-drbg/1.0.1:
     dependencies:
       hash.js: 1.0.3
@@ -2152,7 +2122,6 @@ packages:
     resolution: 4c2bbc8a758998feebf5ed68580f76d46768b4bc
   /hosted-git-info/2.4.2: 0076b9f46a270506ddbaaea56496897460612a67
   /html-comment-regex/1.1.1: 668b93776eaae55ebde8f3ad464b307a4963625e
-<<<<<<< HEAD
   /html-minifier/3.4.3:
     dependencies:
       camel-case: 3.0.0
@@ -2164,8 +2133,6 @@ packages:
       relateurl: 0.2.7
       uglify-js: 2.8.22
     resolution: eb3a7297c804611f470454eeebe0aacc427e424a
-=======
->>>>>>> most of first sw done
   /htmlescape/1.1.1: 3a03edc2214bca3b66424a3e7959349509cb0351
   /http-errors/1.3.1:
     dependencies:
@@ -2623,10 +2590,7 @@ packages:
   /lodash.clonedeep/4.5.0: e23f3f9c4f8fbdde872529c1071857a086e5ccef
   /lodash.cond/4.5.2: f471a1da486be60f6ab955d17115523dd1d255d5
   /lodash.debounce/4.0.8: 82d79bff30a67c4005ffd5e2515300ad9ca4d7af
-<<<<<<< HEAD
-=======
   /lodash.defaults/4.2.0: d09178716ffea4dde9e5fb7b37f6f0802274580c
->>>>>>> most of first sw done
   /lodash.difference/4.5.0: 9ccb4e505d486b91651345772885a2df27fd017c
   /lodash.escape/3.2.0:
     dependencies:
@@ -2665,26 +2629,20 @@ packages:
       lodash.restparam: 3.6.1
       lodash.templatesettings: 3.1.1
     resolution: f8cdecc6169a255be9098ae8b0c53d378931d14f
-<<<<<<< HEAD
-=======
   /lodash.template/4.4.0:
     dependencies:
       lodash._reinterpolate: 3.0.0
       lodash.templatesettings: 4.1.0
     resolution: e73a0385c8355591746e020b99679c690e68fba0
->>>>>>> most of first sw done
   /lodash.templatesettings/3.1.1:
     dependencies:
       lodash._reinterpolate: 3.0.0
       lodash.escape: 3.2.0
     resolution: fb307844753b66b9f1afa54e262c745307dba8e5
-<<<<<<< HEAD
-=======
   /lodash.templatesettings/4.1.0:
     dependencies:
       lodash._reinterpolate: 3.0.0
     resolution: 2b4d4e95ba440d915ff08bc899e4553666713316
->>>>>>> most of first sw done
   /lodash.uniq/4.5.0: d0225373aeb652adc1bc82e4945339a842754773
   /lodash.upperfirst/4.3.1: 1365edf431480481ef0d1c68957a5ed99d49f7ce
   /lodash/1.0.2: 8f57560c83b59fc270bd3d561b690043430e2551
@@ -2709,10 +2667,7 @@ packages:
       currently-unhandled: 0.4.1
       signal-exit: 3.0.2
     resolution: 5b46f80147edee578870f086d04821cf998e551f
-<<<<<<< HEAD
   /lower-case/1.1.4: 9a2cabd1b9e8e0ae993a4bf7d5875c39c42e8eac
-=======
->>>>>>> most of first sw done
   /lowercase-keys/1.0.0: 4e3366b39e7f5457e35f1324bdf6f88d0bfc7306
   /lru-cache/2.7.3: 6d4524e8b955f95d4f5b58851ce21dd72fb4e952
   /lru-cache/4.0.2:
@@ -2850,7 +2805,6 @@ packages:
   /nan/2.6.2: e4ff34e6c95fdfb5aecc08de6596f43605a7db45
   /natives/1.1.0: e9ff841418a6b2ec7a495e939984f78f163e6e31
   /natural-compare/1.4.0: 4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7
-<<<<<<< HEAD
   /ncname/1.0.0:
     dependencies:
       xml-char-classes: 1.0.0
@@ -2859,8 +2813,6 @@ packages:
     dependencies:
       lower-case: 1.1.4
     resolution: 7aeba1c73a52184265554b7dc03baf720df80081
-=======
->>>>>>> most of first sw done
   /node-gyp/3.6.1:
     dependencies:
       fstream: 1.0.11
@@ -3052,13 +3004,10 @@ packages:
       semver: 5.3.0
     resolution: 8869a0401253661c4c4ca3da6c2121ed555f5eed
   /pako/0.2.9: f3f7522f4ef782348da8161bad9ecfd51bf83a75
-<<<<<<< HEAD
   /param-case/2.1.1:
     dependencies:
       no-case: 2.3.1
     resolution: df94fd8cf6531ecf75e6bef9a0858fbc72be2247
-=======
->>>>>>> most of first sw done
   /parents/1.0.1:
     dependencies:
       path-platform: 0.11.15
@@ -3109,13 +3058,10 @@ packages:
     dependencies:
       path-root-regex: 0.1.2
     resolution: 9a4a6814cac1c0cd73360a95f32083c8ea4745b7
-<<<<<<< HEAD
-=======
   /path-to-regexp/1.7.0:
     dependencies:
       isarray: 0.0.1
     resolution: 59fde0f435badacba103a84e9d3bc64e96b9937d
->>>>>>> most of first sw done
   /path-type/1.1.0:
     dependencies:
       graceful-fs: 4.1.11
@@ -3336,10 +3282,7 @@ packages:
   /prelude-ls/1.1.2: 21932a549f5e52ffd9a827f570e04be62a97da54
   /prepend-http/1.0.4: d4f4562b0ce3696e41ac52d0e002e57a635dc6dc
   /preserve/0.2.0: 815ed1f6ebc65926f865b310c0713bcb3315ce4b
-<<<<<<< HEAD
-=======
   /pretty-bytes/4.0.2: b2bf82e7350d65c6c33aa95aaa5a4f6327f61cd9
->>>>>>> most of first sw done
   /pretty-format/18.1.0:
     dependencies:
       ansi-styles: 2.2.1
@@ -3537,10 +3480,7 @@ packages:
     dependencies:
       jsesc: 0.5.0
     resolution: 7ee8f84dc6fa792d3fd0ae228d24bd949ead205c
-<<<<<<< HEAD
   /relateurl/0.2.7: 54dbf377e51440aca90a4cd274600d3ff2d888a9
-=======
->>>>>>> most of first sw done
   /remove-trailing-separator/1.0.1: 615ebb96af559552d4bf4057c8436d486ab63cc4
   /repeat-element/1.1.2: ef089a178d1483baae4d93eb98b4f9e4e11d990a
   /repeat-string/1.6.1: 8dcae470e1c88abc2d600fff4a776286da75e637
@@ -3658,10 +3598,7 @@ packages:
   /semver/4.3.6: 300bc6e0e86374f7ba61068b5b1ecd57fc6532da
   /semver/5.3.0: 9b2ce5d3de02d17c6012ad326aa6b4d0cf54f94f
   /sequencify/0.0.7: 90cff19d02e07027fd767f5ead3e7b95d1e7380c
-<<<<<<< HEAD
-=======
   /serviceworker-cache-polyfill/4.0.0: de19ee73bef21ab3c0740a37b33db62464babdeb
->>>>>>> most of first sw done
   /set-blocking/2.0.0: 045f9782d011ae9a6803ddd382b24392b3d890f7
   /set-immediate-shim/1.0.1: 4b2b1b27eb808a9f8dcc481a58e5e56f599f3f61
   /sha.js/2.4.8:
@@ -3875,8 +3812,6 @@ packages:
       sax: 1.2.2
       whet.extend: 0.9.9
     resolution: 9f5772413952135c6fefbf40afe6a4faa88b4bb5
-<<<<<<< HEAD
-=======
   /sw-precache/5.1.1:
     dependencies:
       dom-urls: 1.1.0
@@ -3895,7 +3830,6 @@ packages:
       path-to-regexp: 1.7.0
       serviceworker-cache-polyfill: 4.0.0
     resolution: 26df1d1c70348658e4dea2884319149b7b3183b5
->>>>>>> most of first sw done
   /symbol-observable/0.2.4: 95a83db26186d6af7e7a18dbd9760a2f86d08f40
   /symbol-observable/1.0.4: 29bf615d4aa7121bdd898b22d4b3f9bc4e2aa03d
   /syntax-error/1.3.0:
@@ -4046,11 +3980,8 @@ packages:
       semver-diff: 2.1.0
       xdg-basedir: 3.0.0
     resolution: ec0c1e53536b76647a24b77cb83966d9315123d9
-<<<<<<< HEAD
   /upper-case/1.1.3: f6b4501c2ec4cdd26ba78be7222961de77621598
-=======
   /urijs/1.18.10: b94463eaba59a1a796036a467bb633c667f221ab
->>>>>>> most of first sw done
   /urix/0.1.0: da937f7a62e21fec1fd18d49b35c2935067a6c72
   /url-parse-lax/1.0.0:
     dependencies:
@@ -4199,10 +4130,7 @@ packages:
       os-homedir: 1.0.2
     resolution: edbc903cc385fc04523d966a335504b5504d1bd2
   /xdg-basedir/3.0.0: 496b2cc109eca8dbacfe2dc72b603c17c5870ad4
-<<<<<<< HEAD
   /xml-char-classes/1.0.0: 64657848a20ffc5df583a42ad8a277b4512bbc4d
-=======
->>>>>>> most of first sw done
   /xo-init/0.5.0:
     dependencies:
       arrify: 1.0.1
