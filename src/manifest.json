@@ -3,7 +3,7 @@
   "name": "Practice JavaScript with this fun game",
   "background_color": "#0C141F",
   "theme_color": "#0C141F",
-  "display": "standalone",
+  "display": "minimal-ui",
   "icons": [
     {
       "src": "launcher-icon.svg",

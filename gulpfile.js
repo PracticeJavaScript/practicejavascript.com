@@ -42,6 +42,7 @@ const htmlminConfig = {
 
 const imageConfig = {
   pngquant: true,
+  svgo: false,
   concurrent: 10,
   jpegoptim: true
 };
