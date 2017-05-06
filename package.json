@@ -9,7 +9,9 @@
   "scripts": {
     "test": "./node_modules/.bin/xo",
     "build": "./node_modules/.bin/gulp build",
-    "watch": "./node_modules/.bin/gulp watch"
+    "watch": "./node_modules/.bin/gulp watch",
+    "precommit": "npm test",
+    "prepush": "npm test"
   },
   "browserslist": [
     "> 1%",
