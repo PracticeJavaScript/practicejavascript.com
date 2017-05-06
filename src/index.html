@@ -1,9 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Practice JavaScript</title>
     <meta charset="UTF-8">
+    <title>Practice JavaScript</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0C141F">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/launch-icon.svg">
+    <!-- OPEN GRAPH STUFF -->
+    <meta property="og:title" content="Practice JavaScript!">
+    <meta property="og:description" content="Practice JavaScript with this fun game">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://practicejavascript.com/dist/img/social-banner.png">
+    <meta property="og:url" content="https://practicejavascript.com">
+    <!-- TWITTER CARDS STUFF -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@jakob_anderson" />
+    <meta name="twitter:title" content="Practice JavaScript!" />
+    <meta name="twitter:description" content="Practice JavaScript with this fun game" />
+    <meta name="twitter:image" content="https://practicejavascript.com/dist/img/social-banner.png" />
+    <meta name="twitter:image:alt" content="PracticeJavaScript Logo" />
   </head>
   <body>
     <style>
@@ -53,6 +69,7 @@
             </div>
           </div>
           <div class="code-and-eval-console">
+            <label for="code" class="visually-hidden">Code Editor</label>
             <textarea id="code" class="code monospace" rows="10" autofocus autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
             <div id="eval-console" class="eval-console console monospace">
               <h4>CODE OUTPUT</h4>
@@ -80,6 +97,7 @@
     <link href="./dist/css/style.css" rel="stylesheet">
     <script src="./dist/js/bundle.min.js"></script>
     <script src="./dist/js/loadJS.js"></script>
+    <script src="./dist/js/sw-registration.js"></script>
 
     <!-- DEFER AND ASYNC ALL THE OTHER GARBAGE THAT ISN'T MY APP -->
     <script>
