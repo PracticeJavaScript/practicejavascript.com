@@ -32,7 +32,6 @@
   localforage
     .getItem('js_practice_config')
     .then(val => {
-      console.log('localforage val:', val);
       if (val) {
         config = val;
       }
@@ -46,9 +45,7 @@
   function updateLocalstore(config) {
     return localforage
       .setItem('js_practice_config', config)
-      .then(val => {
-        console.log('Settings updated:', val);
-      })
+      .then(val => val)
       .catch(err => {
         console.log('Settings update error:', err);
       });
