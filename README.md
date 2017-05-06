@@ -18,12 +18,13 @@
 
 ## How To Install Locally
 ```bash
-npm i -g yarn # if you don't have yarn yet
-yarn global add firebase-tools # if you don't have firebase-tools yet
+npm i -g pnpm # if you don't have pnpm yet
+pnpm i -g firebase-tools # if you don't have firebase-tools yet
+pnpm i -g gulp gulp-cli # if you don't have gulp yet
 git clone https://github.com/PracticeJavaScript/practicejavascript.com.git
 cd practicejavascript.com
-yarn install
-yarn run watch
+pnpm i
+gulp # watch is default gulp task
 # Another tab
 firebase serve
 ```

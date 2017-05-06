@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<svg width="640" height="480" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
+ <defs>
+  <symbol viewBox="0 0 481.6 481.6" y="0px" x="0px" id="svg_2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+   <g>
+    <path d="m422.2,24.5l-362.8,0c-32.7,0 -59.4,26.6 -59.4,59.4l0,230.1c0,32.7 26.6,59.4 59.4,59.4l167.9,0l0,56.7l-83.7,0c-7.5,0 -13.5,6 -13.5,13.5s6,13.5 13.5,13.5l194.4,0c7.5,0 13.5,-6 13.5,-13.5s-6,-13.5 -13.5,-13.5l-83.7,0l0,-56.7l167.9,0c32.7,0 59.4,-26.6 59.4,-59.4l0,-230.1c0,-32.8 -26.6,-59.4 -59.4,-59.4zm-362.8,27l362.9,0c17.8,0 32.4,14.5 32.4,32.4l0,192.3l-427.7,0l0,-192.3c0,-17.9 14.5,-32.4 32.4,-32.4zm362.8,294.9l-362.8,0c-17.8,0 -32.4,-14.5 -32.4,-32.4l0,-10.8l427.6,0l0,10.8c0,17.8 -14.5,32.4 -32.4,32.4z" fill="#ffffff"/>
+   </g>
+   <g/>
+   <g/>
+   <g/>
+   <g/>
+   <g/>
+   <g/>
+   <g/>
+   <g/>
+   <g/>
+   <g/>
+   <g/>
+   <g/>
+   <g/>
+   <g/>
+   <g/>
+  </symbol>
+ </defs>
+ <g>
+  <title>Layer 1</title>
+  <rect stroke="#000000" id="svg_5" height="216.046875" width="216.046875" y="-0.09375" x="-0.249974" stroke-width="0" fill="#0c141f"/>
+  <use x="9.594375" y="88.042499" transform="matrix(0.3322259187698364,0,0,0.3322259187698364,0,0) " xlink:href="#svg_2" id="svg_3"/>
+  <g id="svg_4"/>
+ </g>
+</svg>

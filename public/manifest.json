@@ -1,0 +1,14 @@
+{
+  "short_name": "PracticeJS",
+  "name": "Practice JavaScript with this fun game",
+  "background_color": "#0C141F",
+  "theme_color": "#0C141F",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "launcher-icon.svg",
+      "sizes": "256x256"
+    }
+  ],
+  "start_url": "index.html?utm_source=homescreen"
+}

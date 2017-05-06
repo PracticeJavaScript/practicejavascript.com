@@ -17,6 +17,7 @@ const sass = require('gulp-sass');
 const livereload = require('gulp-livereload');
 const htmlmin = require('gulp-htmlmin');
 const swPrecache = require('sw-precache');
+const image = require('gulp-image');
 
 // CONFIG
 // ============================================================
@@ -37,6 +38,12 @@ const htmlminConfig = {
   collapseWhitespace: true,
   minifyCSS: true,
   minifyJS: true
+};
+
+const imageConfig = {
+  pngquant: true,
+  concurrent: 10,
+  jpegoptim: true
 };
 
 // TASKS
@@ -124,13 +131,22 @@ jsWatcher.on('change', event => {
 // IMG
 // ============================================================
 
-gulp.task('img', () => {
-  return gulp.src('./src/img/*.svg')
+gulp.task('img-icons', () => {
+  return gulp.src('./src/*.svg')
     .pipe(svgo())
+    .pipe(gulp.dest('./public/'));
+});
+
+gulp.task('img-images', () => {
+  return gulp.src('./src/img/*.{svg,png,jpg}')
+    .pipe(svgo())
+    .pipe(image(imageConfig))
     .pipe(gulp.dest('./public/dist/img'));
 });
 
-const imgWatcher = gulp.watch('src/img/*.svg', ['img']);
+gulp.task('img', ['img-icons', 'img-images']);
+
+const imgWatcher = gulp.watch('src/**/*.{svg,png}', ['img']);
 
 imgWatcher.on('change', event => {
   console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
@@ -140,12 +156,12 @@ imgWatcher.on('change', event => {
 // ============================================================
 
 gulp.task('html', () => {
-  return gulp.src('./src/html/*.html')
+  return gulp.src('./src/*.html')
     .pipe(htmlmin(htmlminConfig))
     .pipe(gulp.dest('./public/')); // Output goes to root of /public, as per firebase hosting
 });
 
-const htmlWatcher = gulp.watch('src/html/*.html', ['html']);
+const htmlWatcher = gulp.watch('src/*.html', ['html']);
 
 htmlWatcher.on('change', event => {
   console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
@@ -159,6 +175,7 @@ gulp.task('generate-service-worker', callback => {
   swPrecache.write(`./src/service-worker.js`, {
     staticFileGlobs: [
       `${rootDir}/dist/**/*.{js,css,png,jpg,gif,svg,eot,ttf,woff}`,
+      `${rootDir}/launcher-icon-*.{png,svg}`,
       `${rootDir}/index.html`
     ],
     stripPrefix: rootDir
@@ -166,7 +183,7 @@ gulp.task('generate-service-worker', callback => {
 });
 
 gulp.task('optimize-service-worker', ['generate-service-worker'], () => {
-  gulp.src(`./src/service-worker.js`)
+  return gulp.src(`./src/service-worker.js`)
     .pipe(sourcemaps.init({
       loadMaps: true
     }))
@@ -181,6 +198,20 @@ gulp.task('service-worker', ['generate-service-worker', 'optimize-service-worker
 const swWatcher = gulp.watch([rootDir + '/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff}'], ['service-worker']);
 
 swWatcher.on('change', event => {
+  console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+});
+
+// MANIFEST
+// ============================================================
+
+gulp.task('manifest', () => {
+  return gulp.src('./src/manifest.json')
+    .pipe(gulp.dest('./public/'));
+});
+
+const manifestWatcher = gulp.watch('src/manifest.json', ['manifest']);
+
+manifestWatcher.on('change', event => {
   console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 });
 
@@ -199,4 +230,4 @@ function glob() {
   return 'typeof self !== "undefined" ? self : ' + 'typeof window !== "undefined" ? window : {}'; // eslint-disable-line no-useless-concat
 }
 
-gulp.task('default', ['build', 'service-worker', 'watch']);
+gulp.task('default', ['build', 'manifest', 'service-worker', 'watch']);

@@ -15,7 +15,7 @@
   },
   "browserslist": [
     "> 1%",
-    "last 1 versions"
+    "last 2 versions"
   ],
   "xo": {
     "env": [
@@ -71,9 +71,10 @@
     "babelify": "^7.3.0",
     "browserify": "^14.3.0",
     "chai": "^3.5.0",
-    "gulp-htmlmin": "^3.0.0",
     "cssnano": "^3.10.0",
     "gulp": "^3.9.1",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-image": "^2.8.0",
     "gulp-livereload": "^3.8.1",
     "gulp-postcss": "^6.4.0",
     "gulp-sass": "^3.1.0",
