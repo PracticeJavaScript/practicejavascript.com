@@ -16,6 +16,7 @@ const svgo = require('gulp-svgo');
 const sass = require('gulp-sass');
 const livereload = require('gulp-livereload');
 const htmlmin = require('gulp-htmlmin');
+const swPrecache = require('sw-precache');
 
 // CONFIG
 // ============================================================
@@ -105,7 +106,12 @@ cssWatcher.on('change', event => {
 // ============================================================
 
 gulp.task('js', () => {
-  return gulp.src('./src/js/loadJS.js')
+  return gulp.src(['./src/js/*.js', '!./src/js/index.js'])
+    .pipe(sourcemaps.init({
+      loadMaps: true
+    }))
+    .pipe(uglify(uglifyConf))
+    .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./public/dist/js'));
 });
 
@@ -142,13 +148,43 @@ gulp.task('html', () => {
 const htmlWatcher = gulp.watch('src/html/*.html', ['html']);
 
 htmlWatcher.on('change', event => {
+// SERVICE WORKER
+// ============================================================
+
+const rootDir = './public';
+gulp.task('generate-service-worker', callback => {
+  swPrecache.write(`./src/service-worker/service-worker.js`, {
+    staticFileGlobs: [rootDir + '/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff}'],
+    stripPrefix: rootDir
+  }, callback);
+});
+
+const swWatcher = gulp.watch([rootDir + '/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff}'], ['generate-service-worker']);
+
+swWatcher.on('change', event => {
+  console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+});
+
+gulp.task('optimize-service-worker', () => {
+  gulp.src(`./src/service-worker/service-worker.js`)
+    .pipe(sourcemaps.init({
+      loadMaps: true
+    }))
+    .pipe(uglify(uglifyConf))
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest('./public'));
+});
+
+const swOptoWatcher = gulp.watch(`./src/service-worker/service-worker.js`, ['optimize-service-worker']);
+
+swOptoWatcher.on('change', event => {
   console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 });
 
 // BUILD
 // ============================================================
 
-gulp.task('build', () => {
+gulp.task('build', ['css', 'js', 'img', 'html'], () => {
   return compile();
 });
 gulp.task('watch', () => {
@@ -160,4 +196,4 @@ function glob() {
   return 'typeof self !== "undefined" ? self : ' + 'typeof window !== "undefined" ? window : {}'; // eslint-disable-line no-useless-concat
 }
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['build', 'generate-service-worker', 'optimize-service-worker', 'watch']);
