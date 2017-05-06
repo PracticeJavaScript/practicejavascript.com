@@ -1,0 +1,6 @@
+engines:
+  csslint:
+    enabled: true
+exclude_paths:
+  - public/**/*
+  - src/js/loadJS.js
