@@ -1,11 +1,15 @@
-(function (document, window) {
-  // DEPENDENCIES
-  // ============================================================
-  const localforage = require('localforage');
+// DEPENDENCIES
+// ============================================================
+// import localforage from 'localforage';
 
-  // PROBLEMS
-  // ============================================================
-  const problems = require('../problems/arrays.js');
+// PROBLEMS
+// ============================================================
+// import * as arrays from '../problems/arrays';
+const arrays = require('../problems/arrays');
+
+(function () {
+  const problems = [];
+  problems.push(...arrays.default);
 
   // CONFIG
   // ============================================================
@@ -29,26 +33,39 @@
   };
 
   // Pull config from localforage
-  localforage
-    .getItem('js_practice_config')
-    .then(val => {
-      if (val) {
-        config = val;
-      }
-      loadApp(config);
-    })
-    .catch(err => {
-      console.log('localforage err:', err);
-      loadApp(config);
-    });
+  const localConfig = localStorage.getItem('js_practice_config');
+
+  // If it's cool, use it
+  if (localConfig) {
+    config = JSON.parse(localConfig);
+  } else {
+    console.log('error getting previous or no config');
+  }
+  loadApp(config);
+
+  // localforage
+  //   .getItem('js_practice_config')
+  //   .then(val => {
+  //     if (val) {
+  //       config = val;
+  //     }
+  //     loadApp(config);
+  //   })
+  //   .catch(err => {
+  //     console.log('localforage err:', err);
+  //     loadApp(config);
+  //   });
 
   function updateLocalstore(config) {
-    return localforage
-      .setItem('js_practice_config', config)
-      .then(val => val)
-      .catch(err => {
-        console.log('Settings update error:', err);
-      });
+    // return localforage
+    //   .setItem('js_practice_config', config)
+    //   .then(val => val)
+    //   .catch(err => {
+    //     console.log('Settings update error:', err);
+    //   });
+    return new Promise((resolve, reject) => {
+      resolve(localStorage.setItem('js_practice_config', JSON.stringify(config)));
+    });
   }
 
   // HELPERS
@@ -78,15 +95,15 @@
   // ============================================================
 
   // elements
-  const problemEl = document.getElementById('problem');
-  const codeEl = document.getElementById('code');
-  const testSuiteEl = document.getElementById('test-suite');
-  const testTotalEl = document.getElementById('test-total');
-  const evalConsoleEl = document.getElementById('eval-output');
-  const assertConsoleEl = document.getElementById('assert-output');
-  const shuffleProblemsButtonEl = document.getElementById('shuffle-problems');
-  const previousProblemButtonEl = document.getElementById('prev-problem');
-  const nextProblemButtonEl = document.getElementById('next-problem');
+  // const document.getElementById('problem') = document.getElementById('problem');
+  // const document.getElementById('code') = document.getElementById('code');
+  // const document.getElementById('test-suite') = document.getElementById('test-suite');
+  // const document.getElementById('test-total') = document.getElementById('test-total');
+  // const document.getElementById('eval-output') = document.getElementById('eval-output');
+  // const document.getElementById('assert-output') = document.getElementById('assert-output');
+  // const document.getElementById('shuffle-problems') = document.getElementById('shuffle-problems');
+  // const document.getElementById('prev-problem') = document.getElementById('prev-problem');
+  // const document.getElementById('next-problem') = document.getElementById('next-problem');
 
   // Get indexes
   function getRandomIndex(problemsArr) {
@@ -128,7 +145,7 @@
   function previousProblem() {
     console.log('previousProblem!');
     // Activate back button, for visual queue of nav feedback
-    previousProblemButtonEl.classList.add('active');
+    document.getElementById('prev-problem').classList.add('active');
     config.currentIndex = config.shuffle
       ? getRandomIndex(problems)
       : getPreviousIndex(problems);
@@ -140,7 +157,7 @@
   function nextProblem() {
     console.log('nextProblem!');
     // Activate next button, for visual queue of nav feedback
-    nextProblemButtonEl.classList.add('active');
+    document.getElementById('next-problem').classList.add('active');
     config.currentIndex = config.shuffle
       ? getRandomIndex(problems)
       : getNextIndex(problems);
@@ -152,18 +169,18 @@
   function toggleShuffle() {
     console.log('toggle shuffle!');
     config.shuffle = !config.shuffle; // Flip it
-    shuffleProblemsButtonEl.classList.toggle('active');
-    previousProblemButtonEl.parentNode.classList.toggle('hidden');
+    document.getElementById('shuffle-problems').classList.toggle('active');
+    document.getElementById('prev-problem').parentNode.classList.toggle('hidden');
     updateLocalstore(config);
   }
 
   function loadProblem(problemObj) {
     currentProblem = problemObj;
     // Prob question
-    problemEl.innerText = problemObj.prompt;
+    document.getElementById('problem').innerText = problemObj.prompt;
     // Prob given code
     if (problemObj.given) {
-      codeEl.value = problemObj.given;
+      document.getElementById('code').value = problemObj.given;
     }
     // Seed the tests, pass (init = true) as second param
     testSuite(null, true);
@@ -187,7 +204,7 @@
                 </div>`;
         })
         .join('');
-      testSuiteEl.innerHTML = testsDom;
+      document.getElementById('test-suite').innerHTML = testsDom;
     }
   }
 
@@ -202,7 +219,8 @@
         allPassed = false;
       }
     });
-    const testEls = [].slice.call(testSuiteEl.querySelectorAll('.test-state'));
+    const testState = document.getElementById('test-suite');
+    const testEls = [].slice.call(testState.querySelectorAll('.test-state'));
     testEls.forEach((testStatusEl, iter) => {
       if (testStatuses[iter] === true) {
         testStatusEl.innerHTML = '[&#x2713;]';
@@ -216,13 +234,13 @@
     });
 
     if (allPassed === true) {
-      testTotalEl.innerText = 'PASS';
-      testTotalEl.classList.remove('fail');
-      testTotalEl.classList.add('pass');
+      document.getElementById('test-total').innerText = 'PASS';
+      document.getElementById('test-total').classList.remove('fail');
+      document.getElementById('test-total').classList.add('pass');
     } else {
-      testTotalEl.innerText = 'FAIL';
-      testTotalEl.classList.remove('pass');
-      testTotalEl.classList.add('fail');
+      document.getElementById('test-total').innerText = 'FAIL';
+      document.getElementById('test-total').classList.remove('pass');
+      document.getElementById('test-total').classList.add('fail');
     }
   }
 
@@ -238,7 +256,7 @@
     }
 
     // Prepend element
-    assertConsoleEl.innerHTML = inner;
+    document.getElementById('assert-output').innerHTML = inner;
   }
 
   function printEvalOutput(errObj, output) {
@@ -256,7 +274,7 @@
       </div>`;
     }
     // Prepend element
-    evalConsoleEl.innerHTML = inner;
+    document.getElementById('eval-output').innerHTML = inner;
   }
 
   // VERIFICATION LOGIC
@@ -264,13 +282,13 @@
 
   function testSuite(init) {
     // Show 'working' indicator
-    testTotalEl.classList.toggle('working');
+    document.getElementById('test-total').classList.toggle('working');
     // Run stuff
-    const output = getOutput(codeEl.value);
+    const output = getOutput(document.getElementById('code').value);
     // Run tests on code, return object/array of test results
     const tested = runTests(output);
     // Hide 'working' indicator
-    testTotalEl.classList.toggle('working');
+    document.getElementById('test-total').classList.toggle('working');
     // Update UI with results
     updateTests(tested, init);
   }
@@ -309,8 +327,8 @@
 
     // Show current toggle state
     if (config.shuffle === true) {
-      shuffleProblemsButtonEl.classList.add('active');
-      previousProblemButtonEl.parentNode.classList.add('hidden');
+      document.getElementById('shuffle-problems').classList.add('active');
+      document.getElementById('prev-problem').parentNode.classList.add('hidden');
     }
 
     // Keybinding stuff
@@ -343,11 +361,11 @@
     // ============================================================
 
     // Bind it up
-    codeEl.addEventListener('keydown', debouncedInputValidation);
+    document.getElementById('code').addEventListener('keydown', debouncedInputValidation);
     document.addEventListener('keydown', problemNav);
-    shuffleProblemsButtonEl.addEventListener('click', toggleShuffle);
-    previousProblemButtonEl.addEventListener('click', previousProblem);
-    nextProblemButtonEl.addEventListener('click', nextProblem);
+    document.getElementById('shuffle-problems').addEventListener('click', toggleShuffle);
+    document.getElementById('prev-problem').addEventListener('click', previousProblem);
+    document.getElementById('next-problem').addEventListener('click', nextProblem);
 
     // Start it up!
     // Load current problem
@@ -356,4 +374,4 @@
     // Initalized test suite with starting failures
     testSuite(true);
   }
-})(document, window);
+})();

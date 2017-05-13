@@ -1,6 +1,12 @@
-const assert = require('chai').assert;
+import { assert } from 'chai';
+// const assert = require('chai').assert;
 
-module.exports = [
+// console.log('chai:', chai);
+
+// const assert = chai.assert;
+
+console.log('assert:', assert);
+export default [
   {
     name: 'Create Array',
     time: 10,
