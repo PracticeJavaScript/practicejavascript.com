@@ -314,11 +314,7 @@
       let testOutcome = false;
       try {
         if (output) {
-          // const testEval = eval(test.test);
-
           testOutcome = eval(test.test);
-          console.log('testOutcome:', testOutcome);
-
         }
         printAssertError(null);
       } catch (err) {

@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["/dist/css/style.css","ba4d66c91d1ed66848154a34ab4948cf"],["/dist/img/back.svg","898ada2a32ec64bd5b6959c22e8f231d"],["/dist/img/monitor.svg","348592da5567b5a3c46acfb5dcd341bc"],["/dist/img/next.svg","045593410b9f51390e750b9e1e7fff15"],["/dist/img/reload.svg","a0ab1b765280e4d22e6fb747042f6503"],["/dist/img/shuffle.svg","3a5e3c1bf04eb3493d8a2ffa547aa58f"],["/dist/img/social-banner.png","7c1a8058bb3d00c2b40283c735748cfc"],["/dist/js/bundle.min.js","72b4f3c34fac3a128cb74efc7e15d71a"],["/dist/js/loadJS.js","72c55936069f60560a386e46f462c73a"],["/dist/js/sw-registration.js","677217d8e642c1ccff69fc01c96b4431"],["/index.html","c7522a5d3255caca0f12c5282ef0644d"]];
+var precacheConfig = [["/dist/css/style.css","ba4d66c91d1ed66848154a34ab4948cf"],["/dist/img/back.svg","898ada2a32ec64bd5b6959c22e8f231d"],["/dist/img/monitor.svg","348592da5567b5a3c46acfb5dcd341bc"],["/dist/img/next.svg","045593410b9f51390e750b9e1e7fff15"],["/dist/img/reload.svg","a0ab1b765280e4d22e6fb747042f6503"],["/dist/img/shuffle.svg","3a5e3c1bf04eb3493d8a2ffa547aa58f"],["/dist/img/social-banner.png","7c1a8058bb3d00c2b40283c735748cfc"],["/dist/js/bundle.min.js","d6329d2b9a6a07313555b757df5081d3"],["/dist/js/loadJS.js","72c55936069f60560a386e46f462c73a"],["/dist/js/sw-registration.js","677217d8e642c1ccff69fc01c96b4431"],["/index.html","c7522a5d3255caca0f12c5282ef0644d"]];
 var cacheName = 'sw-precache-v3--' + (self.registration ? self.registration.scope : '');
 
 
