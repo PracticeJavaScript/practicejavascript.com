@@ -23,11 +23,11 @@ dependencies:
   gulp-uglify@^3.0.0: 3.0.0
   gulp-util@^3.0.8: 3.0.8
   gulp@^3.9.1: 3.9.1
+  http-server@^0.10.0: 0.10.0
   husky@^0.13.3: 0.13.4
   lint-staged@^3.4.0: 3.6.0
   localforage@^1.5.0: 1.5.0
   pjs-problems@^1.0.3: 1.0.3
-  pump@^1.0.2: 1.0.2
   rollup-stream@^1.19.0: 1.19.0
   sw-precache@^5.1.1: 5.1.1
   uglify-es@^3.0.15: 3.0.15
@@ -1129,6 +1129,7 @@ packages:
       css-color-names: 0.0.4
       has: 1.0.1
     resolution: ea2f7420a72b96881a38aae59ec124a6f7298133
+  /colors/1.0.3: 0433f44d809680fdeb60ed260f1b0c262e82a40b
   /colors/1.1.2: 168a4701756b6a7f51a12ce0c97bfa28c084ed63
   /combine-source-map/0.7.2:
     dependencies:
@@ -1204,6 +1205,7 @@ packages:
     resolution: f85e2cf9bfed28f773cc8b3fa5c5b69bdc02fe3f
   /core-js/2.4.1: 4de911e667b0eae9124e34254b53aea6fc618d3e
   /core-util-is/1.0.2: b5fd54220aa2bc5ab57aab7140c940754503c1a7
+  /corser/2.0.1: 8eda252ecaab5840dcd975ceb90d9370c819ff87
   /cosmiconfig/1.1.0:
     dependencies:
       graceful-fs: 4.1.11
@@ -1558,6 +1560,13 @@ packages:
     dependencies:
       jsbn: 0.1.1
     resolution: 0fc73a9ed5f0d53c38193398523ef7e543777505
+  /ecstatic/2.1.0:
+    dependencies:
+      he: 0.5.0
+      mime: 1.3.6
+      minimist: 1.2.0
+      url-join: 1.1.0
+    resolution: 477a4a6b25cecb112f697dbd2c7fa354154ea6be
   /ee-first/1.1.1: 590c61156b0ae2f4f0255732a158b266bc56b21d
   /electron-to-chromium/1.3.13: 1b3a5eace6e087bb5e257a100b0cbfe81b2891fc
   /elegant-spinner/1.0.1: db043521c95d7e303fd8f345bedc3349cfb0729e
@@ -1798,6 +1807,7 @@ packages:
       stream-combiner: 0.0.4
       through: 2.3.8
     resolution: 4ab4c9a0f5a54db9338b4c34d86bfce8f4b35571
+  /eventemitter3/1.2.0: 1c86991d816ad1e504750e73874224ecf3bec508
   /events/1.1.1: 9ebdb7635ad099c70dcc4c2a1f5004288e8bd924
   /evp_bytestokey/1.0.0:
     dependencies:
@@ -2412,6 +2422,7 @@ packages:
       hoek: 2.16.3
       sntp: 1.0.9
     resolution: 078444bd7c1640b0fe540d2c9b73d59678e8e1c4
+  /he/0.5.0: 2c05ffaef90b68e860f3fd2b54ef580989277ee2
   /he/1.1.1: 93410fd21b009735151f8868c2f271f3427e23fd
   /hmac-drbg/1.0.1:
     dependencies:
@@ -2448,6 +2459,22 @@ packages:
       inherits: 2.0.3
       statuses: 1.3.1
     resolution: 197e22cdebd4198585e8694ef6786197b91ed942
+  /http-proxy/1.16.2:
+    dependencies:
+      eventemitter3: 1.2.0
+      requires-port: 1.0.0
+    resolution: 06dff292952bf64dbe8471fa9df73066d4f37742
+  /http-server/0.10.0:
+    dependencies:
+      colors: 1.0.3
+      corser: 2.0.1
+      ecstatic: 2.1.0
+      http-proxy: 1.16.2
+      opener: 1.4.3
+      optimist: 0.6.1
+      portfinder: 1.0.13
+      union: 0.4.6
+    resolution: b2a446b16a9db87ed3c622ba9beb1b085b1234a7
   /http-signature/1.1.1:
     dependencies:
       assert-plus: 0.2.0
@@ -3107,6 +3134,7 @@ packages:
     dependencies:
       mime-db: 1.27.0
     resolution: a4ebf5064094569237b8cf70046776d09fc92aed
+  /mime/1.3.6: 591d84d3653a6b0b4a3b9df8de5aa8108e72e5e0
   /mimic-fn/1.1.0: e667783d92e89dbd342818b5230b9d62a672ad18
   /mini-lr/0.1.9:
     dependencies:
@@ -3132,6 +3160,7 @@ packages:
     dependencies:
       brace-expansion: 1.1.7
     resolution: 5166e286457f03306064be5497e8dbb0c3d32083
+  /minimist/0.0.10: de3f98543dbf96082be48ad1a0c7cda836301dcf
   /minimist/0.0.8: 857fcabfc3397d2625b8228262e86aa7a011b05d
   /minimist/1.2.0: a35008b20f41383eec1fb914f4cd5df79a264284
   /mkdirp/0.5.1:
@@ -3311,6 +3340,12 @@ packages:
     dependencies:
       mimic-fn: 1.1.0
     resolution: 067428230fd67443b2794b22bba528b6867962d4
+  /opener/1.4.3: 5c6da2c5d7e5831e8ffa3964950f8d6674ac90b8
+  /optimist/0.6.1:
+    dependencies:
+      minimist: 0.0.10
+      wordwrap: 0.0.3
+    resolution: da3ea74686fa21a19a111c326e90eb15a0196686
   /option-chain/0.1.1:
     dependencies:
       object-assign: 4.1.1
@@ -3512,6 +3547,12 @@ packages:
       bin-wrapper: 3.0.2
       logalot: 2.1.0
     resolution: d124d98a75a9487f40c1640b4dbfcbb2bd5a1fd1
+  /portfinder/1.0.13:
+    dependencies:
+      async: 1.5.2
+      debug: 2.6.8
+      mkdirp: 0.5.1
+    resolution: bb32ecd87c27104ae6ee44b5a3ccbf0ebb1aede9
   /postcss-calc/5.3.1:
     dependencies:
       postcss: 5.2.17
@@ -3713,15 +3754,11 @@ packages:
       parse-asn1: 5.1.0
       randombytes: 2.0.4
     resolution: 39f699f3a46560dd5ebacbca693caf7c65c18cc6
-  /pump/1.0.2:
-    dependencies:
-      end-of-stream: 1.4.0
-      once: 1.4.0
-    resolution: 3b3ee6512f94f0e575538c17995f9f16990a5d51
   /punycode/1.3.2: 9653a036fb7c1ee42342f2325cceefea3926c48d
   /punycode/1.4.1: c0d5a63b2718800ad8e1eb0fa5269c84dd41845e
   /q/1.5.0: dd01bac9d06d30e6f219aecb8253ee9ebdc308f1
   /qs/2.2.5: 1088abaf9dcc0ae5ae45b709e6c6b5888b23923c
+  /qs/2.3.3: e9e85adbe75da0bbe4c8e0476a086290f863b404
   /qs/5.2.0: a9f31142af468cb72b25b30136ba2456834916be
   /qs/6.4.0: 13e26d28ad6b0ffaa91312cd3bf708ed351e7233
   /query-string/4.3.4:
@@ -3933,6 +3970,7 @@ packages:
       caller-path: 0.1.0
       resolve-from: 1.0.1
     resolution: 4e0d56d6c9662fd31e43011c4b95aa49955421d3
+  /requires-port/1.0.0: 925d2601d39ac485e091cf0da5c6e694dc3dcaff
   /resolve-cwd/1.0.0:
     dependencies:
       resolve-from: 2.0.0
@@ -4415,6 +4453,10 @@ packages:
   /uid2/0.0.3: 483126e11774df2f71b8b639dcd799c376162b82
   /umd/3.0.1: 8ae556e11011f63c2596708a8837259f01b3d60e
   /unc-path-regex/0.1.2: e73dd3d7b0d7c5ed86fbac6b0ae7d8c6a69d50fa
+  /union/0.4.6:
+    dependencies:
+      qs: 2.3.3
+    resolution: 198fbdaeba254e788b0efcb630bc11f24a2959e0
   /uniq/1.0.1: b31c5ae8254844a3a8281541ce2b04b865a734ff
   /uniqid/4.1.1:
     dependencies:
@@ -4471,6 +4513,7 @@ packages:
   /upper-case/1.1.3: f6b4501c2ec4cdd26ba78be7222961de77621598
   /urijs/1.18.10: b94463eaba59a1a796036a467bb633c667f221ab
   /urix/0.1.0: da937f7a62e21fec1fd18d49b35c2935067a6c72
+  /url-join/1.1.0: 741c6c2f4596c4830d6718460920d0c92202dc78
   /url-parse-lax/1.0.0:
     dependencies:
       prepend-http: 1.0.4
@@ -4617,6 +4660,7 @@ packages:
     resolution: 0c09c85c2a94683d0d7eaf8ee097d564bf0e105c
   /window-size/0.1.0: 5438cd2ea93b202efa3a19fe8887aee7c94f9c9d
   /wordwrap/0.0.2: b79669bb42ecb409f83d583cad52ca17eaa1643f
+  /wordwrap/0.0.3: a3d5da6cd5c0bc0008d37234bbaf1bed63059107
   /wordwrap/1.0.0: 27584810891456a4171c8d0226441ade90cbcaeb
   /wrap-ansi/2.1.0:
     dependencies:

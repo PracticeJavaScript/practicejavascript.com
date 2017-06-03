@@ -20,7 +20,6 @@ const livereload = require('gulp-livereload');
 const htmlmin = require('gulp-htmlmin');
 const swPrecache = require('sw-precache');
 const image = require('gulp-image');
-const pump = require('pump');
 
 // CONFIG
 // ============================================================
@@ -35,7 +34,8 @@ const opts = {
   }
 };
 
-const uglifyConf = {};
+const prepackConfig = {};
+const uglifyConfig = {};
 
 const htmlminConfig = {
   collapseWhitespace: true,
@@ -49,6 +49,7 @@ const imageConfig = {
   concurrent: 10,
   jpegoptim: true
 };
+
 
 // TASKS
 // ============================================================
@@ -74,7 +75,7 @@ function compile(watch) {
       .pipe(sourcemaps.init({
         loadMaps: true
       }))
-      .pipe(uglify())
+      .pipe(uglify(uglifyConfig))
       .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest('./public/dist/js'));
   }
@@ -82,6 +83,7 @@ function compile(watch) {
     bundler.on('update', () => {
       console.log('-> bundling...');
       rebundle();
+      livereload();
       console.log('done bundling.');
     });
   }
@@ -91,6 +93,7 @@ function compile(watch) {
 function watch() {
   return compile(true);
 }
+
 
 // CSS
 // ============================================================
@@ -113,6 +116,7 @@ cssWatcher.on('change', event => {
   console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 });
 
+
 // OTHER JS
 // ============================================================
 
@@ -121,7 +125,7 @@ gulp.task('js', () => {
     .pipe(sourcemaps.init({
       loadMaps: true
     }))
-    .pipe(uglify(uglifyConf))
+    .pipe(uglify(uglifyConfig))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./public/dist/js'));
 });
@@ -131,6 +135,7 @@ const jsWatcher = gulp.watch('./src/js/loadJS.js', ['js']);
 jsWatcher.on('change', event => {
   console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 });
+
 
 // IMG
 // ============================================================
@@ -156,6 +161,7 @@ imgWatcher.on('change', event => {
   console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 });
 
+
 // HTML
 // ============================================================
 
@@ -170,6 +176,7 @@ const htmlWatcher = gulp.watch('src/*.html', ['html']);
 htmlWatcher.on('change', event => {
   console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 });
+
 
 // SERVICE WORKER
 // ============================================================
@@ -191,7 +198,7 @@ gulp.task('optimize-service-worker', ['generate-service-worker'], () => {
     .pipe(sourcemaps.init({
       loadMaps: true
     }))
-    .pipe(uglify(uglifyConf))
+    .pipe(uglify(uglifyConfig))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./public'));
 });
@@ -204,6 +211,7 @@ const swWatcher = gulp.watch([rootDir + '/**/*.{js,html,css,png,jpg,gif,svg,eot,
 swWatcher.on('change', event => {
   console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 });
+
 
 // MANIFEST
 // ============================================================
@@ -218,6 +226,7 @@ const manifestWatcher = gulp.watch('src/manifest.json', ['manifest']);
 manifestWatcher.on('change', event => {
   console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 });
+
 
 // BUILD
 // ============================================================
@@ -234,4 +243,6 @@ function glob() {
   return 'typeof self !== "undefined" ? self : ' + 'typeof window !== "undefined" ? window : {}'; // eslint-disable-line no-useless-concat
 }
 
+
+// gulp.task('default', ['build', 'manifest', 'service-worker', 'watch']);
 gulp.task('default', ['build', 'manifest', 'service-worker', 'watch']);

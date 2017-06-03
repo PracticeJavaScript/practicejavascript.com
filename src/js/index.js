@@ -1,7 +1,6 @@
 (function (document, window) {
   // DEPENDENCIES
   // ============================================================
-  const localforage = require('localforage');
   const probs = require('pjs-problems');
   const dedent = require('dedent');
   const assert = require('chai').assert;
@@ -49,28 +48,10 @@
     currentIndex: 0
   };
 
-  // Pull config from localforage
-  localforage
-    .getItem('js_practice_config')
-    .then(val => {
-      if (val) {
-        config = val;
-      }
-      loadApp(config);
-    })
-    .catch(err => {
-      console.log('localforage err:', err);
-      loadApp(config);
-    });
-
-  function updateLocalstore(config) {
-    return localforage
-      .setItem('js_practice_config', config)
-      .then(val => val)
-      .catch(err => {
-        console.log('Settings update error:', err);
-      });
+  let state = {
+    currentProblem: getCurrentProblem(problems)
   }
+
 
   // HELPERS
   // ============================================================
@@ -108,6 +89,37 @@
   const shuffleProblemsButtonEl = document.getElementById('shuffle-problems');
   const previousProblemButtonEl = document.getElementById('prev-problem');
   const nextProblemButtonEl = document.getElementById('next-problem');
+
+  // LOCALSTORE
+  // --------------------------------------------------------------------------------
+
+  // Pull config from localstorage
+  if (window.localStorage) {
+    const localConfig = localStorage.getItem('js_practice_config');
+    if (localConfig) {
+      try {
+        config = JSON.parse(localConfig);
+        loadApp(config);
+      } catch (err) {
+        console.log('LOCAL_CONFIG PARSE ERR:', err);
+      }
+    } else {
+      console.log('LOCAL_CONFIG: No local config');
+      loadApp(config);
+    }
+  }
+
+  function updateLocalstore(config) {
+    return new Promise((resolve, reject) => {
+      if (window.localStorage) {
+        localStorage.setItem('js_practice_config', JSON.stringify(config));
+        console.log('Saved config: ', config);
+        resolve();
+      } else {
+        reject();
+      }
+    });
+  }
 
   // Get indexes
   function getRandomIndex(problemsArr) {
@@ -179,7 +191,7 @@
   }
 
   function loadProblem(problemObj) {
-    currentProblem = problemObj;
+    state.currentProblem = problemObj;
     // Prob question
     problemEl.innerText = problemObj.prompt;
     // Prob given code
@@ -193,7 +205,7 @@
   // TODO: Build the assert errors into the test dom on each update.
   function updateTests(testStatus, init) {
     if (init === true) {
-      buildTests(currentProblem.tests);
+      buildTests(state.currentProblem.tests);
     }
     updateTestStatus(testStatus);
   }
@@ -310,7 +322,7 @@
 
   function runTests(output) {
     let tested = false;
-    tested = currentProblem.tests.map(test => {
+    tested = state.currentProblem.tests.map(test => {
       let testOutcome = false;
       try {
         if (output) {

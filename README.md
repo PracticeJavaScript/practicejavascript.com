@@ -18,19 +18,16 @@
 
 ## How To Install Locally
 ```bash
-npm i -g pnpm # if you don't have pnpm yet
-pnpm i -g firebase-tools # if you don't have firebase-tools yet
-pnpm i -g gulp gulp-cli # if you don't have gulp yet
 git clone https://github.com/PracticeJavaScript/practicejavascript.com.git
 cd practicejavascript.com
-pnpm i
-gulp # watch is default gulp task
+npm i
+npm start # start gulp watch
 # Another tab
-firebase serve
+npm run serve # serves content out of /public dir
 ```
 
 - That will build it all and watch the css, img, and js assets.
-- Then you can load up `http://localhost:5000` or `public/index.html` in a browser. narf!
+- Then you can load up `http://localhost:8080` in a browser. narf!
 `/src/index.js`, `/src/css/style.scss`, and `/src/html/index.html` are the main files you'll want to edit for functionality.
 - If you have the [LiveReload Chrome extension](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) installed, it should do live css updates in your browser while gulp watch is running
 - CSS is auto-prefixed for the supported browserslist, so don't manually add any browser prefixes to CSS src.
