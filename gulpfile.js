@@ -71,7 +71,7 @@ function compile(watch) {
       .pipe(sourcemaps.init({
         loadMaps: true
       }))
-      .pipe(uglify(uglifyConf))
+      // .pipe(uglify())
       .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest('./public/dist/js'));
   }

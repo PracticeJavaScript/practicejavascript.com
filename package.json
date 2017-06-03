@@ -41,7 +41,8 @@
   "license": "MIT",
   "dependencies": {
     "chai": "^3.5.0",
-    "localforage": "^1.5.0"
+    "localforage": "^1.5.0",
+    "pjs-problems": "git+https://github.com/practicejavascript/pjs-problems.git"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.7",
@@ -53,7 +54,10 @@
     "babel-preset-latest": "^6.24.1",
     "babelify": "^7.3.0",
     "browserify": "^14.3.0",
+    "chai": "^3.5.0",
     "cssnano": "^3.10.0",
+    "dedent": "^0.7.0",
+    "gulp-bro": "^1.0.2",
     "gulp-htmlmin": "^3.0.0",
     "gulp-image": "^2.8.0",
     "gulp-livereload": "^3.8.1",
@@ -66,6 +70,7 @@
     "gulp": "^3.9.1",
     "husky": "^0.13.3",
     "lint-staged": "^3.4.0",
+    "localforage": "^1.5.0",
     "rollup-stream": "^1.19.0",
     "sw-precache": "^5.1.1",
     "uglifyify": "^3.0.4",
