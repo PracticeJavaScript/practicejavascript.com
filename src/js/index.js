@@ -25,8 +25,7 @@
   Object.keys(probs).forEach(subject => {
     problems.push(...probs[subject]);
   });
-  problems = dedentStrings(problems)
-  console.log('problems:', problems);
+  problems = dedentStrings(problems);
 
 
   // CONFIG
