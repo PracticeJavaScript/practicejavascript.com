@@ -82,6 +82,7 @@ function compile(watch) {
     bundler.on('update', () => {
       console.log('-> bundling...');
       rebundle();
+      livereload();
       console.log('done bundling.');
     });
   }

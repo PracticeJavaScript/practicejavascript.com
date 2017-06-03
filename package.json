@@ -8,8 +8,9 @@
   },
   "scripts": {
     "test": "",
+    "start": "./node_modules/.bin/gulp watch",
+    "serve": "./node_modules/.bin/http-server",
     "build": "./node_modules/.bin/gulp build",
-    "watch": "./node_modules/.bin/gulp watch",
     "precommit": "npm test",
     "prepush": "npm test"
   },
@@ -68,6 +69,7 @@
     "gulp-svgo": "^1.0.3",
     "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.8",
+    "http-server": "^0.10.0",
     "husky": "^0.13.3",
     "lint-staged": "^3.4.0",
     "localforage": "^1.5.0",
