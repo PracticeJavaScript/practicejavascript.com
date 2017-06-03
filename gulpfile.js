@@ -20,8 +20,6 @@ const livereload = require('gulp-livereload');
 const htmlmin = require('gulp-htmlmin');
 const swPrecache = require('sw-precache');
 const image = require('gulp-image');
-const pump = require('pump');
-
 
 // CONFIG
 // ============================================================
@@ -36,7 +34,8 @@ const opts = {
   }
 };
 
-const uglifyConf = {};
+const prepackConfig = {};
+const uglifyConfig = {};
 
 const htmlminConfig = {
   collapseWhitespace: true,
@@ -76,7 +75,7 @@ function compile(watch) {
       .pipe(sourcemaps.init({
         loadMaps: true
       }))
-      .pipe(uglify())
+      .pipe(uglify(uglifyConfig))
       .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest('./public/dist/js'));
   }
@@ -126,7 +125,7 @@ gulp.task('js', () => {
     .pipe(sourcemaps.init({
       loadMaps: true
     }))
-    .pipe(uglify(uglifyConf))
+    .pipe(uglify(uglifyConfig))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./public/dist/js'));
 });
@@ -199,7 +198,7 @@ gulp.task('optimize-service-worker', ['generate-service-worker'], () => {
     .pipe(sourcemaps.init({
       loadMaps: true
     }))
-    .pipe(uglify(uglifyConf))
+    .pipe(uglify(uglifyConfig))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./public'));
 });

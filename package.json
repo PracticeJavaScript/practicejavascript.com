@@ -73,7 +73,6 @@
     "husky": "^0.13.3",
     "lint-staged": "^3.4.0",
     "localforage": "^1.5.0",
-    "pump": "^1.0.2",
     "rollup-stream": "^1.19.0",
     "sw-precache": "^5.1.1",
     "uglify-es": "^3.0.15",
