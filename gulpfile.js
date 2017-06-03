@@ -121,7 +121,7 @@ gulp.task('js', () => {
     .pipe(sourcemaps.init({
       loadMaps: true
     }))
-    // .pipe(uglify(uglifyConf))
+    .pipe(uglify(uglifyConf))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./public/dist/js'));
 });
