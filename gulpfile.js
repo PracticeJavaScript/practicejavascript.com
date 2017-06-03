@@ -22,6 +22,7 @@ const swPrecache = require('sw-precache');
 const image = require('gulp-image');
 const pump = require('pump');
 
+
 // CONFIG
 // ============================================================
 const browserslist = require('./package.json').browserslist;
@@ -49,6 +50,7 @@ const imageConfig = {
   concurrent: 10,
   jpegoptim: true
 };
+
 
 // TASKS
 // ============================================================
@@ -93,6 +95,7 @@ function watch() {
   return compile(true);
 }
 
+
 // CSS
 // ============================================================
 
@@ -114,6 +117,7 @@ cssWatcher.on('change', event => {
   console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 });
 
+
 // OTHER JS
 // ============================================================
 
@@ -132,6 +136,7 @@ const jsWatcher = gulp.watch('./src/js/loadJS.js', ['js']);
 jsWatcher.on('change', event => {
   console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 });
+
 
 // IMG
 // ============================================================
@@ -157,6 +162,7 @@ imgWatcher.on('change', event => {
   console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 });
 
+
 // HTML
 // ============================================================
 
@@ -171,6 +177,7 @@ const htmlWatcher = gulp.watch('src/*.html', ['html']);
 htmlWatcher.on('change', event => {
   console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 });
+
 
 // SERVICE WORKER
 // ============================================================
@@ -206,6 +213,7 @@ swWatcher.on('change', event => {
   console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 });
 
+
 // MANIFEST
 // ============================================================
 
@@ -219,6 +227,7 @@ const manifestWatcher = gulp.watch('src/manifest.json', ['manifest']);
 manifestWatcher.on('change', event => {
   console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 });
+
 
 // BUILD
 // ============================================================
@@ -235,4 +244,6 @@ function glob() {
   return 'typeof self !== "undefined" ? self : ' + 'typeof window !== "undefined" ? window : {}'; // eslint-disable-line no-useless-concat
 }
 
+
+// gulp.task('default', ['build', 'manifest', 'service-worker', 'watch']);
 gulp.task('default', ['build', 'manifest', 'service-worker', 'watch']);
