@@ -48,6 +48,10 @@
     currentIndex: 0
   };
 
+  let state = {
+    currentProblem: getCurrentProblem(problems)
+  }
+
 
   // HELPERS
   // ============================================================
@@ -187,7 +191,7 @@
   }
 
   function loadProblem(problemObj) {
-    currentProblem = problemObj;
+    state.currentProblem = problemObj;
     // Prob question
     problemEl.innerText = problemObj.prompt;
     // Prob given code
@@ -201,7 +205,7 @@
   // TODO: Build the assert errors into the test dom on each update.
   function updateTests(testStatus, init) {
     if (init === true) {
-      buildTests(currentProblem.tests);
+      buildTests(state.currentProblem.tests);
     }
     updateTestStatus(testStatus);
   }
@@ -318,7 +322,7 @@
 
   function runTests(output) {
     let tested = false;
-    tested = currentProblem.tests.map(test => {
+    tested = state.currentProblem.tests.map(test => {
       let testOutcome = false;
       try {
         if (output) {
