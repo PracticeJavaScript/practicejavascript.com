@@ -1,13 +1,13 @@
 {
   "name": "javascript-practice",
-  "version": "1.0.0",
+  "version": "1.1.2",
   "description": "practice javascript",
   "main": "index.js",
   "engines": {
     "node": "7"
   },
   "scripts": {
-    "test": "./node_modules/.bin/xo",
+    "test": "",
     "build": "./node_modules/.bin/gulp build",
     "watch": "./node_modules/.bin/gulp watch",
     "precommit": "npm test",
@@ -41,7 +41,8 @@
   "license": "MIT",
   "dependencies": {
     "chai": "^3.5.0",
-    "localforage": "^1.5.0"
+    "localforage": "^1.5.0",
+    "pjs-problems": "^1.0.3"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.7",
@@ -53,7 +54,11 @@
     "babel-preset-latest": "^6.24.1",
     "babelify": "^7.3.0",
     "browserify": "^14.3.0",
+    "chai": "^3.5.0",
     "cssnano": "^3.10.0",
+    "dedent": "^0.7.0",
+    "gulp": "^3.9.1",
+    "gulp-bro": "^1.0.2",
     "gulp-htmlmin": "^3.0.0",
     "gulp-image": "^2.8.0",
     "gulp-livereload": "^3.8.1",
@@ -61,13 +66,15 @@
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.0",
     "gulp-svgo": "^1.0.3",
-    "gulp-uglify": "^2.1.2",
+    "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.8",
-    "gulp": "^3.9.1",
     "husky": "^0.13.3",
     "lint-staged": "^3.4.0",
+    "localforage": "^1.5.0",
+    "pump": "^1.0.2",
     "rollup-stream": "^1.19.0",
     "sw-precache": "^5.1.1",
+    "uglify-es": "^3.0.15",
     "uglifyify": "^3.0.4",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",

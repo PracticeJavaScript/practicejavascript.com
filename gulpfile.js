@@ -6,7 +6,9 @@ const sourcemaps = require('gulp-sourcemaps');
 const browserify = require('browserify');
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
-const uglify = require('gulp-uglify');
+const uglifyES = require('uglify-es');
+const composer = require('gulp-uglify/composer');
+const uglify = composer(uglifyES, console);
 const watchify = require('watchify');
 const babel = require('babelify');
 const postcss = require('gulp-postcss');
@@ -18,6 +20,7 @@ const livereload = require('gulp-livereload');
 const htmlmin = require('gulp-htmlmin');
 const swPrecache = require('sw-precache');
 const image = require('gulp-image');
+const pump = require('pump');
 
 // CONFIG
 // ============================================================
@@ -71,7 +74,7 @@ function compile(watch) {
       .pipe(sourcemaps.init({
         loadMaps: true
       }))
-      .pipe(uglify(uglifyConf))
+      .pipe(uglify())
       .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest('./public/dist/js'));
   }

@@ -2,10 +2,31 @@
   // DEPENDENCIES
   // ============================================================
   const localforage = require('localforage');
+  const probs = require('pjs-problems');
+  const dedent = require('dedent');
+  const assert = require('chai').assert;
+
+  // PROBLEM TEMPLATE NICE-IFICATION
+  // ============================================================
+
+  function dedentStrings(problems) {
+    return problems.map(prob => {
+      prob.given = dedent(prob.given)
+      prob.answer = dedent(prob.answer)
+      return prob
+    });
+  }
+
 
   // PROBLEMS
   // ============================================================
-  const problems = require('../problems/arrays.js');
+
+  let problems = [];
+  Object.keys(probs).forEach(subject => {
+    problems.push(...probs[subject]);
+  });
+  problems = dedentStrings(problems);
+
 
   // CONFIG
   // ============================================================
@@ -259,6 +280,7 @@
     evalConsoleEl.innerHTML = inner;
   }
 
+
   // VERIFICATION LOGIC
   // ============================================================
 
@@ -292,7 +314,7 @@
       let testOutcome = false;
       try {
         if (output) {
-          testOutcome = test.test(output);
+          testOutcome = eval(test.test);
         }
         printAssertError(null);
       } catch (err) {
