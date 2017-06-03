@@ -26,7 +26,7 @@ dependencies:
   husky@^0.13.3: 0.13.4
   lint-staged@^3.4.0: 3.6.0
   localforage@^1.5.0: 1.5.0
-  'pjs-problems@git+https://github.com/practicejavascript/pjs-problems.git': github.com/practicejavascript/pjs-problems/0823cc1cffb999352e3f0caed295df8633f13916
+  pjs-problems@^1.0.3: 1.0.3
   pump@^1.0.2: 1.0.2
   rollup-stream@^1.19.0: 1.19.0
   sw-precache@^5.1.1: 5.1.1
@@ -3486,6 +3486,7 @@ packages:
     resolution: 2135d6dfa7a358c069ac9b178776288228450ffa
   /pinkie/1.0.0: 5a47f28ba1015d0201bda7bf0f358e47bec8c7e4
   /pinkie/2.0.4: 72556b80cfa0d48a974e80e77248e80ed4f7f870
+  /pjs-problems/1.0.3: 861601b28fda9aa4752d38d161d4a29589d25151
   /pkg-conf/2.0.0:
     dependencies:
       find-up: 2.1.0
@@ -4742,8 +4743,5 @@ packages:
       bin-wrapper: 3.0.2
       logalot: 2.1.0
     resolution: e3cd3d1264605f38f405a770c191e89520bfa22e
-  github.com/practicejavascript/pjs-problems/0823cc1cffb999352e3f0caed295df8633f13916:
-    resolution:
-      tarball: 'https://codeload.github.com/practicejavascript/pjs-problems/tar.gz/0823cc1cffb999352e3f0caed295df8633f13916'
 registry: 'https://registry.npmjs.org/'
 version: 2

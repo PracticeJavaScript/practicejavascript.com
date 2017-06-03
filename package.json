@@ -42,7 +42,7 @@
   "dependencies": {
     "chai": "^3.5.0",
     "localforage": "^1.5.0",
-    "pjs-problems": "git+https://github.com/practicejavascript/pjs-problems.git"
+    "pjs-problems": "^1.0.3"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.7",
