@@ -1,7 +1,7 @@
 (function (document, window) {
   // DEPENDENCIES
   // ============================================================
-  const probs = require('pjs-problems');
+  const probs = require('pjs-problems').es5;
   const dedent = require('dedent');
   const assert = require('chai').assert;
 
